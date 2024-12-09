@@ -10,6 +10,7 @@ import { LandingPage } from './pages/LandingPage';
 import { PatientPage } from './pages/PatientPage';
 import { ResourcePage } from './pages/ResourcePage';
 import { SignInPage } from './pages/SignInPage';
+import DnDPage from './pages/DnDPage';
 
 export function App(): JSX.Element | null {
   const medplum = useMedplum();
@@ -32,13 +33,17 @@ export function App(): JSX.Element | null {
       <ErrorBoundary>
         <Suspense fallback={<Loading />}>
           <Routes>
-            <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
+            
+            <Route path="/" element={<DnDPage />} />           
+
+            <Route path="/old" element={profile ? <HomePage /> : <LandingPage />} />
             <Route path="/signin" element={<SignInPage />} />
             <Route path="/Patient/:id" element={<PatientPage />}>
               <Route index element={<PatientOverview />} />
               <Route path="overview" element={<PatientOverview />} />
               <Route path="timeline" element={<Timeline />} />
               <Route path="history" element={<PatientHistory />} />
+              <Route path="summary" element={<DnDPage />} />
             </Route>
             <Route path="/:resourceType/:id" element={<ResourcePage />} />
             <Route path="/:resourceType/:id/_history/:versionId" element={<ResourcePage />} />
