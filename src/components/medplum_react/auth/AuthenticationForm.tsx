@@ -97,6 +97,17 @@ export function EmailForm(props: EmailFormProps): JSX.Element {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <Button
+        variant="outline"
+        onClick={async () => {
+          const authMethod = await medplum.post('auth/method', { email: 'admin@example.com' });
+          if (!(await isExternalAuth(authMethod))) {
+            setEmail('admin@example.com');
+          }
+        }}
+      >
+        DEV
+      </Button>
       <Center style={{ flexDirection: 'column' }}>{children}</Center>
       <OperationOutcomeAlert issues={issues} />
       {googleClientId && (
@@ -161,6 +172,21 @@ export function PasswordForm(props: PasswordFormProps): JSX.Element {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <Button
+        variant="outline"
+        onClick={async () => {
+          medplum
+            .startLogin({
+              ...baseLoginRequest,
+              password: 'medplum_admin',
+              remember: true,
+            })
+            .then(handleAuthResponse)
+            .catch((err) => setOutcome(normalizeOperationOutcome(err)));
+        }}
+      >
+        DEV
+      </Button>
       <Center style={{ flexDirection: 'column' }}>{children}</Center>
       <OperationOutcomeAlert issues={issues} />
       <Stack gap="xl">
