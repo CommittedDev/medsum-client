@@ -11,7 +11,7 @@ import { PatientPage } from './pages/PatientPage';
 import { ResourcePage } from './pages/ResourcePage';
 import { SignInPage } from './pages/SignInPage';
 import DnDPage from './pages/DnDPage';
-import { SummaryPage } from './pages/Summary';
+import { DoctorSummary } from './components/DoctorSummary';
 
 export function App(): JSX.Element | null {
   const medplum = useMedplum();
@@ -43,7 +43,7 @@ export function App(): JSX.Element | null {
               <Route path="overview" element={<PatientOverview />} />
               <Route path="timeline" element={<Timeline />} />
               <Route path="history" element={<PatientHistory />} />
-              <Route path="summary" element={<SummaryPage />} />
+              <Route path="summary" element={<DoctorSummary />} />
             </Route>
             <Route path="/:resourceType/:id" element={<ResourcePage />} />
             <Route path="/:resourceType/:id/_history/:versionId" element={<ResourcePage />} />
