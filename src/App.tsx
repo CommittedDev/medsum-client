@@ -34,9 +34,9 @@ export function App(): JSX.Element | null {
         <Suspense fallback={<Loading />}>
           <Routes>
             
-            <Route path="/" element={<DnDPage />} />           
+            <Route path="/dnd" element={<DnDPage />} />           
 
-            <Route path="/old" element={profile ? <HomePage /> : <LandingPage />} />
+            <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
             <Route path="/signin" element={<SignInPage />} />
             <Route path="/Patient/:id" element={<PatientPage />}>
               <Route index element={<PatientOverview />} />
