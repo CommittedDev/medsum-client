@@ -16,7 +16,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@medplum/react": ["./src/components/medplum_react/index.ts"]
+      "@medplum/react": ["./src/components/medplum_react/index.ts"],
+      "src": ["./src"]
     }
   },
   "exclude": ["dist"]

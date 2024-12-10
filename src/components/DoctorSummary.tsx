@@ -6,5 +6,5 @@ import { PatientDoctorSummary } from './medplum_react';
  */
 export function DoctorSummary(): JSX.Element {
   const { id } = useParams();
-  return <PatientDoctorSummary patient={{ reference: `Patient/${id}` }} />;
+  return <PatientDoctorSummary patient={{ reference: `Patient/${id}` }} id={id || 'MISSING_ID'} />;
 }

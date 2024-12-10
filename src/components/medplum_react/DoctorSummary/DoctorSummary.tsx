@@ -12,14 +12,6 @@ import { ResourceAvatar } from '../ResourceAvatar/ResourceAvatar';
 import { ResourceName } from '../ResourceName/ResourceName';
 import classes from './DoctorSummary.module.css';
 
-export interface DoctorSummaryProps {
-  readonly children?: ReactNode;
-}
-
-export function DoctorSummary(props: DoctorSummaryProps): JSX.Element {
-  return <Container>{props.children}</Container>;
-}
-
 export interface DoctorSummaryItemProps<T extends Resource = Resource> extends PanelProps {
   readonly resource: T;
   readonly profile?: Reference;

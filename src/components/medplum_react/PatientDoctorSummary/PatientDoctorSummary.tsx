@@ -1,14 +1,16 @@
 import { createReference, MedplumClient, ProfileResource } from '@medplum/core';
 import { Attachment, Patient, Reference, ResourceType } from '@medplum/fhirtypes';
 import { useCallback } from 'react';
-import { ResourceDoctorSummary, ResourceDoctorSummaryProps } from '../ResourceDoctorSummary/ResourceDoctorSummary';
+import { ResourceDoctorSummary } from '../ResourceDoctorSummary/ResourceDoctorSummary';
+import { ResourceDoctorSummaryProps } from '../ResourceDoctorSummary/ResourceDoctorSummary.types';
 
 export interface PatientDoctorSummaryProps extends Pick<ResourceDoctorSummaryProps<Patient>, 'getMenu'> {
   readonly patient: Patient | Reference<Patient>;
+  readonly id: string;
 }
 
 export function PatientDoctorSummary(props: PatientDoctorSummaryProps): JSX.Element {
-  const { patient, ...rest } = props;
+  const { patient, id, ...rest } = props;
 
   const loadDoctorSummaryResources = useCallback((medplum: MedplumClient, resourceType: ResourceType, id: string) => {
     const ref = `${resourceType}/${id}`;
@@ -28,6 +30,7 @@ export function PatientDoctorSummary(props: PatientDoctorSummaryProps): JSX.Elem
   return (
     <>
       <ResourceDoctorSummary
+        id={id}
         value={patient}
         loadDoctorSummaryResources={loadDoctorSummaryResources}
         createCommunication={(resource: Patient, sender: ProfileResource, text: string) => ({

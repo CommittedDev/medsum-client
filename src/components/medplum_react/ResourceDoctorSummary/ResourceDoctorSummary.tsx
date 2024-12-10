@@ -1,57 +1,40 @@
-import { ActionIcon, Center, Group, Loader, ScrollArea, TextInput } from '@mantine/core';
+import { ActionIcon, Center, Group, Loader, TextInput } from '@mantine/core';
 import { showNotification, updateNotification } from '@mantine/notifications';
-import { MedplumClient, ProfileResource, createReference, normalizeErrorString } from '@medplum/core';
-import {
-  Attachment,
-  AuditEvent,
-  Bundle,
-  Communication,
-  DiagnosticReport,
-  Media,
-  OperationOutcome,
-  Reference,
-  Resource,
-  ResourceType,
-} from '@medplum/fhirtypes';
+import { ProfileResource, createReference, normalizeErrorString } from '@medplum/core';
+import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
 import { IconCheck, IconCloudUpload, IconFileAlert, IconMessage } from '@tabler/icons-react';
-import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { AttachmentButton } from '../AttachmentButton/AttachmentButton';
-import { AttachmentDisplay } from '../AttachmentDisplay/AttachmentDisplay';
-import { DiagnosticReportDisplay } from '../DiagnosticReportDisplay/DiagnosticReportDisplay';
 import { Form } from '../Form/Form';
 import { Panel } from '../Panel/Panel';
 import { ResourceAvatar } from '../ResourceAvatar/ResourceAvatar';
-import { ResourceDiffTable } from '../ResourceDiffTable/ResourceDiffTable';
 import { ResourceTable } from '../ResourceTable/ResourceTable';
-import { DoctorSummary, DoctorSummaryItem, DoctorSummaryItemProps } from '../DoctorSummary/DoctorSummary';
+import { DoctorSummaryItem } from '../DoctorSummary/DoctorSummary';
 import { sortByDateAndPriority } from '../utils/date';
-import classes from './ResourceDoctorSummary.module.css';
-
-export interface ResourceDoctorSummaryMenuItemContext {
-  readonly primaryResource: Resource;
-  readonly currentResource: Resource;
-  readonly reloadDoctorSummary: () => void;
-}
-
-export interface ResourceDoctorSummaryProps<T extends Resource> {
-  readonly value: T | Reference<T>;
-  readonly loadDoctorSummaryResources: (
-    medplum: MedplumClient,
-    resourceType: ResourceType,
-    id: string
-  ) => Promise<PromiseSettledResult<Bundle>[]>;
-  readonly createCommunication?: (resource: T, sender: ProfileResource, text: string) => Communication;
-  readonly createMedia?: (resource: T, operator: ProfileResource, attachment: Attachment) => Media;
-  readonly getMenu?: (context: ResourceDoctorSummaryMenuItemContext) => ReactNode;
-}
+import { DragAndDropResources } from 'src/components/DragAndDropResources/DragAndDropResources';
+import { usePersistStateGetInitialValue, usePersistStateOnValueChange } from '../utils/use_persist';
+import { ResourceDoctorSummaryProps } from './ResourceDoctorSummary.types';
+import { ResourceDoctorSummaryHelper } from './ResourceDoctorSummary.helpers';
+import { AuditEventDoctorSummaryItem } from './parts/AuditEventDoctorSummaryItem';
+import { CommunicationDoctorSummaryItem } from './parts/CommunicationDoctorSummaryItem';
+import { DiagnosticReportDoctorSummaryItem } from './parts/DiagnosticReportDoctorSummaryItem';
+import { MediaDoctorSummaryItem } from './parts/MediaDoctorSummaryItem';
+import { HistoryDoctorSummaryItem } from './parts/HistoryDoctorSummaryItem';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
   const sender = medplum.getProfile() as ProfileResource;
   const inputRef = useRef<HTMLInputElement>(null);
   const resource = useResource(props.value);
+  const persistKey = `doctor-summary-${props.id}`;
+  const initialValue = usePersistStateGetInitialValue<Resource[]>({ key: persistKey, currentValue: [] });
   const [history, setHistory] = useState<Bundle>();
+  const [selectedItems, setSelectedItemsItems] = useState<Resource[]>(initialValue);
+  usePersistStateOnValueChange({
+    key: persistKey,
+    updateValue: selectedItems,
+  });
   const [items, setItems] = useState<Resource[]>([]);
   const loadDoctorSummaryResources = props.loadDoctorSummaryResources;
 
@@ -204,7 +187,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
       id: 'upload-notification',
       loading: true,
       title: 'Uploading...',
-      message: getProgressMessage(e),
+      message: ResourceDoctorSummaryHelper.getProgressMessage(e),
       autoClose: false,
       withCloseButton: false,
     });
@@ -221,6 +204,8 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     });
   }
 
+  useEffect(() => {}, [selectedItems]);
+
   if (!resource) {
     return (
       <Center style={{ width: '100%', height: '100%' }}>
@@ -229,183 +214,113 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     );
   }
 
-  return (
-    <DoctorSummary>
-      {props.createCommunication && (
-        <Panel>
-          <Form
-            testid="doctorSummary-form"
-            onSubmit={(formData: Record<string, string>) => {
-              createComment(formData.text);
+  const renderItem = (item: Resource, list: 'resources' | 'dropList') => {
+    if (!item) {
+      // TODO: Handle null history items for deleted versions.
+      return null;
+    }
+    const key = `${item.resourceType}/${item.id}/${item.meta?.versionId}`;
+    const menu = props.getMenu
+      ? props.getMenu({
+          primaryResource: resource,
+          currentResource: item,
+          reloadDoctorSummary: loadDoctorSummary,
+        })
+      : undefined;
+    if (item.resourceType === resource.resourceType && item.id === resource.id) {
+      return <HistoryDoctorSummaryItem key={key} history={history as Bundle} resource={item} popupMenuItems={menu} />;
+    }
+    switch (item.resourceType) {
+      case 'AuditEvent':
+        return <AuditEventDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+      case 'Communication':
+        return <CommunicationDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+      case 'DiagnosticReport':
+        return <DiagnosticReportDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+      case 'Media':
+        return <MediaDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+      default:
+        return (
+          <DoctorSummaryItem key={key} resource={item} padding={true}>
+            <ResourceTable value={item} ignoreMissingValues={true} />
+          </DoctorSummaryItem>
+        );
+    }
+  };
 
-              const input = inputRef.current;
-              if (input) {
-                input.value = '';
-                input.focus();
-              }
-            }}
-          >
-            <Group gap="xs" wrap="nowrap" style={{ width: '100%' }}>
-              <ResourceAvatar value={sender} />
-              <TextInput
-                name="text"
-                ref={inputRef}
-                placeholder="Add comment"
-                style={{ width: '100%', maxWidth: 300 }}
-              />
-              <ActionIcon type="submit" radius="xl" color="blue" variant="filled">
-                <IconMessage size={16} />
-              </ActionIcon>
-              <AttachmentButton
-                securityContext={createReference(resource)}
-                onUpload={createMedia}
-                onUploadStart={onUploadStart}
-                onUploadProgress={onUploadProgress}
-                onUploadError={onUploadError}
-              >
-                {(props) => (
-                  <ActionIcon {...props} radius="xl" color="blue" variant="filled">
-                    <IconCloudUpload size={16} />
-                  </ActionIcon>
-                )}
-              </AttachmentButton>
-            </Group>
-          </Form>
-        </Panel>
-      )}
-      {items.map((item) => {
-        if (!item) {
-          // TODO: Handle null history items for deleted versions.
-          return null;
-        }
-        const key = `${item.resourceType}/${item.id}/${item.meta?.versionId}`;
-        const menu = props.getMenu
-          ? props.getMenu({
-              primaryResource: resource,
-              currentResource: item,
-              reloadDoctorSummary: loadDoctorSummary,
-            })
-          : undefined;
-        if (item.resourceType === resource.resourceType && item.id === resource.id) {
+  const renderResourcesHeader = () => {
+    return (
+      <>
+        {props.createCommunication && (
+          <Panel>
+            <Form
+              testid="doctorSummary-form"
+              onSubmit={(formData: Record<string, string>) => {
+                createComment(formData.text);
+
+                const input = inputRef.current;
+                if (input) {
+                  input.value = '';
+                  input.focus();
+                }
+              }}
+            >
+              <Group gap="xs" wrap="nowrap" style={{ width: '100%' }}>
+                <ResourceAvatar value={sender} />
+                <TextInput
+                  name="text"
+                  ref={inputRef}
+                  placeholder="Add comment"
+                  style={{ width: '100%', maxWidth: 300 }}
+                />
+                <ActionIcon type="submit" radius="xl" color="blue" variant="filled">
+                  <IconMessage size={16} />
+                </ActionIcon>
+                <AttachmentButton
+                  securityContext={createReference(resource)}
+                  onUpload={createMedia}
+                  onUploadStart={onUploadStart}
+                  onUploadProgress={onUploadProgress}
+                  onUploadError={onUploadError}
+                >
+                  {(props) => (
+                    <ActionIcon {...props} radius="xl" color="blue" variant="filled">
+                      <IconCloudUpload size={16} />
+                    </ActionIcon>
+                  )}
+                </AttachmentButton>
+              </Group>
+            </Form>
+          </Panel>
+        )}
+      </>
+    );
+  };
+
+  return (
+    <div className="flex flex-col w-full">
+      <DragAndDropResources
+        resources={items}
+        dropList={selectedItems}
+        setDropList={setSelectedItemsItems}
+        renderResource={renderItem}
+      >
+        {(resources, dropList) => {
           return (
-            <HistoryDoctorSummaryItem key={key} history={history as Bundle} resource={item} popupMenuItems={menu} />
+            <div className="flex flex-row gap-2">
+              <div className="flex-1 w-1/2">
+                <h3>Doctor Summary</h3>
+                {dropList}
+              </div>
+              <div className="flex-1 w-1/2">
+                <h3>Resources</h3>
+                {renderResourcesHeader()}
+                {resources}
+              </div>
+            </div>
           );
-        }
-        switch (item.resourceType) {
-          case 'AuditEvent':
-            return <AuditEventDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
-          case 'Communication':
-            return <CommunicationDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
-          case 'DiagnosticReport':
-            return <DiagnosticReportDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
-          case 'Media':
-            return <MediaDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
-          default:
-            return (
-              <DoctorSummaryItem key={key} resource={item} padding={true}>
-                <ResourceTable value={item} ignoreMissingValues={true} />
-              </DoctorSummaryItem>
-            );
-        }
-      })}
-    </DoctorSummary>
+        }}
+      </DragAndDropResources>
+    </div>
   );
-}
-
-interface HistoryDoctorSummaryItemProps extends DoctorSummaryItemProps {
-  readonly history: Bundle;
-}
-
-function HistoryDoctorSummaryItem(props: HistoryDoctorSummaryItemProps): JSX.Element {
-  const { history, resource, ...rest } = props;
-  const previous = getPrevious(history, resource);
-  if (previous) {
-    return (
-      <DoctorSummaryItem resource={resource} padding={true} {...rest}>
-        <ResourceDiffTable original={previous} revised={props.resource} />
-      </DoctorSummaryItem>
-    );
-  } else {
-    return (
-      <DoctorSummaryItem resource={resource} padding={true} {...rest}>
-        <h3>Created</h3>
-        <ResourceTable value={resource} ignoreMissingValues forceUseInput />
-      </DoctorSummaryItem>
-    );
-  }
-}
-
-function getPrevious(history: Bundle, version: Resource): Resource | undefined {
-  const entries = history.entry ?? [];
-  const index = entries.findIndex((entry) => entry.resource?.meta?.versionId === version.meta?.versionId);
-  // If not found index is -1, -1 === 0 - 1 so this returns undefined
-  if (index >= entries.length - 1) {
-    return undefined;
-  }
-  return entries[index + 1].resource;
-}
-
-function CommunicationDoctorSummaryItem(props: DoctorSummaryItemProps<Communication>): JSX.Element {
-  const routine = !props.resource.priority || props.resource.priority === 'routine';
-  const className = routine ? undefined : classes.pinnedComment;
-  return (
-    <DoctorSummaryItem
-      resource={props.resource}
-      profile={props.resource.sender}
-      dateTime={props.resource.sent}
-      padding={true}
-      className={className}
-      popupMenuItems={props.popupMenuItems}
-    >
-      <p>{props.resource.payload?.[0]?.contentString}</p>
-    </DoctorSummaryItem>
-  );
-}
-
-function MediaDoctorSummaryItem(props: DoctorSummaryItemProps<Media>): JSX.Element {
-  const contentType = props.resource.content?.contentType;
-  const padding =
-    contentType &&
-    !contentType.startsWith('image/') &&
-    !contentType.startsWith('video/') &&
-    contentType !== 'application/pdf';
-  return (
-    <DoctorSummaryItem resource={props.resource} padding={!!padding} popupMenuItems={props.popupMenuItems}>
-      <AttachmentDisplay value={props.resource.content} />
-    </DoctorSummaryItem>
-  );
-}
-
-function AuditEventDoctorSummaryItem(props: DoctorSummaryItemProps<AuditEvent>): JSX.Element {
-  return (
-    <DoctorSummaryItem resource={props.resource} padding={true} popupMenuItems={props.popupMenuItems}>
-      <ScrollArea>
-        <pre>{props.resource.outcomeDesc}</pre>
-      </ScrollArea>
-    </DoctorSummaryItem>
-  );
-}
-
-function DiagnosticReportDoctorSummaryItem(props: DoctorSummaryItemProps<DiagnosticReport>): JSX.Element {
-  return (
-    <DoctorSummaryItem resource={props.resource} padding={true} popupMenuItems={props.popupMenuItems}>
-      <DiagnosticReportDisplay value={props.resource} />
-    </DoctorSummaryItem>
-  );
-}
-
-function getProgressMessage(e: ProgressEvent): string {
-  if (e.lengthComputable) {
-    const percent = (100 * e.loaded) / e.total;
-    return `Uploaded: ${formatFileSize(e.loaded)} / ${formatFileSize(e.total)} ${percent.toFixed(2)}%`;
-  }
-  return `Uploaded: ${formatFileSize(e.loaded)}`;
-}
-
-function formatFileSize(bytes: number): string {
-  if (bytes === 0) {
-    return '0.00 B';
-  }
-  const e = Math.floor(Math.log(bytes) / Math.log(1024));
-  return (bytes / Math.pow(1024, e)).toFixed(2) + ' ' + ' KMGTP'.charAt(e) + 'B';
 }
