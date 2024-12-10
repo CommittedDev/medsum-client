@@ -3,7 +3,7 @@ import { IconGripVertical } from '@tabler/icons-react';
 import { Table } from '@mantine/core';
 import { useListState } from '@mantine/hooks';
 import classes from './DnDPage.module.css';
-import { Document, ResourceName, SearchControl, useMedplumNavigate, useMedplumProfile, } from '@medplum/react';
+import { Document, ResourceName, SearchControl, useMedplumNavigate, useMedplumProfile } from '@medplum/react';
 
 const data1 = [
   { position: 6, mass: 12.011, symbol: 'C', name: 'Carbon' },
@@ -64,31 +64,29 @@ const DnDPage: React.FC = () => {
 
   return (
     <Document>
-    <Table.ScrollContainer minWidth={420}>
-      <DragDropContext
-        onDragEnd={({ destination, source }) =>
-          handlers.reorder({ from: source.index, to: destination?.index || 0 })
-        }
-      >
-        <Table>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th w={40} />
-              <Table.Th w={80}>Position</Table.Th>
-              <Table.Th w={120}>Name</Table.Th>
-              <Table.Th w={40}>Symbol</Table.Th>
-              <Table.Th>Mass</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Droppable droppableId="dnd-list" direction="vertical">
-            {(provided) => (
-              <Table.Tbody {...provided.droppableProps} ref={provided.innerRef}>
-                {items1}
-                {provided.placeholder}
-              </Table.Tbody>
-            )}
-          </Droppable>
-        </Table>
+      <Table.ScrollContainer minWidth={420}>
+        <DragDropContext
+          onDragEnd={({ destination, source }) => handlers.reorder({ from: source.index, to: destination?.index || 0 })}
+        >
+          <Table>
+            <Table.Thead>
+              <Table.Tr>
+                <Table.Th w={40} />
+                <Table.Th w={80}>Position</Table.Th>
+                <Table.Th w={120}>Name</Table.Th>
+                <Table.Th w={40}>Symbol</Table.Th>
+                <Table.Th>Mass</Table.Th>
+              </Table.Tr>
+            </Table.Thead>
+            <Droppable droppableId="dnd-list" direction="vertical">
+              {(provided) => (
+                <Table.Tbody {...provided.droppableProps} ref={provided.innerRef}>
+                  {items1}
+                  {provided.placeholder}
+                </Table.Tbody>
+              )}
+            </Droppable>
+          </Table>
         </DragDropContext>
 
         <DragDropContext
@@ -96,27 +94,27 @@ const DnDPage: React.FC = () => {
             handlers2.reorder({ from: source.index, to: destination?.index || 0 })
           }
         >
-        <Table>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th w={40} />
-              <Table.Th w={80}>Position</Table.Th>
-              <Table.Th w={120}>Name</Table.Th>
-              <Table.Th w={40}>Symbol</Table.Th>
-              <Table.Th>Mass</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Droppable droppableId="dnd-list" direction="vertical">
-            {(provided) => (
-              <Table.Tbody {...provided.droppableProps} ref={provided.innerRef}>
-                {items2}
-                {provided.placeholder}
-              </Table.Tbody>
-            )}
-          </Droppable>
-        </Table>
-      </DragDropContext>
-    </Table.ScrollContainer>
+          <Table>
+            <Table.Thead>
+              <Table.Tr>
+                <Table.Th w={40} />
+                <Table.Th w={80}>Position</Table.Th>
+                <Table.Th w={120}>Name</Table.Th>
+                <Table.Th w={40}>Symbol</Table.Th>
+                <Table.Th>Mass</Table.Th>
+              </Table.Tr>
+            </Table.Thead>
+            <Droppable droppableId="dnd-list" direction="vertical">
+              {(provided) => (
+                <Table.Tbody {...provided.droppableProps} ref={provided.innerRef}>
+                  {items2}
+                  {provided.placeholder}
+                </Table.Tbody>
+              )}
+            </Droppable>
+          </Table>
+        </DragDropContext>
+      </Table.ScrollContainer>
     </Document>
   );
 };
