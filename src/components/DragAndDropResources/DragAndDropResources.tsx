@@ -13,18 +13,19 @@ import {
 import { Resource } from '@medplum/fhirtypes';
 
 interface ListContainerProps {
-  bgColor: string;
   isDraggingOver?: boolean;
+  height: string;
 }
 
 const ListContainer = styled.div<ListContainerProps>`
-  background-color: ${(props) => (props.isDraggingOver ? '#d3d3d3' : props.bgColor)};
+  background-color: ${(props) => (props.isDraggingOver ? '#d3d3d3' : 'white')};
   padding: 10px;
-  min-height: 400px;
+  height: ${(props) => props.height};
   border-radius: 8px;
   box-sizing: border-box;
   transition: background-color 0.2s ease;
   flex: 1;
+  overflow-y: auto;
 `;
 
 interface ItemProps {
@@ -53,13 +54,17 @@ const Item = styled.div<ItemProps>`
 
 export const DragAndDropResources = ({
   resources,
+  resourceListHeight,
   dropList,
+  dropListHeight,
   setDropList,
   renderResource,
   children,
 }: {
   resources: Resource[];
+  resourceListHeight: string;
   dropList: Resource[];
+  dropListHeight: string;
   setDropList: React.Dispatch<React.SetStateAction<Resource[]>>;
   renderResource: (resource: Resource, list: 'resources' | 'dropList') => JSX.Element | null;
   children: (resources: JSX.Element, dropList: JSX.Element) => JSX.Element;
@@ -114,7 +119,7 @@ export const DragAndDropResources = ({
     <Droppable droppableId="resources" isDropDisabled={true}>
       {(provided: DroppableProvided, snapshot) => (
         <ListContainer
-          bgColor="lightgreen"
+          height={resourceListHeight}
           ref={provided.innerRef}
           {...provided.droppableProps}
           isDraggingOver={snapshot.isDraggingOver}
@@ -143,7 +148,7 @@ export const DragAndDropResources = ({
     <Droppable droppableId="dropList">
       {(provided: DroppableProvided, snapshot) => (
         <ListContainer
-          bgColor="lightcoral"
+          height={dropListHeight}
           ref={provided.innerRef}
           {...provided.droppableProps}
           isDraggingOver={snapshot.isDraggingOver}

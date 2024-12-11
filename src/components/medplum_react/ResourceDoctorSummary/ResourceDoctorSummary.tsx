@@ -1,9 +1,9 @@
-import { ActionIcon, Center, Group, Loader, TextInput } from '@mantine/core';
+import { ActionIcon, Center, Group, Loader, Menu, Modal, TextInput } from '@mantine/core';
 import { showNotification, updateNotification } from '@mantine/notifications';
-import { ProfileResource, createReference, normalizeErrorString } from '@medplum/core';
+import { ProfileResource, createReference, getReferenceString, normalizeErrorString } from '@medplum/core';
 import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
-import { IconCheck, IconCloudUpload, IconFileAlert, IconMessage } from '@tabler/icons-react';
+import { IconCheck, IconCloudUpload, IconEdit, IconFileAlert, IconMessage, IconX } from '@tabler/icons-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AttachmentButton } from '../AttachmentButton/AttachmentButton';
 import { Form } from '../Form/Form';
@@ -21,6 +21,8 @@ import { CommunicationDoctorSummaryItem } from './parts/CommunicationDoctorSumma
 import { DiagnosticReportDoctorSummaryItem } from './parts/DiagnosticReportDoctorSummaryItem';
 import { MediaDoctorSummaryItem } from './parts/MediaDoctorSummaryItem';
 import { HistoryDoctorSummaryItem } from './parts/HistoryDoctorSummaryItem';
+import { ResourceTableInlineEditing } from '../ResourceTableInlineEditing/ResourceTableInlineEditing';
+import { EditPage } from './parts/EditPage';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
@@ -28,6 +30,11 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
   const inputRef = useRef<HTMLInputElement>(null);
   const resource = useResource(props.value);
   const persistKey = `doctor-summary-${props.id}`;
+  const [editingResource, setEditingResource] = useState<{
+    resourceType: ResourceType;
+    id: string;
+    item: Resource;
+  } | null>(null);
   const initialValue = usePersistStateGetInitialValue<Resource[]>({ key: persistKey, currentValue: [] });
   const [history, setHistory] = useState<Bundle>();
   const [selectedItems, setSelectedItemsItems] = useState<Resource[]>(initialValue);
@@ -220,13 +227,33 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
       return null;
     }
     const key = `${item.resourceType}/${item.id}/${item.meta?.versionId}`;
-    const menu = props.getMenu
-      ? props.getMenu({
-          primaryResource: resource,
-          currentResource: item,
-          reloadDoctorSummary: loadDoctorSummary,
-        })
-      : undefined;
+    const menu = props.getMenu ? (
+      props.getMenu({
+        primaryResource: resource,
+        currentResource: item,
+        reloadDoctorSummary: loadDoctorSummary,
+      })
+    ) : list == 'dropList' && item.id ? (
+      <Menu.Dropdown>
+        <Menu.Item
+          leftSection={<IconEdit size={14} />}
+          onClick={() => setEditingResource({ resourceType: item.resourceType, id: item.id!, item: item })}
+          aria-label={`Edit ${getReferenceString(item)}`}
+        >
+          Edit
+        </Menu.Item>
+        <Menu.Item
+          leftSection={<IconX size={14} />}
+          onClick={() => {
+            setSelectedItemsItems((prev) => prev.filter((e) => e.id !== item.id));
+            setEditingResource(null);
+          }}
+          aria-label={`Delete ${getReferenceString(item)}`}
+        >
+          Delete
+        </Menu.Item>
+      </Menu.Dropdown>
+    ) : undefined;
     if (item.resourceType === resource.resourceType && item.id === resource.id) {
       return <HistoryDoctorSummaryItem key={key} history={history as Bundle} resource={item} popupMenuItems={menu} />;
     }
@@ -241,8 +268,12 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
         return <MediaDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
       default:
         return (
-          <DoctorSummaryItem key={key} resource={item} padding={true}>
-            <ResourceTable value={item} ignoreMissingValues={true} />
+          <DoctorSummaryItem key={key} resource={item} padding={true} popupMenuItems={menu}>
+            {list == 'dropList' ? (
+              <ResourceTableInlineEditing value={item} ignoreMissingValues={true} />
+            ) : (
+              <ResourceTable value={item} ignoreMissingValues={true} />
+            )}
           </DoctorSummaryItem>
         );
     }
@@ -252,7 +283,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     return (
       <>
         {props.createCommunication && (
-          <Panel>
+          <div className="py-4">
             <Form
               testid="doctorSummary-form"
               onSubmit={(formData: Record<string, string>) => {
@@ -291,7 +322,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                 </AttachmentButton>
               </Group>
             </Form>
-          </Panel>
+          </div>
         )}
       </>
     );
@@ -301,9 +332,18 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     <div className="flex flex-col w-full">
       <DragAndDropResources
         resources={items}
+        resourceListHeight={'calc(100vh - 200px)'}
+        dropListHeight={'calc(100vh - 200px)'}
         dropList={selectedItems}
         setDropList={setSelectedItemsItems}
-        renderResource={renderItem}
+        renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
+          return (
+            <div>
+              {resource?.resourceType}
+              {renderItem(resource, list)}
+            </div>
+          );
+        }}
       >
         {(resources, dropList) => {
           return (
@@ -321,6 +361,24 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
           );
         }}
       </DragAndDropResources>
+      <Modal
+        opened={!!editingResource}
+        onClose={() => setEditingResource(null)}
+        title={editingResource ? `Edit ${getReferenceString(editingResource!.item)}` : ''}
+        size="lg"
+      >
+        {editingResource && (
+          <EditPage
+            id={editingResource.id}
+            resourceType={editingResource.resourceType}
+            value={editingResource.item}
+            onSave={(updatedValue) => {
+              setSelectedItemsItems((prev) => prev.map((item) => (item.id === updatedValue.id ? updatedValue : item)));
+              setEditingResource(null);
+            }}
+          />
+        )}
+      </Modal>
     </div>
   );
 }

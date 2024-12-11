@@ -4,7 +4,7 @@ import { useMedplum, useResource } from '@medplum/react-hooks';
 import { useEffect, useMemo, useState } from 'react';
 import { BackboneElementDisplay } from '../BackboneElementDisplay/BackboneElementDisplay';
 
-export interface ResourceTableProps {
+export interface ResourceTableInlineEditingProps {
   /**
    * The input value either as a resource or a reference.
    */
@@ -27,7 +27,7 @@ export interface ResourceTableProps {
   readonly profileUrl?: string;
 }
 
-export function ResourceTable(props: ResourceTableProps): JSX.Element | null {
+export function ResourceTableInlineEditing(props: ResourceTableInlineEditingProps): JSX.Element | null {
   const { profileUrl } = props;
   const medplum = useMedplum();
   const accessPolicy = medplum.getAccessPolicy();
