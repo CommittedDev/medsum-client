@@ -1,10 +1,10 @@
-import { ActionIcon, Center, Group, Loader, Menu, Modal, TextInput } from '@mantine/core';
+import { ActionIcon, Button, Center, Group, Loader, LoadingOverlay, Menu, Modal, TextInput } from '@mantine/core';
 import { showNotification, updateNotification } from '@mantine/notifications';
 import { ProfileResource, createReference, getReferenceString, normalizeErrorString } from '@medplum/core';
 import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
 import { IconCheck, IconCloudUpload, IconEdit, IconFileAlert, IconMessage, IconX } from '@tabler/icons-react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AttachmentButton } from '../AttachmentButton/AttachmentButton';
 import { Form } from '../Form/Form';
 import { Panel } from '../Panel/Panel';
@@ -23,9 +23,14 @@ import { MediaDoctorSummaryItem } from './parts/MediaDoctorSummaryItem';
 import { HistoryDoctorSummaryItem } from './parts/HistoryDoctorSummaryItem';
 import { ResourceTableInlineEditing } from '../ResourceTableInlineEditing/ResourceTableInlineEditing';
 import { EditPage } from './parts/EditPage';
+import { useReactToPrint } from 'react-to-print';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
+  const printTargetRef = useRef<HTMLDivElement>();
+  const reactToPrintFn = useReactToPrint({ contentRef: printTargetRef as any });
+  const [printPdf, setPrintPdf] = useState(false);
+
   const sender = medplum.getProfile() as ProfileResource;
   const inputRef = useRef<HTMLInputElement>(null);
   const resource = useResource(props.value);
@@ -221,7 +226,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     );
   }
 
-  const renderItem = (item: Resource, list: 'resources' | 'dropList') => {
+  const renderItem = (item: Resource, list: 'resources' | 'dropList' | 'viewMode') => {
     if (!item) {
       // TODO: Handle null history items for deleted versions.
       return null;
@@ -328,57 +333,87 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     );
   };
 
+  const onDownloadPdf = () => {
+    setPrintPdf(true);
+  };
+
+  useLayoutEffect(() => {
+    if (printPdf) {
+      setTimeout(() => {
+        reactToPrintFn();
+        setTimeout(() => {
+          setPrintPdf(false);
+        }, 2000);
+      }, 2000);
+    }
+  }, [printPdf]);
+
   return (
-    <div className="flex flex-col w-full">
-      <DragAndDropResources
-        resources={items}
-        resourceListHeight={'calc(100vh - 200px)'}
-        dropListHeight={'calc(100vh - 200px)'}
-        dropList={selectedItems}
-        setDropList={setSelectedItemsItems}
-        renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
-          return (
-            <div>
-              {resource?.resourceType}
-              {renderItem(resource, list)}
-            </div>
-          );
-        }}
-      >
-        {(resources, dropList) => {
-          return (
-            <div className="flex flex-row gap-2">
-              <div className="flex-1 w-1/2">
-                <h3>Doctor Summary</h3>
-                {dropList}
+    <>
+      {printPdf && (
+        <div ref={printTargetRef as any} className="h-full w-full p-4">
+          {selectedItems.map((item) => renderItem(item, 'viewMode'))}
+        </div>
+      )}
+      <div className="flex flex-col w-full hiddenTheChild">
+        <DragAndDropResources
+          resources={items}
+          resourceListHeight={'calc(100vh - 200px)'}
+          dropListHeight={'calc(100vh - 200px)'}
+          dropList={selectedItems}
+          setDropList={setSelectedItemsItems}
+          renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
+            return (
+              <div>
+                {resource?.resourceType}
+                {renderItem(resource, list)}
               </div>
-              <div className="flex-1 w-1/2">
-                <h3>Resources</h3>
-                {renderResourcesHeader()}
-                {resources}
+            );
+          }}
+        >
+          {(resources, dropList) => {
+            return (
+              <div className="flex flex-row gap-2">
+                <div className="flex-1 w-1/2" ref={printTargetRef as any}>
+                  <div className="flex flex-row justify-between">
+                    <h3>Doctor Summary</h3>
+                    <Button variant="outline" onClick={onDownloadPdf}>
+                      Download
+                    </Button>
+                  </div>
+                  {dropList}
+                </div>
+                <div className="flex-1 w-1/2">
+                  <h3>Resources</h3>
+                  {renderResourcesHeader()}
+                  {resources}
+                </div>
               </div>
-            </div>
-          );
-        }}
-      </DragAndDropResources>
-      <Modal
-        opened={!!editingResource}
-        onClose={() => setEditingResource(null)}
-        title={editingResource ? `Edit ${getReferenceString(editingResource!.item)}` : ''}
-        size="lg"
-      >
-        {editingResource && (
-          <EditPage
-            id={editingResource.id}
-            resourceType={editingResource.resourceType}
-            value={editingResource.item}
-            onSave={(updatedValue) => {
-              setSelectedItemsItems((prev) => prev.map((item) => (item.id === updatedValue.id ? updatedValue : item)));
-              setEditingResource(null);
-            }}
-          />
-        )}
-      </Modal>
-    </div>
+            );
+          }}
+        </DragAndDropResources>
+        <Modal
+          opened={!!editingResource}
+          onClose={() => setEditingResource(null)}
+          title={editingResource ? `Edit ${getReferenceString(editingResource!.item)}` : ''}
+          size="lg"
+        >
+          {editingResource && (
+            <EditPage
+              id={editingResource.id}
+              resourceType={editingResource.resourceType}
+              value={editingResource.item}
+              onSave={(updatedValue) => {
+                setSelectedItemsItems((prev) =>
+                  prev.map((item) => (item.id === updatedValue.id ? updatedValue : item))
+                );
+                setEditingResource(null);
+              }}
+            />
+          )}
+        </Modal>
+      </div>
+      <LoadingOverlay visible={printPdf} overlayProps={{ blur: 10 }} />
+    </>
   );
 }
