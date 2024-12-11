@@ -3,7 +3,15 @@ import { showNotification, updateNotification } from '@mantine/notifications';
 import { ProfileResource, createReference, getReferenceString, normalizeErrorString } from '@medplum/core';
 import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
-import { IconCheck, IconCloudUpload, IconEdit, IconFileAlert, IconMessage, IconX } from '@tabler/icons-react';
+import {
+  IconCheck,
+  IconCloudUpload,
+  IconEdit,
+  IconFileAlert,
+  IconMessage,
+  IconPrinter,
+  IconX,
+} from '@tabler/icons-react';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AttachmentButton } from '../AttachmentButton/AttachmentButton';
 import { Form } from '../Form/Form';
@@ -24,6 +32,7 @@ import { HistoryDoctorSummaryItem } from './parts/HistoryDoctorSummaryItem';
 import { ResourceTableInlineEditing } from '../ResourceTableInlineEditing/ResourceTableInlineEditing';
 import { EditPage } from './parts/EditPage';
 import { useReactToPrint } from 'react-to-print';
+import { DateUtils } from './date.utils';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
@@ -333,7 +342,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     );
   };
 
-  const onDownloadPdf = () => {
+  const onPrint = () => {
     setPrintPdf(true);
   };
 
@@ -358,8 +367,8 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
       <div className="flex flex-col w-full hiddenTheChild">
         <DragAndDropResources
           resources={items}
-          resourceListHeight={'calc(100vh - 200px)'}
-          dropListHeight={'calc(100vh - 200px)'}
+          resourceListHeight={'calc(100vh - 155px)'}
+          dropListHeight={'auto'}
           dropList={selectedItems}
           setDropList={setSelectedItemsItems}
           renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
@@ -373,20 +382,43 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
         >
           {(resources, dropList) => {
             return (
-              <div className="flex flex-row gap-2">
-                <div className="flex-1 w-1/2" ref={printTargetRef as any}>
-                  <div className="flex flex-row justify-between">
-                    <h3>Doctor Summary</h3>
-                    <Button variant="outline" onClick={onDownloadPdf}>
-                      Download
-                    </Button>
-                  </div>
-                  {dropList}
+              <div className="flex flex-row gap-4 overflow-auto">
+                {/*
+                  ---------------------------------------------------------------
+                  | >מידע רפואי
+                  --------------------------------------------------------------
+                */}
+                <div className="w-[40%] flex flex-col gap-2 rounded-md  pt-2">
+                  <p>מידע רפואי</p>
+                  <div className="w-full bg-white p-2 rounded-md">{resources}</div>
                 </div>
-                <div className="flex-1 w-1/2">
-                  <h3>Resources</h3>
-                  {renderResourcesHeader()}
-                  {resources}
+                {/*
+                  ---------------------------------------------------------------
+                  | >מכתב שחרור
+                  --------------------------------------------------------------
+                */}
+                <div className=" w-[60%] flex flex-col gap-2 rounded-md">
+                  <div className="flex flex-row justify-between items-center">
+                    <div className="flex flex-row gap-2">
+                      <p>מכתב שחרור</p>
+                      <p className="text-[#21AEFF] text-[14px]">{`טען תבנית >>`}</p>
+                    </div>
+                    <div className="flex flex-row gap-2">
+                      <ActionIcon variant="transparent" onClick={onPrint}>
+                        <IconPrinter />
+                      </ActionIcon>
+                    </div>
+                  </div>
+                  <div className="flex-1 w-full bg-white p-6 rounded-md overflow-y-auto max-h-[calc(100vh-138px)]">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex flex-row justify-between items-center">
+                        <img src="https://www.shamir.org/media/jrpp25ha/logo.png" alt="logo" className="h-10" />
+                        <p className="text-[21px]">מכתב שחרור</p>
+                        <p className="text-[14px] text-[#888888]">{DateUtils.formatDate(new Date())}</p>
+                      </div>
+                      {dropList}
+                    </div>
+                  </div>
                 </div>
               </div>
             );

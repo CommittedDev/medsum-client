@@ -22,34 +22,55 @@ export function App(): JSX.Element | null {
   }
 
   return (
-    <AppShell
-      logo={<Logo size={24} />}
-      menus={[
-        {
-          title: 'My Links',
-          links: [{ icon: <IconUser />, label: 'Patients', href: '/' }],
-        },
-      ]}
-    >
-      <ErrorBoundary>
-        <Suspense fallback={<Loading />}>
-          <Routes>
-            <Route path="/dnd" element={<DnDPage />} />
+    <ErrorBoundary>
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route path="/dnd" element={<DnDPage />} />
 
-            <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
-            <Route path="/signin" element={<SignInPage />} />
-            <Route path="/Patient/:id" element={<PatientPage />}>
-              <Route index element={<PatientOverview />} />
-              <Route path="overview" element={<PatientOverview />} />
-              <Route path="timeline" element={<Timeline />} />
-              <Route path="history" element={<PatientHistory />} />
-              <Route path="summary" element={<DoctorSummary />} />
-            </Route>
-            <Route path="/:resourceType/:id" element={<ResourcePage />} />
-            <Route path="/:resourceType/:id/_history/:versionId" element={<ResourcePage />} />
-          </Routes>
-        </Suspense>
-      </ErrorBoundary>
-    </AppShell>
+          <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/Patient/:id" element={<PatientPage />}>
+            <Route index element={<PatientOverview />} />
+            <Route path="overview" element={<PatientOverview />} />
+            <Route path="timeline" element={<Timeline />} />
+            <Route path="history" element={<PatientHistory />} />
+            <Route path="summary" element={<DoctorSummary />} />
+          </Route>
+          <Route path="/:resourceType/:id" element={<ResourcePage />} />
+          <Route path="/:resourceType/:id/_history/:versionId" element={<ResourcePage />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
   );
+  // return (
+  //   <AppShell
+  //     logo={<Logo size={24} />}
+  //     menus={[
+  //       {
+  //         title: 'My Links',
+  //         links: [{ icon: <IconUser />, label: 'Patients', href: '/' }],
+  //       },
+  //     ]}
+  //   >
+  //     <ErrorBoundary>
+  //       <Suspense fallback={<Loading />}>
+  //         <Routes>
+  //           <Route path="/dnd" element={<DnDPage />} />
+
+  //           <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
+  //           <Route path="/signin" element={<SignInPage />} />
+  //           <Route path="/Patient/:id" element={<PatientPage />}>
+  //             <Route index element={<PatientOverview />} />
+  //             <Route path="overview" element={<PatientOverview />} />
+  //             <Route path="timeline" element={<Timeline />} />
+  //             <Route path="history" element={<PatientHistory />} />
+  //             <Route path="summary" element={<DoctorSummary />} />
+  //           </Route>
+  //           <Route path="/:resourceType/:id" element={<ResourcePage />} />
+  //           <Route path="/:resourceType/:id/_history/:versionId" element={<ResourcePage />} />
+  //         </Routes>
+  //       </Suspense>
+  //     </ErrorBoundary>
+  //   </AppShell>
+  // );
 }

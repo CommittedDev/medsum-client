@@ -26,7 +26,7 @@ export function DoctorSummaryItem(props: DoctorSummaryItemProps): JSX.Element {
   const dateTime = props.dateTime ?? resource.meta?.lastUpdated;
 
   return (
-    <Panel data-testid="doctorSummary-item" fill={true} {...others}>
+    <Panel data-testid="doctorSummary-item" fill={true} shadow={undefined} withBorder={false} {...others}>
       <Group justify="space-between" gap={8} mx="xs" my="sm">
         <ResourceAvatar value={author} link={true} size="md" />
         <div style={{ flex: 1 }}>
