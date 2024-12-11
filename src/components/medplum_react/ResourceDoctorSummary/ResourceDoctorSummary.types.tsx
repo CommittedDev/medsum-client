@@ -16,7 +16,7 @@ export interface ResourceDoctorSummaryProps<T extends Resource> {
     medplum: MedplumClient,
     resourceType: ResourceType,
     id: string
-  ) => Promise<PromiseSettledResult<Bundle>[]>;
+  ) => Promise<PromiseSettledResult<any>[]>;
   readonly createCommunication?: (resource: T, sender: ProfileResource, text: string) => Communication;
   readonly createMedia?: (resource: T, operator: ProfileResource, attachment: Attachment) => Media;
   readonly getMenu?: (context: ResourceDoctorSummaryMenuItemContext) => ReactNode;

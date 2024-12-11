@@ -4,7 +4,8 @@ import { HomerEncounter, MockClient } from '@medplum/mock';
 import { act, fireEvent, render, screen, waitFor } from '../test-utils/render';
 import { MemoryRouter } from 'react-router-dom';
 import { MedplumProvider } from '@medplum/react-hooks';
-import { ResourceDoctorSummary, ResourceDoctorSummaryProps } from './ResourceDoctorSummary';
+import { ResourceDoctorSummary } from './ResourceDoctorSummary';
+import { ResourceDoctorSummaryProps } from './ResourceDoctorSummary.types';
 
 const medplum = new MockClient();
 
@@ -35,6 +36,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Renders reference', async () => {
     await setup({
+      id: 'reference-test',
       value: createReference(HomerEncounter),
       loadDoctorSummaryResources,
     });
@@ -47,6 +49,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Renders resource', async () => {
     await setup({
+      id: 'resource-test',
       value: HomerEncounter,
       loadDoctorSummaryResources,
     });
@@ -59,6 +62,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Create comment', async () => {
     await setup({
+      id: 'create-comment-test',
       value: HomerEncounter,
       loadDoctorSummaryResources,
       createCommunication: (resource: Encounter, sender: ProfileResource, text: string) => ({
@@ -97,6 +101,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Upload media', async () => {
     await setup({
+      id: 'upload-media-test',
       value: HomerEncounter,
       loadDoctorSummaryResources,
       createCommunication: jest.fn(),
