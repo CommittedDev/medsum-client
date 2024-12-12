@@ -40,7 +40,7 @@ export function PatientPage(): JSX.Element {
       </Tabs.Tab>
     );
   };
-
+  console.log({ patient });
   return (
     <Fragment key={getReferenceString(patient)}>
       <div className="flex flex-row">

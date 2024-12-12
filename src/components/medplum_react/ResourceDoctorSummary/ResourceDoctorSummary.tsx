@@ -33,17 +33,19 @@ import { ResourceTableInlineEditing } from '../ResourceTableInlineEditing/Resour
 import { EditPage } from './parts/EditPage';
 import { useReactToPrint } from 'react-to-print';
 import { DateUtils } from './date.utils';
+import { DoctorSummaryTemplates, IResourceTemplateItem, ITemplate } from './parts/DoctorSummaryTemplates';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
+  const [isReady, setIsReady] = useState(false);
   const printTargetRef = useRef<HTMLDivElement>();
   const reactToPrintFn = useReactToPrint({ contentRef: printTargetRef as any });
   const [printPdf, setPrintPdf] = useState(false);
-
+  const [selectedTemplate, setSelectedTemplate] = useState<ITemplate>();
   const sender = medplum.getProfile() as ProfileResource;
   const inputRef = useRef<HTMLInputElement>(null);
   const resource = useResource(props.value);
-  const persistKey = `doctor-summary-${props.id}`;
+  const persistKey = `doctor-summary-${props.patientId}`;
   const [editingResource, setEditingResource] = useState<{
     resourceType: ResourceType;
     id: string;
@@ -51,7 +53,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
   } | null>(null);
   const initialValue = usePersistStateGetInitialValue<Resource[]>({ key: persistKey, currentValue: [] });
   const [history, setHistory] = useState<Bundle>();
-  const [selectedItems, setSelectedItemsItems] = useState<Resource[]>(initialValue);
+  const [selectedItems, setSelectedItems] = useState<Resource[]>(initialValue);
   usePersistStateOnValueChange({
     key: persistKey,
     updateValue: selectedItems,
@@ -82,6 +84,8 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
       sortByDateAndPriority(newItems, resource);
       newItems.reverse();
       setItems(newItems);
+      console.log({ newItems });
+      setIsReady(true);
     },
     [resource]
   );
@@ -259,7 +263,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
         <Menu.Item
           leftSection={<IconX size={14} />}
           onClick={() => {
-            setSelectedItemsItems((prev) => prev.filter((e) => e.id !== item.id));
+            setSelectedItems((prev) => prev.filter((e) => e.id !== item.id));
             setEditingResource(null);
           }}
           aria-label={`Delete ${getReferenceString(item)}`}
@@ -346,6 +350,27 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     setPrintPdf(true);
   };
 
+  const onTemplateChange = (template: ITemplate) => {
+    setEditingResource(null);
+    const counterPerItemsType: { [resourceType: string]: number } = {};
+    const initialSelectedItems: Resource[] = [];
+    template.template.items.forEach((item) => {
+      if (item.type == 'resource') {
+        const templateItem = item as IResourceTemplateItem;
+        counterPerItemsType[templateItem.resourceType] = counterPerItemsType[templateItem.resourceType] || 0;
+        if (counterPerItemsType[templateItem.resourceType] < templateItem.count) {
+          const resourceToAdd = items.find((resource) => resource.resourceType == templateItem.resourceType);
+          if (resourceToAdd) {
+            initialSelectedItems.push(resourceToAdd);
+            counterPerItemsType[templateItem.resourceType]++;
+          }
+        }
+      }
+    });
+    setSelectedItems(initialSelectedItems);
+    setSelectedTemplate(template);
+  };
+
   useLayoutEffect(() => {
     if (printPdf) {
       setTimeout(() => {
@@ -356,6 +381,10 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
       }, 2000);
     }
   }, [printPdf]);
+
+  if (!isReady) {
+    return <LoadingOverlay visible={true} />;
+  }
 
   return (
     <>
@@ -370,7 +399,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
           resourceListHeight={'calc(100vh - 155px)'}
           dropListHeight={'auto'}
           dropList={selectedItems}
-          setDropList={setSelectedItemsItems}
+          setDropList={setSelectedItems}
           renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
             return (
               <>
@@ -399,9 +428,10 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                 */}
                 <div className=" w-[60%] flex flex-col gap-2 rounded-md">
                   <div className="flex flex-row justify-between items-center">
-                    <div className="flex flex-row gap-2">
+                    <div className="flex flex-row gap-2 items-center">
                       <p>מכתב שחרור</p>
-                      <p className="text-[#21AEFF] text-[14px]">{`טען תבנית >>`}</p>
+                      <DoctorSummaryTemplates patientId={props.patientId} onTemplateChange={onTemplateChange} />
+                      {/* <DoctorSummaryTemplate /> */}
                     </div>
                     <div className="flex flex-row gap-2">
                       <ActionIcon variant="transparent" onClick={onPrint}>
@@ -410,14 +440,18 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                     </div>
                   </div>
                   <div className="flex-1 w-full bg-white p-6 rounded-md overflow-y-auto max-h-[calc(100vh-138px)]">
-                    <div className="flex flex-col gap-2">
-                      <div className="flex flex-row justify-between items-center">
-                        <img src="https://www.shamir.org/media/jrpp25ha/logo.png" alt="logo" className="h-10" />
-                        <p className="text-[21px]">מכתב שחרור</p>
-                        <p className="text-[14px] text-[#888888]">{DateUtils.formatDate(new Date())}</p>
+                    {selectedTemplate ? (
+                      <div className="flex flex-col gap-2">
+                        <div className="flex flex-row justify-between items-center">
+                          <img src={selectedTemplate.template.image} alt="logo" className="h-10" />
+                          <p className="text-[21px]">{selectedTemplate.template.title}</p>
+                          <p className="text-[14px] text-[#888888]">{DateUtils.formatDate(new Date())}</p>
+                        </div>
+                        {dropList}
                       </div>
-                      {dropList}
-                    </div>
+                    ) : (
+                      <p>בחר תבנית</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -436,9 +470,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
               resourceType={editingResource.resourceType}
               value={editingResource.item}
               onSave={(updatedValue) => {
-                setSelectedItemsItems((prev) =>
-                  prev.map((item) => (item.id === updatedValue.id ? updatedValue : item))
-                );
+                setSelectedItems((prev) => prev.map((item) => (item.id === updatedValue.id ? updatedValue : item)));
                 setEditingResource(null);
               }}
             />

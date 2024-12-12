@@ -30,7 +30,7 @@ export function PatientDoctorSummary(props: PatientDoctorSummaryProps): JSX.Elem
   return (
     <>
       <ResourceDoctorSummary
-        id={id}
+        patientId={id}
         value={patient}
         loadDoctorSummaryResources={loadDoctorSummaryResources}
         createCommunication={(resource: Patient, sender: ProfileResource, text: string) => ({

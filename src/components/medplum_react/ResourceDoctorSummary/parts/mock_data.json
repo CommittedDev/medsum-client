@@ -1,0 +1,2401 @@
+[
+  {
+    "resourceType": "Media",
+    "status": "completed",
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb",
+      "display": "Mr. Dustin31 Ritchie586"
+    },
+    "operator": {
+      "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+      "display": "Medplum Admin"
+    },
+    "issued": "2024-12-11T07:27:28.563Z",
+    "content": {
+      "contentType": "image/png",
+      "url": "http://localhost:8103/storage/6a0ea45d-1c7e-4432-8146-2f256cd31c91/19f3c86d-90b6-4af3-8db9-678ca1ecd7a3?Expires=1733999378424&Signature=qxoyjtrhW9JX36Gl4m61VJNdBUzRkd7JGAyseBpexHpMzYnRJvthzbtAf%2BIfL89fq%2F6lx%2FiKoBSyWTwLSl%2Fg4SMkeWdtlThg%2Bu6bEdrBV75XXvaeSCk3%2BekE%2FiwqDnmQ36mJcRVUfg9yS5zxFRD%2BBEd%2BsTmwH1MRS84DvnxRsnGMBGBHIDojti67bfhhbps9oCFCd%2FcvcplEYEzp5GXcIY%2FGigwuqGEw9l9XLxLWiDX9NymddT3Ix9VuBFwoJU3YIsvzodap2xXjimzebr4iNuLQ%2FXTnzEdXzYE2%2FFXETTcuGdUyuFDBvl4t5%2B%2Fzp7jXQ2LN8ga%2FckxOTmi8Diq0lw%3D%3D",
+      "title": "Screenshot 2024-11-24 at 12.32.06.png"
+    },
+    "id": "12821c6e-1e2d-49a3-b9e1-8badff5d871a",
+    "meta": {
+      "versionId": "beee47b7-00eb-4025-9eeb-5e651248ec53",
+      "lastUpdated": "2024-12-11T07:27:28.568Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Media",
+    "status": "completed",
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb",
+      "display": "Mr. Dustin31 Ritchie586"
+    },
+    "operator": {
+      "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+      "display": "Medplum Admin"
+    },
+    "issued": "2024-12-10T21:09:05.342Z",
+    "content": {
+      "contentType": "image/png",
+      "url": "http://localhost:8103/storage/9169f2b4-dfbc-4d79-93f0-e1acbc05d24d/8ba49cfd-bc65-4107-b611-0cfb20fe7825?Expires=1733999378421&Signature=J6oUZTvMVCqw2%2FYqv6SiUEyODLloFGlaNGnOoey4JR3t4wdHOIYtkgax5xbBsueMcBkGqYVE9WM4Or%2BDso7nUFlN1NHCd4TJe9TBIm3%2BuGMeFkCxik%2BqpAFHtUaCaS0JfqBXABVHZKWUM1aZ2U2CD95qtU1R2%2BNxllVshkJONoAtJ6tYtX%2BpaQFpevTh2sbOjW2R90JLK0C2jSgE2dG7yhc%2B08shQCADg85zQ0NHG0tm80GPhwjhjWwLkmHyDaGN8ihXM4Yqk8SEXm4%2F7zntj7GCBdI9hC6Y%2BNib7mtTvKUyDBPUT8jtAticjaMeLmrs6Uh%2F5qezYOcJ3Xjq0hhy2A%3D%3D",
+      "title": "Screenshot 2024-12-10 at 18.55.05.png"
+    },
+    "id": "2d89541d-fae1-451a-8ade-7ed073f1bf98",
+    "meta": {
+      "versionId": "482bb37a-2670-429b-8e76-a536430fe0c7",
+      "lastUpdated": "2024-12-10T21:09:05.348Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Communication",
+    "status": "completed",
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb",
+      "display": "Mr. Dustin31 Ritchie586"
+    },
+    "sender": {
+      "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+      "display": "Medplum Admin"
+    },
+    "sent": "2024-12-10T20:56:45.495Z",
+    "payload": [
+      {
+        "contentString": "2"
+      }
+    ],
+    "id": "d38872a1-2aa0-4795-896c-5a5d9f454b72",
+    "meta": {
+      "versionId": "b5944341-c550-45b1-8730-0215470074df",
+      "lastUpdated": "2024-12-10T20:56:45.521Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Communication",
+    "status": "completed",
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb",
+      "display": "Mr. Dustin31 Ritchie586"
+    },
+    "sender": {
+      "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+      "display": "Medplum Admin"
+    },
+    "sent": "2024-12-10T20:56:43.378Z",
+    "payload": [
+      {
+        "contentString": "1"
+      }
+    ],
+    "id": "6bd79415-e0e3-4b30-b9aa-4dc6cb41547d",
+    "meta": {
+      "versionId": "284d30ba-76e0-48cc-b916-748538a1efb6",
+      "lastUpdated": "2024-12-10T20:56:43.403Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Communication",
+    "status": "completed",
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb",
+      "display": "Mr. Dustin31 Ritchie586"
+    },
+    "sender": {
+      "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+      "display": "Medplum Admin"
+    },
+    "sent": "2024-12-10T20:56:40.893Z",
+    "payload": [
+      {
+        "contentString": "sdsdsd"
+      }
+    ],
+    "id": "115db94c-5593-4237-97b6-14b33b9fd669",
+    "meta": {
+      "versionId": "82e2f1dd-9ef8-4c76-ae11-477ba6566ac4",
+      "lastUpdated": "2024-12-10T20:56:40.920Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "Communication",
+    "status": "completed",
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb",
+      "display": "Mr. Dustin31 Ritchie586"
+    },
+    "sender": {
+      "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+      "display": "Medplum Admin"
+    },
+    "sent": "2024-12-10T14:10:38.128Z",
+    "payload": [
+      {
+        "contentString": "dsfdsfdsf"
+      }
+    ],
+    "id": "e5a4016f-3857-4d92-863e-e026d93d67af",
+    "meta": {
+      "versionId": "8f3628f4-6d3b-4ac1-8988-640109b8440b",
+      "lastUpdated": "2024-12-12T09:11:22.926Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "priority": "routine"
+  },
+  {
+    "resourceType": "Communication",
+    "status": "completed",
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb",
+      "display": "Mr. Dustin31 Ritchie586"
+    },
+    "sender": {
+      "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+      "display": "Medplum Admin"
+    },
+    "sent": "2024-12-10T11:13:53.789Z",
+    "payload": [
+      {
+        "contentString": "דגדג"
+      }
+    ],
+    "id": "274d2172-4922-43c9-961d-cb83e2e5d7ea",
+    "meta": {
+      "versionId": "ac753d72-d0ec-4eef-a86b-fcef97789f03",
+      "lastUpdated": "2024-12-10T11:13:53.820Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    }
+  },
+  {
+    "resourceType": "ServiceRequest",
+    "id": "e93ccc8a-a7ad-4aee-b9ba-c6bf7ff9d5ed",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-servicerequest"],
+      "versionId": "9125b1c0-5ea3-4132-8c7f-c697a8276324",
+      "lastUpdated": "2024-12-10T10:16:24.141Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "active",
+    "intent": "order",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-tags",
+            "code": "sdoh",
+            "display": "SDOH"
+          }
+        ],
+        "text": "Social Determinants Of Health"
+      },
+      {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "410606002",
+            "display": "Social service procedure (procedure)"
+          }
+        ],
+        "text": "Social service procedure (procedure)"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "467771000124109",
+          "display": "Assistance with application for food pantry program"
+        }
+      ]
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "occurrencePeriod": {
+      "start": "2021-11-20",
+      "end": "2021-12-04"
+    },
+    "authoredOn": "2021-11-12T10:59:38-08:00",
+    "requester": {
+      "reference": "Practitioner/358"
+    }
+  },
+  {
+    "resourceType": "ServiceRequest",
+    "id": "17d09108-144c-4eb5-83a6-9b89c608f18d",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-servicerequest"],
+      "versionId": "89ef0eb3-d8d3-4610-81cc-e63035c47481",
+      "lastUpdated": "2024-12-10T10:16:24.111Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "active",
+    "intent": "order",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-tags",
+            "code": "sdoh",
+            "display": "SDOH"
+          }
+        ],
+        "text": "Social Determinants Of Health"
+      },
+      {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "410606002",
+            "display": "Social service procedure (procedure)"
+          }
+        ],
+        "text": "Social service procedure (procedure)"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "467771000124109",
+          "display": "Assistance with application for food pantry program"
+        }
+      ]
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "occurrenceDateTime": "2021-11-20",
+    "authoredOn": "2021-11-12T10:59:38-08:00",
+    "requester": {
+      "reference": "Practitioner/358"
+    }
+  },
+  {
+    "id": "3dfef8d5-b53a-45a2-8aab-caab00712e75",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device"],
+      "versionId": "c6bcc232-1d3a-4e67-8d85-1328b79859c1",
+      "lastUpdated": "2024-12-10T10:16:23.526Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        }
+      ]
+    },
+    "udiCarrier": [
+      {
+        "deviceIdentifier": "43069338026389",
+        "carrierAIDC": "iVBORw0KGgoAAAANSUhEUgAAAioAAAB2CAIAAABpgS9BAAADHUlEQVR42u3aXY+iMBiAUbrZ//+XuxcmpunXvkABNedczahAReWZdkxbIee8bVtK6f3zS3tLaXTv6/b5nttHtuMZHaW8JXJvu8/4GNp72+NGxhN5jvPnHn8tInubn4fIfiKjHZ35+fth1bM49g4/dpaOfWrOnMk7X829449/ciOfzcjrFX/FV73f4sfdexWdv8fOvB9G17T4FW/+WkfOw8ufDQBuJz8AyA8A8gMA8gOA/ACA/AAgPwAgPwDIDwDIDwDyA4D8AID8ACA/ACA/AMgPAMgPAPIDAPIDgPwAID8AID8AyA8AyA8A8gMA8gOA/ACA/AAgPwDIDwDIDwDyAwDyA4D8AID8ACA/ACA/AMgPAPIDAPIDgPwAgPwAID8AID8AyA8AyA8A8gOA/ACA/AAgPwAgPwDIDwDIDwDyAwDyA4D8ACA/ACA/AMgPAMgPAPIDAPIDgPwAgPwAID8AyA8AyA8A8gMA8gOA/ACA/AAgPwAgPwDIDwDyAwDyA4D8AID8ACA/ACA/AMgPAMgPAPIDgPw4BQDIDwDyAwDyA4D8AID8ACA/ACA/AMgPAMgPAPIDgPwAgPwAID8AID8AfJuUc3YWADD7AUB+AOACf50CrpBSqm65dJn3dbgDhyjHeWaEKS1bx141pAefAsgPT7rzWpZzboO3d5yfc/39wCHBchbfYGXDPmdIYPYDW/dv+fev3eWm93pa+bDycjy/4p9cwhoNafRzdZTJM9o1pPYo5eajExI/evdkPrX6h/zAstgEO9FtUtmeqkDdDYP7PJPJ4Bylu/mufXaLMip39Zj40bttO3nqQH54XnvZ6oZk19XtGy+FB8bcVme0k//uPHh0q3zID7/fpPlS1fK518LN29nY1UOqgn1Pm3UI+eEHtbOfdrXnqTnH1dOshV/svrQQVtu4h2++8UB7tqOrPccuu8GtRnOa6l/xB/6TtHxIVzx3MyHMfvid2ET+pp53qNpq/kWv97Jetc/gd+RGaQxuPj/62iHN5y7Bo1cns/yqoZkQd1wivL34xskT8O0svgFg9gOA2Q8AyA8Av+MfJjJq5w+06kcAAAAASUVORK5CYII="
+      }
+    ],
+    "status": "active",
+    "distinctIdentifier": "43069338026389",
+    "manufactureDate": "2000-03-02T18:33:18-05:00",
+    "expirationDate": "2025-03-17T19:33:18-04:00",
+    "lotNumber": "1134",
+    "serialNumber": "842026117977",
+    "deviceName": [
+      {
+        "name": "Implantable defibrillator, device (physical object)",
+        "type": "user-friendly-name"
+      }
+    ],
+    "type": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "72506001",
+          "display": "Implantable defibrillator, device (physical object)"
+        }
+      ],
+      "text": "Implantable defibrillator, device (physical object)"
+    },
+    "patient": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "resourceType": "Device"
+  },
+  {
+    "id": "450fa9c7-37f6-42a4-8823-5889e5b9662d",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-implantable-device"],
+      "versionId": "16861bd7-f6c4-4917-b5cd-338bc1648fff",
+      "lastUpdated": "2024-12-10T10:16:20.647Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        }
+      ]
+    },
+    "udiCarrier": [
+      {
+        "deviceIdentifier": "43069338026389",
+        "carrierHRF": "(01)43069338026389(11)000302(17)250317(10)1134(21)842026117977"
+      }
+    ],
+    "status": "active",
+    "distinctIdentifier": "43069338026389",
+    "manufactureDate": "2000-03-02T18:33:18-05:00",
+    "expirationDate": "2025-03-17T19:33:18-04:00",
+    "lotNumber": "1134",
+    "serialNumber": "842026117977",
+    "deviceName": [
+      {
+        "name": "Implantable defibrillator, device (physical object)",
+        "type": "user-friendly-name"
+      }
+    ],
+    "type": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "72506001",
+          "display": "Implantable defibrillator, device (physical object)"
+        }
+      ],
+      "text": "Implantable defibrillator, device (physical object)"
+    },
+    "patient": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "resourceType": "Device"
+  },
+  {
+    "id": "9379804b-b866-49a7-90da-b9465be8e2eb",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient"],
+      "versionId": "d0c103a4-0e42-4942-9590-aaa03b31e100",
+      "lastUpdated": "2024-12-10T10:16:15.700Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "text": {
+      "status": "generated",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Generated by <a href=\"https://github.com/synthetichealth/synthea\">Synthea</a>.Version identifier: v2.6.1-3-g50f4f58f\n .   Person seed: 4286870567281389426  Population seed: 3</div>"
+    },
+    "extension": [
+      {
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2106-3",
+              "display": "White"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "White"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+      },
+      {
+        "extension": [
+          {
+            "url": "ombCategory",
+            "valueCoding": {
+              "system": "urn:oid:2.16.840.1.113883.6.238",
+              "code": "2186-5",
+              "display": "Non Hispanic or Latino"
+            }
+          },
+          {
+            "url": "text",
+            "valueString": "Non Hispanic or Latino"
+          }
+        ],
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName",
+        "valueString": "Christen366 Murray856"
+      },
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+        "valueCode": "M"
+      },
+      {
+        "url": "http://hl7.org/fhir/StructureDefinition/patient-birthPlace",
+        "valueAddress": {
+          "city": "Springfield",
+          "state": "Massachusetts",
+          "country": "US"
+        }
+      },
+      {
+        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "446151000124109",
+              "display": "Identifies as male gender (finding)"
+            }
+          ]
+        }
+      }
+    ],
+    "identifier": [
+      {
+        "system": "https://github.com/synthetichealth/synthea",
+        "value": "e91975f5-9445-c11f-cabf-c3c6dae161f2"
+      },
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "MR",
+              "display": "Medical Record Number"
+            }
+          ],
+          "text": "Medical Record Number"
+        },
+        "system": "http://hospital.smarthealthit.org",
+        "value": "e91975f5-9445-c11f-cabf-c3c6dae161f2"
+      },
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "SS",
+              "display": "Social Security Number"
+            }
+          ],
+          "text": "Social Security Number"
+        },
+        "system": "http://hl7.org/fhir/sid/us-ssn",
+        "value": "999-61-9797"
+      },
+      {
+        "type": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+              "code": "DL",
+              "display": "Driver's License"
+            }
+          ],
+          "text": "Driver's License"
+        },
+        "system": "urn:oid:2.16.840.1.113883.4.3.25",
+        "value": "S99940283"
+      }
+    ],
+    "name": [
+      {
+        "use": "official",
+        "family": "Ritchie586",
+        "given": ["Dustin31"],
+        "prefix": ["Mr."]
+      },
+      {
+        "use": "old",
+        "family": "Ritchie586",
+        "given": ["John43"],
+        "prefix": ["Mr."],
+        "period": {
+          "start": "1940-09-05",
+          "end": "1962-04-30"
+        }
+      }
+    ],
+    "telecom": [
+      {
+        "system": "phone",
+        "value": "555-770-2787",
+        "use": "home"
+      }
+    ],
+    "gender": "male",
+    "birthDate": "1940-09-05",
+    "address": [
+      {
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "latitude",
+                "valueDecimal": 42.1343534042923
+              },
+              {
+                "url": "longitude",
+                "valueDecimal": -72.67217549422628
+              }
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/geolocation"
+          }
+        ],
+        "line": ["599 Schowalter Promenade"],
+        "city": "West Springfield",
+        "state": "MA",
+        "postalCode": "01089",
+        "country": "US",
+        "period": {
+          "start": "1940-09-05"
+        }
+      }
+    ],
+    "maritalStatus": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+          "code": "M",
+          "display": "M"
+        }
+      ],
+      "text": "M"
+    },
+    "multipleBirthBoolean": false,
+    "communication": [
+      {
+        "language": {
+          "coding": [
+            {
+              "system": "urn:ietf:bcp:47",
+              "code": "en-US",
+              "display": "English"
+            }
+          ],
+          "text": "English"
+        }
+      }
+    ],
+    "resourceType": "Patient"
+  },
+  {
+    "id": "4e1dab59-ffc1-4a2a-b1a0-e27415c229e6",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "fe9c1e6b-4efb-4856-9b24-0c8c8be088c7",
+      "lastUpdated": "2024-12-10T10:16:23.006Z",
+      "author": {
+        "reference": "system"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP7839-6",
+            "display": "Pathology"
+          }
+        ],
+        "text": "Pathology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "28570-0",
+          "display": "Procedure note"
+        }
+      ],
+      "text": "Procedure note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/bda3db0e-43d0-4674-b44d-e86f84e41549"
+    },
+    "effectiveDateTime": "2018-10-04T19:33:18-04:00",
+    "issued": "2018-10-04T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "application/pdf",
+        "url": "http://localhost:8103/storage/7592ebe1-d30b-46c6-9d17-fd0b5c199b6e/2cda60d3-a787-4f97-b0b0-bf0aee57f60f?Expires=1733999378377&Signature=JsI70kSmqnWJjA%2B4py6VP7KsfPODJGSLXn14YO27%2BMd5uKp9Fl7h9jeU%2FUKB1w5Pi7j2f%2Fu1nJn6Z13Cfwm6cOk3Wwd%2BRbTeXNGD8DtopyoN7SGitRPvFBArt0tT49uFMsowbfS7VTG7JxVRpWZ8YDeV76%2FDFxKbKsa3y9PSW2E8m2sBrFLXMVHdIhHPpPhxNTMZmb8mV%2FIk3edbWdbp93O%2FD6ej47mgw4wmJf2zx1GhJoXQdEHQFu%2FoVPNykXNHbNcTpmL1EAXYkSI4nH75iQsJy6C7emIHiIHw4xFLKWoNqkNCpZuVDk6ejI0%2BvX%2FIppF3yjjBUXHJWCN4M6fhzA%3D%3D"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "eda100d0-a15b-4133-b5c0-671231fd9da9",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "ba500476-309b-4682-bc1d-b267eff96f7c",
+      "lastUpdated": "2024-12-10T10:16:22.714Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29708-2",
+            "display": "Cardiology"
+          }
+        ],
+        "text": "Cardiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "34117-2",
+          "display": "History and physical note"
+        }
+      ],
+      "text": "History and physical note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/855f0e01-aa72-4cc8-8831-ba3d505a806c"
+    },
+    "effectiveDateTime": "2018-02-28T19:55:18-05:00",
+    "issued": "2018-02-28T19:55:18.715-05:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMTgtMDItMjgKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNzcgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgY29uY3Vzc2lvbiB3aXRoIG5vIGxvc3Mgb2YgY29uc2Npb3VzbmVzcywgb3ZlcmxhcHBpbmcgbWFsaWduYW50IG5lb3BsYXNtIG9mIGNvbG9uLCBhY3V0ZSB2aXJhbCBwaGFyeW5naXRpcyAoZGlzb3JkZXIpLCBwb2x5cCBvZiBjb2xvbiwgdmlyYWwgc2ludXNpdGlzIChkaXNvcmRlciksIGZyYWN0dXJlIG9mIGFua2xlLCBjaGlsZGhvb2QgYXN0aG1hLCBhY3V0ZSBicm9uY2hpdGlzIChkaXNvcmRlciksIGxhY2VyYXRpb24gb2YgdGhpZ2gsIG90aXRpcyBtZWRpYSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybi4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBNZWRpY2FyZS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyAxIG1sIGVwaW5lcGhyaW5lIDEgbWcvbWwgaW5qZWN0aW9uOyBhdHJvcGluZSBzdWxmYXRlIDEgbWcvbWwgaW5qZWN0YWJsZSBzb2x1dGlvbjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyAzIG1sIGFtaW9kYXJvbmUgaHlkcm9jaG9sb3JpZGUgNTAgbWcvbWwgcHJlZmlsbGVkIHN5cmluZ2U7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQ7IGFtb3hpY2lsbGluIDI1MCBtZyAvIGNsYXZ1bGFuYXRlIDEyNSBtZyBvcmFsIHRhYmxldAoKIyBBc3Nlc3NtZW50IGFuZCBQbGFuClBhdGllbnQgaXMgcHJlc2VudGluZyB3aXRoIGZyYWN0dXJlIHN1Ymx1eGF0aW9uIG9mIHdyaXN0LiAKCiMjIFBsYW4KClRoZSBmb2xsb3dpbmcgcHJvY2VkdXJlcyB3ZXJlIGNvbmR1Y3RlZDoKLSB4LXJheSBvciB3cmlzdAotIGJvbmUgaW1tb2JpbGl6YXRpb24KLSBib25lIGRlbnNpdHkgc2NhbiAocHJvY2VkdXJlKQpUaGUgcGF0aWVudCB3YXMgcHJlc2NyaWJlZCB0aGUgZm9sbG93aW5nIG1lZGljYXRpb25zOgotIG1lcGVyaWRpbmUgaHlkcm9jaGxvcmlkZSA1MCBtZyBvcmFsIHRhYmxldAotIGlidXByb2ZlbiAyMDAgbWcgb3JhbCB0YWJsZXQKVGhlIHBhdGllbnQgd2FzIHBsYWNlZCBvbiBhIGNhcmVwbGFuOgotIGZyYWN0dXJlIGNhcmUK"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "d5e40236-ba07-40ee-a989-3fae4a9f8e3f",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab"],
+      "versionId": "d58f0c03-5070-4c58-8ebd-58ff064a567a",
+      "lastUpdated": "2024-12-10T10:16:23.961Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+            "code": "LAB",
+            "display": "Laboratory"
+          }
+        ]
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "51990-0",
+          "display": "Basic Metabolic Panel"
+        }
+      ],
+      "text": "Basic Metabolic Panel"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/63467073-baf1-4398-8cb6-e9c8b291286d"
+    },
+    "effectivePeriod": {
+      "start": "2017-09-28T19:33:18-04:00",
+      "end": "2017-09-28T20:33:18-04:00"
+    },
+    "issued": "2017-09-28T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b",
+        "display": "PCP170967"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "result": [
+      {
+        "reference": "Observation/207a0299-389d-4272-a23d-0633705a63a6",
+        "display": "Glucose"
+      },
+      {
+        "reference": "Observation/1081996e-a405-47fd-948b-cb6ddd3575cf",
+        "display": "Urea Nitrogen"
+      },
+      {
+        "reference": "Observation/dfac2bc2-d521-4fb6-93fc-49c165eedc14",
+        "display": "Creatinine"
+      },
+      {
+        "reference": "Observation/79ae6840-bfae-428a-9665-30d1811c49a3",
+        "display": "Calcium"
+      },
+      {
+        "reference": "Observation/5abace96-dabc-4f8b-9f39-5e240e388f3a",
+        "display": "Sodium"
+      },
+      {
+        "reference": "Observation/29234085-0b67-463f-98c2-2008f17aa44d",
+        "display": "Potassium"
+      },
+      {
+        "reference": "Observation/508766c0-f5f1-42f2-99c1-0107173e5343",
+        "display": "Chloride"
+      },
+      {
+        "reference": "Observation/487ff786-749f-4894-8e56-22efe6837e51",
+        "display": "Carbon Dioxide"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "e66a54e4-059a-4b30-9a2f-4c5c0d9bf4a9",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab"],
+      "versionId": "7e42f8ff-c37a-4619-acdf-120cdb14a2d4",
+      "lastUpdated": "2024-12-10T10:16:22.603Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+            "code": "LAB",
+            "display": "Laboratory"
+          }
+        ]
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "51990-0",
+          "display": "Basic Metabolic Panel"
+        }
+      ],
+      "text": "Basic Metabolic Panel"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/63467073-baf1-4398-8cb6-e9c8b291286d"
+    },
+    "effectiveDateTime": "2017-09-28T19:33:18-04:00",
+    "issued": "2017-09-28T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b",
+        "display": "PCP170967"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "result": [
+      {
+        "reference": "Observation/207a0299-389d-4272-a23d-0633705a63a6",
+        "display": "Glucose"
+      },
+      {
+        "reference": "Observation/1081996e-a405-47fd-948b-cb6ddd3575cf",
+        "display": "Urea Nitrogen"
+      },
+      {
+        "reference": "Observation/dfac2bc2-d521-4fb6-93fc-49c165eedc14",
+        "display": "Creatinine"
+      },
+      {
+        "reference": "Observation/79ae6840-bfae-428a-9665-30d1811c49a3",
+        "display": "Calcium"
+      },
+      {
+        "reference": "Observation/5abace96-dabc-4f8b-9f39-5e240e388f3a",
+        "display": "Sodium"
+      },
+      {
+        "reference": "Observation/29234085-0b67-463f-98c2-2008f17aa44d",
+        "display": "Potassium"
+      },
+      {
+        "reference": "Observation/508766c0-f5f1-42f2-99c1-0107173e5343",
+        "display": "Chloride"
+      },
+      {
+        "reference": "Observation/487ff786-749f-4894-8e56-22efe6837e51",
+        "display": "Carbon Dioxide"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "7a897389-9222-47eb-9835-cfa8c29b2492",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "f62af5a0-927d-4f48-80f7-4053f45ee381",
+      "lastUpdated": "2024-12-10T10:16:21.922Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29684-5",
+            "display": "Radiology"
+          }
+        ],
+        "text": "Radiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "18842-5",
+          "display": "Discharge summary"
+        }
+      ],
+      "text": "Discharge summary"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/c0e560a8-111e-4e99-aab1-4dc1a0693bf8"
+    },
+    "effectiveDateTime": "2013-09-05T19:33:18-04:00",
+    "issued": "2013-09-05T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMTMtMDktMDUKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNzMgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIG92ZXJsYXBwaW5nIG1hbGlnbmFudCBuZW9wbGFzbSBvZiBjb2xvbiwgYWN1dGUgdmlyYWwgcGhhcnluZ2l0aXMgKGRpc29yZGVyKSwgcG9seXAgb2YgY29sb24sIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBNZWRpY2FyZS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyAxIG1sIGVwaW5lcGhyaW5lIDEgbWcvbWwgaW5qZWN0aW9uOyBhdHJvcGluZSBzdWxmYXRlIDEgbWcvbWwgaW5qZWN0YWJsZSBzb2x1dGlvbjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyAzIG1sIGFtaW9kYXJvbmUgaHlkcm9jaG9sb3JpZGUgNTAgbWcvbWwgcHJlZmlsbGVkIHN5cmluZ2U7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQ7IGFtb3hpY2lsbGluIDI1MCBtZyAvIGNsYXZ1bGFuYXRlIDEyNSBtZyBvcmFsIHRhYmxldAoKIyBBc3Nlc3NtZW50IGFuZCBQbGFuCgoKIyMgUGxhbgpQYXRpZW50IHdhcyBnaXZlbiB0aGUgZm9sbG93aW5nIGltbXVuaXphdGlvbnM6IGluZmx1ZW56YSwgc2Vhc29uYWwsIGluamVjdGFibGUsIHByZXNlcnZhdGl2ZSBmcmVlLiAKVGhlIGZvbGxvd2luZyBwcm9jZWR1cmVzIHdlcmUgY29uZHVjdGVkOgotIG1lZGljYXRpb24gcmVjb25jaWxpYXRpb24gKHByb2NlZHVyZSkKVGhlIHBhdGllbnQgd2FzIHByZXNjcmliZWQgdGhlIGZvbGxvd2luZyBtZWRpY2F0aW9uczoKLSAxMjAgYWN0dWF0IGZsdXRpY2Fzb25lIHByb3Bpb25hdGUgMC4wNDQgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyCi0gbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyCg=="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "985bd7fc-8f9b-4569-a032-859d9e5b6b9d",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "09dd35e7-cb47-49ee-b942-1a9d1e4b8b73",
+      "lastUpdated": "2024-12-10T10:16:21.750Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "34117-2",
+            "display": "History and physical note"
+          },
+          {
+            "system": "http://loinc.org",
+            "code": "51847-2",
+            "display": "Evaluation+Plan note"
+          }
+        ]
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "34117-2",
+          "display": "History and physical note"
+        },
+        {
+          "system": "http://loinc.org",
+          "code": "51847-2",
+          "display": "Evaluation+Plan note"
+        }
+      ]
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/9deb0c8f-b347-4550-af4e-9dd1da6aaf12"
+    },
+    "effectiveDateTime": "2010-08-19T19:33:18-04:00",
+    "issued": "2010-08-19T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMTAtMDgtMTkKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNjkgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIG92ZXJsYXBwaW5nIG1hbGlnbmFudCBuZW9wbGFzbSBvZiBjb2xvbiwgYWN1dGUgdmlyYWwgcGhhcnluZ2l0aXMgKGRpc29yZGVyKSwgcG9seXAgb2YgY29sb24sIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBNZWRpY2FyZS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyAxIG1sIGVwaW5lcGhyaW5lIDEgbWcvbWwgaW5qZWN0aW9uOyBhdHJvcGluZSBzdWxmYXRlIDEgbWcvbWwgaW5qZWN0YWJsZSBzb2x1dGlvbjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyAzIG1sIGFtaW9kYXJvbmUgaHlkcm9jaG9sb3JpZGUgNTAgbWcvbWwgcHJlZmlsbGVkIHN5cmluZ2U7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQ7IGFtb3hpY2lsbGluIDI1MCBtZyAvIGNsYXZ1bGFuYXRlIDEyNSBtZyBvcmFsIHRhYmxldAoKIyBBc3Nlc3NtZW50IGFuZCBQbGFuCgoKIyMgUGxhbgpQYXRpZW50IHdhcyBnaXZlbiB0aGUgZm9sbG93aW5nIGltbXVuaXphdGlvbnM6IGluZmx1ZW56YSwgc2Vhc29uYWwsIGluamVjdGFibGUsIHByZXNlcnZhdGl2ZSBmcmVlLiAKVGhlIGZvbGxvd2luZyBwcm9jZWR1cmVzIHdlcmUgY29uZHVjdGVkOgotIG1lZGljYXRpb24gcmVjb25jaWxpYXRpb24gKHByb2NlZHVyZSkKVGhlIHBhdGllbnQgd2FzIHByZXNjcmliZWQgdGhlIGZvbGxvd2luZyBtZWRpY2F0aW9uczoKLSAxMjAgYWN0dWF0IGZsdXRpY2Fzb25lIHByb3Bpb25hdGUgMC4wNDQgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyCi0gbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyCg=="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "fb2deb46-ceae-43af-a725-f89377013d97",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "8af95ce5-34ab-4fa9-9b9f-53cd2f1119bc",
+      "lastUpdated": "2024-12-10T10:16:21.510Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP7839-6",
+            "display": "Pathology"
+          }
+        ],
+        "text": "Pathology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "11488-4",
+          "display": "Consultation note"
+        }
+      ],
+      "text": "Consultation note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/70648a5c-a4b6-4fee-bc76-23d9ce1d7e94"
+    },
+    "effectiveDateTime": "2008-08-07T19:33:18-04:00",
+    "issued": "2008-08-07T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMDgtMDgtMDcKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNjcgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIG92ZXJsYXBwaW5nIG1hbGlnbmFudCBuZW9wbGFzbSBvZiBjb2xvbiwgYWN1dGUgdmlyYWwgcGhhcnluZ2l0aXMgKGRpc29yZGVyKSwgcG9seXAgb2YgY29sb24sIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBNZWRpY2FyZS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyAxIG1sIGVwaW5lcGhyaW5lIDEgbWcvbWwgaW5qZWN0aW9uOyBhdHJvcGluZSBzdWxmYXRlIDEgbWcvbWwgaW5qZWN0YWJsZSBzb2x1dGlvbjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyAzIG1sIGFtaW9kYXJvbmUgaHlkcm9jaG9sb3JpZGUgNTAgbWcvbWwgcHJlZmlsbGVkIHN5cmluZ2U7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KUGF0aWVudCB3YXMgZ2l2ZW4gdGhlIGZvbGxvd2luZyBpbW11bml6YXRpb25zOiBpbmZsdWVuemEsIHNlYXNvbmFsLCBpbmplY3RhYmxlLCBwcmVzZXJ2YXRpdmUgZnJlZS4gClRoZSBmb2xsb3dpbmcgcHJvY2VkdXJlcyB3ZXJlIGNvbmR1Y3RlZDoKLSBtZWRpY2F0aW9uIHJlY29uY2lsaWF0aW9uIChwcm9jZWR1cmUpClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6Ci0gMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgotIG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "59391690-6680-4dc1-9380-16ae6d301cae",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "251838b5-a9f1-4bf0-b6a4-890a3967a668",
+      "lastUpdated": "2024-12-10T10:16:21.312Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29708-2",
+            "display": "Cardiology"
+          }
+        ],
+        "text": "Cardiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "34746-8",
+          "display": "Nurse Note"
+        }
+      ],
+      "text": "Nurse Note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/6f265d26-9ff3-41df-977c-dbaffb3e0b2a"
+    },
+    "effectiveDateTime": "2007-11-21T21:35:18-05:00",
+    "issued": "2007-11-21T21:35:18.715-05:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMDctMTEtMjEKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNjcgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgTWVkaWNhcmUuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgMSBtbCBlcGluZXBocmluZSAxIG1nL21sIGluamVjdGlvbjsgYXRyb3BpbmUgc3VsZmF0ZSAxIG1nL21sIGluamVjdGFibGUgc29sdXRpb247IHByZWRuaXNvbmUgNSBtZyBvcmFsIHRhYmxldDsgMyBtbCBhbWlvZGFyb25lIGh5ZHJvY2hvbG9yaWRlIDUwIG1nL21sIHByZWZpbGxlZCBzeXJpbmdlOyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KUGF0aWVudCBpcyBwcmVzZW50aW5nIHdpdGggcmVjdXJyZW50IHJlY3RhbCBwb2x5cC4gCgojIyBQbGFuCgpUaGUgZm9sbG93aW5nIHByb2NlZHVyZXMgd2VyZSBjb25kdWN0ZWQ6Ci0gY29sb25vc2NvcHkKLSByZWN0YWwgcG9seXBlY3RvbXkK"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "ae0032a6-378e-409d-a743-2c3b6264ca38",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "74713dc0-50c2-4009-aeef-e2b01617b5a6",
+      "lastUpdated": "2024-12-10T10:16:21.229Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29684-5",
+            "display": "Radiology"
+          }
+        ],
+        "text": "Radiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "11504-8",
+          "display": "Surgical operation note"
+        }
+      ],
+      "text": "Surgical operation note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/ce354820-b625-4480-8eb8-72535e0c1ddc"
+    },
+    "effectiveDateTime": "2007-08-02T19:33:18-04:00",
+    "issued": "2007-08-02T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMDctMDgtMDIKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNjYgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgTWVkaWNhcmUuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgMSBtbCBlcGluZXBocmluZSAxIG1nL21sIGluamVjdGlvbjsgYXRyb3BpbmUgc3VsZmF0ZSAxIG1nL21sIGluamVjdGFibGUgc29sdXRpb247IHByZWRuaXNvbmUgNSBtZyBvcmFsIHRhYmxldDsgMyBtbCBhbWlvZGFyb25lIGh5ZHJvY2hvbG9yaWRlIDUwIG1nL21sIHByZWZpbGxlZCBzeXJpbmdlOyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KCgojIyBQbGFuClBhdGllbnQgd2FzIGdpdmVuIHRoZSBmb2xsb3dpbmcgaW1tdW5pemF0aW9uczogaW5mbHVlbnphLCBzZWFzb25hbCwgaW5qZWN0YWJsZSwgcHJlc2VydmF0aXZlIGZyZWUsIHBuZXVtb2NvY2NhbCBwb2x5c2FjY2hhcmlkZSB2YWNjaW5lLCAyMyB2YWxlbnQuIApUaGUgcGF0aWVudCB3YXMgcHJlc2NyaWJlZCB0aGUgZm9sbG93aW5nIG1lZGljYXRpb25zOgotIDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXIKLSBuZGEwMjA1MDMgMjAwIGFjdHVhdCBhbGJ1dGVyb2wgMC4wOSBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXIK"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "4334b414-3fc6-4cf4-a826-f6c91bd7e137",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "7ba385e1-61f3-463f-9178-59addf849eea",
+      "lastUpdated": "2024-12-10T10:16:21.171Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP7839-6",
+            "display": "Pathology"
+          }
+        ],
+        "text": "Pathology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "57133-1",
+          "display": "Referral note"
+        }
+      ],
+      "text": "Referral note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/481db9f0-08e1-49e7-8b04-1df3b709e165"
+    },
+    "effectiveDateTime": "2006-10-27T21:51:18-04:00",
+    "issued": "2006-10-27T21:51:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMDYtMTAtMjcKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNjYgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgTWVkaWNhcmUuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgMSBtbCBlcGluZXBocmluZSAxIG1nL21sIGluamVjdGlvbjsgYXRyb3BpbmUgc3VsZmF0ZSAxIG1nL21sIGluamVjdGFibGUgc29sdXRpb247IHByZWRuaXNvbmUgNSBtZyBvcmFsIHRhYmxldDsgMyBtbCBhbWlvZGFyb25lIGh5ZHJvY2hvbG9yaWRlIDUwIG1nL21sIHByZWZpbGxlZCBzeXJpbmdlOyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KUGF0aWVudCBpcyBwcmVzZW50aW5nIHdpdGggcG9seXAgb2YgY29sb24uIAoKIyMgUGxhbgoKVGhlIGZvbGxvd2luZyBwcm9jZWR1cmVzIHdlcmUgY29uZHVjdGVkOgotIGNvbG9ub3Njb3B5Ci0gc2NyZWVuaW5nIGZvciBvY2N1bHQgYmxvb2QgaW4gZmVjZXMgKHByb2NlZHVyZSkKLSByZWN0YWwgcG9seXBlY3RvbXkK"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "d867b810-088e-48a8-9b3c-6ffb204d767d",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "4e49dc10-adaa-426e-a6b4-6f37051f13f5",
+      "lastUpdated": "2024-12-10T10:16:21.038Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29708-2",
+            "display": "Cardiology"
+          }
+        ],
+        "text": "Cardiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "11506-3",
+          "display": "Progress note"
+        }
+      ],
+      "text": "Progress note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/b26f918d-76d0-48c5-af3d-a2cd20235382"
+    },
+    "effectiveDateTime": "2006-07-27T19:33:18-04:00",
+    "issued": "2006-07-27T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMDYtMDctMjcKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNjUgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgTWVkaWNhcmUuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgMSBtbCBlcGluZXBocmluZSAxIG1nL21sIGluamVjdGlvbjsgYXRyb3BpbmUgc3VsZmF0ZSAxIG1nL21sIGluamVjdGFibGUgc29sdXRpb247IHByZWRuaXNvbmUgNSBtZyBvcmFsIHRhYmxldDsgMyBtbCBhbWlvZGFyb25lIGh5ZHJvY2hvbG9yaWRlIDUwIG1nL21sIHByZWZpbGxlZCBzeXJpbmdlOyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KCgojIyBQbGFuClBhdGllbnQgd2FzIGdpdmVuIHRoZSBmb2xsb3dpbmcgaW1tdW5pemF0aW9uczogaW5mbHVlbnphLCBzZWFzb25hbCwgaW5qZWN0YWJsZSwgcHJlc2VydmF0aXZlIGZyZWUuIApUaGUgcGF0aWVudCB3YXMgcHJlc2NyaWJlZCB0aGUgZm9sbG93aW5nIG1lZGljYXRpb25zOgotIDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXIKLSBuZGEwMjA1MDMgMjAwIGFjdHVhdCBhbGJ1dGVyb2wgMC4wOSBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXIK"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "783df8f3-f653-4024-832a-fee233878690",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "5b9d03ca-0906-44fb-856f-ed36b2431ce3",
+      "lastUpdated": "2024-12-10T10:16:20.662Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29684-5",
+            "display": "Radiology"
+          }
+        ],
+        "text": "Radiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "28570-0",
+          "display": "Procedure note"
+        }
+      ],
+      "text": "Procedure note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/7ee30fea-b324-48b2-a7a9-8781327cf341"
+    },
+    "effectiveDateTime": "2000-03-23T18:33:18-05:00",
+    "issued": "2000-03-23T18:33:18.715-05:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjIwMDAtMDMtMjMKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNTkgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgQWV0bmEuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KUGF0aWVudCBpcyBwcmVzZW50aW5nIHdpdGggY2FyZGlhYyBhcnJlc3QsIGhpc3Rvcnkgb2YgY2FyZGlhYyBhcnJlc3QgKHNpdHVhdGlvbikuIAoKIyMgUGxhbgoKVGhlIGZvbGxvd2luZyBwcm9jZWR1cmVzIHdlcmUgY29uZHVjdGVkOgotIGVjaG9jYXJkaW9ncmFwaHkgKHByb2NlZHVyZSkKLSBpbnNlcnRpb24gb2YgYml2ZW50cmljdWxhciBpbXBsYW50YWJsZSBjYXJkaW92ZXJ0ZXIgZGVmaWJyaWxsYXRvcgotIGNhdGhldGVyIGFibGF0aW9uIG9mIHRpc3N1ZSBvZiBoZWFydApUaGUgcGF0aWVudCB3YXMgcHJlc2NyaWJlZCB0aGUgZm9sbG93aW5nIG1lZGljYXRpb25zOgotIDEgbWwgZXBpbmVwaHJpbmUgMSBtZy9tbCBpbmplY3Rpb24KLSAzIG1sIGFtaW9kYXJvbmUgaHlkcm9jaG9sb3JpZGUgNTAgbWcvbWwgcHJlZmlsbGVkIHN5cmluZ2UKLSBhdHJvcGluZSBzdWxmYXRlIDEgbWcvbWwgaW5qZWN0YWJsZSBzb2x1dGlvbgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "f2bf6e96-6129-4e8c-accb-1dd07c9bdb71",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "383ad91f-1463-4ac1-87e3-a202b582f992",
+      "lastUpdated": "2024-12-10T10:16:20.532Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP7839-6",
+            "display": "Pathology"
+          }
+        ],
+        "text": "Pathology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "34117-2",
+          "display": "History and physical note"
+        }
+      ],
+      "text": "History and physical note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/2c1dff4b-1c41-48de-ab29-f4f231668c1f"
+    },
+    "effectiveDateTime": "1999-04-08T19:33:18-04:00",
+    "issued": "1999-04-08T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5OTktMDQtMDgKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNTggeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgQWV0bmEuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KCgojIyBQbGFuCgpUaGUgZm9sbG93aW5nIHByb2NlZHVyZXMgd2VyZSBjb25kdWN0ZWQ6Ci0gbWVkaWNhdGlvbiByZWNvbmNpbGlhdGlvbiAocHJvY2VkdXJlKQpUaGUgcGF0aWVudCB3YXMgcHJlc2NyaWJlZCB0aGUgZm9sbG93aW5nIG1lZGljYXRpb25zOgotIDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXIKLSBuZGEwMjA1MDMgMjAwIGFjdHVhdCBhbGJ1dGVyb2wgMC4wOSBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXIK"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "84aa7be9-284d-437d-897f-97a4471b635b",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "a607ca10-cb31-4fdc-9d01-240c69058173",
+      "lastUpdated": "2024-12-10T10:16:20.413Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29684-5",
+            "display": "Radiology"
+          }
+        ],
+        "text": "Radiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "11488-4",
+          "display": "Consultation note"
+        }
+      ],
+      "text": "Consultation note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/af6e400e-2dac-4cfb-b75c-c7bad53477f1"
+    },
+    "effectiveDateTime": "1999-04-01T18:33:18-05:00",
+    "issued": "1999-04-01T18:33:18.715-05:00",
+    "performer": [
+      {
+        "reference": "Practitioner/71a11873-981b-4efb-82a4-4d1bd05f79d1",
+        "display": "Dr. Sammie902 DuBuque211"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5OTktMDQtMDEKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNTggeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgQWV0bmEuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KCgojIyBQbGFuClBhdGllbnQgd2FzIGdpdmVuIHRoZSBmb2xsb3dpbmcgaW1tdW5pemF0aW9uczogaW5mbHVlbnphLCBzZWFzb25hbCwgaW5qZWN0YWJsZSwgcHJlc2VydmF0aXZlIGZyZWUuIAo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "ea4f7f8a-97ab-46eb-bc2d-6dc51a26780e",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "2718174f-7f11-4894-918f-4873d24dda35",
+      "lastUpdated": "2024-12-10T10:16:20.472Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29708-2",
+            "display": "Cardiology"
+          }
+        ],
+        "text": "Cardiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "18842-5",
+          "display": "Discharge summary"
+        }
+      ],
+      "text": "Discharge summary"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/bbc768f0-368d-4bf6-b17f-1b7f5e0d55ba"
+    },
+    "effectiveDateTime": "1999-03-28T18:33:18-05:00",
+    "issued": "1999-03-28T18:33:18.715-05:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5OTktMDMtMjgKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNTggeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHBvbHlwIG9mIGNvbG9uLCB2aXJhbCBzaW51c2l0aXMgKGRpc29yZGVyKSwgc3ByYWluIG9mIGFua2xlLCBmaXJzdCBkZWdyZWUgYnVybiwgZnJhY3R1cmUgb2YgYW5rbGUsIGNoaWxkaG9vZCBhc3RobWEuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBpcyB0ZW1wb3JhcmlseSBob21lbGVzcy4gUGF0aWVudCBpcyBhbiBhY3RpdmUgc21va2VyIGFuZCBpcyBhbiBhbGNvaG9saWMuIFBhdGllbnQgaWRlbnRpZmllcyBhcyBoZXRlcm9zZXh1YWwuCgpQYXRpZW50IGNvbWVzIGZyb20gYSBtaWRkbGUgc29jaW9lY29ub21pYyBiYWNrZ3JvdW5kLiBQYXRpZW50IGRpZCBub3QgZmluaXNoIGhpZ2ggc2Nob29sLiBQYXRpZW50IGN1cnJlbnRseSBoYXMgQWV0bmEuCgojIEFsbGVyZ2llcwpsYXRleCBhbGxlcmd5LCBhbGxlcmd5IHRvIHNveWEKCiMgTWVkaWNhdGlvbnMKYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IDEyMCBhY3R1YXQgZmx1dGljYXNvbmUgcHJvcGlvbmF0ZSAwLjA0NCBtZy9hY3R1YXQgbWV0ZXJlZCBkb3NlIGluaGFsZXI7IG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgcHJlZG5pc29uZSA1IG1nIG9yYWwgdGFibGV0OyBhc3BpcmluIDgxIG1nIG9yYWwgdGFibGV0CgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KUGF0aWVudCBpcyBwcmVzZW50aW5nIHdpdGggdmlyYWwgc2ludXNpdGlzIChkaXNvcmRlcikuIAoKIyMgUGxhbgoK"
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "8fe08f88-3769-44b7-9ec3-0d74b95ebaca",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "37eafd3d-6a5c-447d-acf8-59efa07f3e94",
+      "lastUpdated": "2024-12-10T10:16:20.205Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP7839-6",
+            "display": "Pathology"
+          }
+        ],
+        "text": "Pathology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "34746-8",
+          "display": "Nurse Note"
+        }
+      ],
+      "text": "Nurse Note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/e0965a03-8953-4893-956c-cb8f40d1c532"
+    },
+    "effectiveDateTime": "1995-09-05T19:59:18-04:00",
+    "issued": "1995-09-05T19:59:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5OTUtMDktMDUKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNTUgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBBZXRuYS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyBwcmVkbmlzb25lIDUgbWcgb3JhbCB0YWJsZXQ7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgpQYXRpZW50IGlzIHByZXNlbnRpbmcgd2l0aCBwb2x5cCBvZiBjb2xvbi4gCgojIyBQbGFuCgpUaGUgZm9sbG93aW5nIHByb2NlZHVyZXMgd2VyZSBjb25kdWN0ZWQ6Ci0gY29sb25vc2NvcHkKLSBzY3JlZW5pbmcgZm9yIG9jY3VsdCBibG9vZCBpbiBmZWNlcyAocHJvY2VkdXJlKQotIHJlY3RhbCBwb2x5cGVjdG9teQo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "dd6b24fc-2157-4b76-9b72-f8abb00b9ba3",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "cc39822b-dd81-4f1c-8258-83af0c1b6c65",
+      "lastUpdated": "2024-12-10T10:16:19.949Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29708-2",
+            "display": "Cardiology"
+          }
+        ],
+        "text": "Cardiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "11504-8",
+          "display": "Surgical operation note"
+        }
+      ],
+      "text": "Surgical operation note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/d2b51b79-b4c9-45f5-bd9f-251308e219fa"
+    },
+    "effectiveDateTime": "1991-05-02T19:33:18-04:00",
+    "issued": "1991-05-02T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5OTEtMDUtMDIKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNTAgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBBZXRuYS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyBwcmVkbmlzb25lIDUgbWcgb3JhbCB0YWJsZXQ7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KUGF0aWVudCB3YXMgZ2l2ZW4gdGhlIGZvbGxvd2luZyBpbW11bml6YXRpb25zOiBpbmZsdWVuemEsIHNlYXNvbmFsLCBpbmplY3RhYmxlLCBwcmVzZXJ2YXRpdmUgZnJlZS4gClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6Ci0gMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgotIG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "3c023826-4567-4749-942a-f9c81db7d1d3",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "1243b46c-31bd-4497-b557-f7e9b60d79c5",
+      "lastUpdated": "2024-12-10T10:16:19.740Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29684-5",
+            "display": "Radiology"
+          }
+        ],
+        "text": "Radiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "57133-1",
+          "display": "Referral note"
+        }
+      ],
+      "text": "Referral note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/07f4c31a-b3b2-4d6f-952a-23d58e94b729"
+    },
+    "effectiveDateTime": "1986-04-03T18:33:18-05:00",
+    "issued": "1986-04-03T18:33:18.715-05:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5ODYtMDQtMDMKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgNDUgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBBZXRuYS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyBwcmVkbmlzb25lIDUgbWcgb3JhbCB0YWJsZXQ7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KUGF0aWVudCB3YXMgZ2l2ZW4gdGhlIGZvbGxvd2luZyBpbW11bml6YXRpb25zOiBpbmZsdWVuemEsIHNlYXNvbmFsLCBpbmplY3RhYmxlLCBwcmVzZXJ2YXRpdmUgZnJlZS4gClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6Ci0gMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgotIG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "47bd513e-ad2f-4c7a-a134-b08160fe4969",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "0eca14f6-a527-4691-a26a-677dc56211f8",
+      "lastUpdated": "2024-12-10T10:16:19.366Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP7839-6",
+            "display": "Pathology"
+          }
+        ],
+        "text": "Pathology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "11506-3",
+          "display": "Progress note"
+        }
+      ],
+      "text": "Progress note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/d44ac6a3-07fb-4898-83fd-7bbb60282c5e"
+    },
+    "effectiveDateTime": "1979-02-22T18:33:18-05:00",
+    "issued": "1979-02-22T18:33:18.715-05:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5NzktMDItMjIKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgMzggeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBBZXRuYS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyBwcmVkbmlzb25lIDUgbWcgb3JhbCB0YWJsZXQ7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KClRoZSBmb2xsb3dpbmcgcHJvY2VkdXJlcyB3ZXJlIGNvbmR1Y3RlZDoKLSBtZWRpY2F0aW9uIHJlY29uY2lsaWF0aW9uIChwcm9jZWR1cmUpClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6Ci0gMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgotIG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "f4400bfc-9dcf-4241-bcc7-f4ddd94e70c7",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "a87f780c-72c4-4a3a-91c9-496a24886703",
+      "lastUpdated": "2024-12-10T10:16:19.281Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29708-2",
+            "display": "Cardiology"
+          }
+        ],
+        "text": "Cardiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "28570-0",
+          "display": "Procedure note"
+        }
+      ],
+      "text": "Procedure note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/db39864d-534e-4d66-b42c-856f09a3352b"
+    },
+    "effectiveDateTime": "1978-09-07T19:33:18-04:00",
+    "issued": "1978-09-07T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/917a7d5d-33a3-4ce8-adad-4c60b28efa94",
+        "display": "Dr. Patricia625 Kilback373"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5NzgtMDktMDcKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgMzggeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBBZXRuYS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyBwcmVkbmlzb25lIDUgbWcgb3JhbCB0YWJsZXQ7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KClRoZSBmb2xsb3dpbmcgcHJvY2VkdXJlcyB3ZXJlIGNvbmR1Y3RlZDoKLSBtZWRpY2F0aW9uIHJlY29uY2lsaWF0aW9uIChwcm9jZWR1cmUpClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6Ci0gMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgotIG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "5e0eb933-5df8-46fa-8696-8be689e2da3e",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "57c9cbf0-8d35-4c73-a5c6-5152d7abb1c2",
+      "lastUpdated": "2024-12-10T10:16:18.822Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29684-5",
+            "display": "Radiology"
+          }
+        ],
+        "text": "Radiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "34117-2",
+          "display": "History and physical note"
+        }
+      ],
+      "text": "History and physical note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/3cfdd3c9-8d41-4435-a6e6-28180c7cd10a"
+    },
+    "effectiveDateTime": "1974-01-24T19:33:18-04:00",
+    "issued": "1974-01-24T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5NzQtMDEtMjQKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgMzMgeWVhci1vbGQgbm9uLWhpc3BhbmljIHdoaXRlIG1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBhbGxlcmdpYyByZWFjdGlvbiwgYWN1dGUgYnJvbmNoaXRpcyAoZGlzb3JkZXIpLCBsYWNlcmF0aW9uIG9mIHRoaWdoLCBvdGl0aXMgbWVkaWEsIHZpcmFsIHNpbnVzaXRpcyAoZGlzb3JkZXIpLCBzcHJhaW4gb2YgYW5rbGUsIGZpcnN0IGRlZ3JlZSBidXJuLCBmcmFjdHVyZSBvZiBhbmtsZSwgY2hpbGRob29kIGFzdGhtYS4KCiMgU29jaWFsIEhpc3RvcnkKUGF0aWVudCBpcyBtYXJyaWVkLiBQYXRpZW50IGlzIHRlbXBvcmFyaWx5IGhvbWVsZXNzLiBQYXRpZW50IGlzIGFuIGFjdGl2ZSBzbW9rZXIgYW5kIGlzIGFuIGFsY29ob2xpYy4gUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgZGlkIG5vdCBmaW5pc2ggaGlnaCBzY2hvb2wuIFBhdGllbnQgY3VycmVudGx5IGhhcyBBZXRuYS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YQoKIyBNZWRpY2F0aW9ucwphY2V0YW1pbm9waGVuIDMyNSBtZyBvcmFsIHRhYmxldDsgMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcjsgbmRhMDIwNTAzIDIwMCBhY3R1YXQgYWxidXRlcm9sIDAuMDkgbWcvYWN0dWF0IG1ldGVyZWQgZG9zZSBpbmhhbGVyOyBwcmVkbmlzb25lIDUgbWcgb3JhbCB0YWJsZXQ7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KUGF0aWVudCB3YXMgZ2l2ZW4gdGhlIGZvbGxvd2luZyBpbW11bml6YXRpb25zOiBpbmZsdWVuemEsIHNlYXNvbmFsLCBpbmplY3RhYmxlLCBwcmVzZXJ2YXRpdmUgZnJlZS4gClRoZSBmb2xsb3dpbmcgcHJvY2VkdXJlcyB3ZXJlIGNvbmR1Y3RlZDoKLSBtZWRpY2F0aW9uIHJlY29uY2lsaWF0aW9uIChwcm9jZWR1cmUpClRoZSBwYXRpZW50IHdhcyBwcmVzY3JpYmVkIHRoZSBmb2xsb3dpbmcgbWVkaWNhdGlvbnM6Ci0gMTIwIGFjdHVhdCBmbHV0aWNhc29uZSBwcm9waW9uYXRlIDAuMDQ0IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgotIG5kYTAyMDUwMyAyMDAgYWN0dWF0IGFsYnV0ZXJvbCAwLjA5IG1nL2FjdHVhdCBtZXRlcmVkIGRvc2UgaW5oYWxlcgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "e3205248-9245-43d7-8579-fd2098fde375",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "83dc1a83-1b8a-44cf-a9e1-f51651802ac7",
+      "lastUpdated": "2024-12-10T10:16:16.800Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP7839-6",
+            "display": "Pathology"
+          }
+        ],
+        "text": "Pathology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "18842-5",
+          "display": "Discharge summary"
+        }
+      ],
+      "text": "Discharge summary"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/7979071e-57e9-4c63-9440-11e09b9efbc9"
+    },
+    "effectiveDateTime": "1943-08-12T19:33:18-04:00",
+    "issued": "1943-08-12T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5NDMtMDgtMTIKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgMiB5ZWFyLW9sZCBub24taGlzcGFuaWMgd2hpdGUgbWFsZS4gUGF0aWVudCBoYXMgYSBoaXN0b3J5IG9mIGFjdXRlIGFsbGVyZ2ljIHJlYWN0aW9uLCBhY3V0ZSBicm9uY2hpdGlzIChkaXNvcmRlciksIG90aXRpcyBtZWRpYSwgdmlyYWwgc2ludXNpdGlzIChkaXNvcmRlcikuCgojIFNvY2lhbCBIaXN0b3J5CiBQYXRpZW50IGhhcyBuZXZlciBzbW9rZWQgYW5kIGlzIGFuIGFsY29ob2xpYy4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuIFBhdGllbnQgY3VycmVudGx5IGhhcyBBZXRuYS4KCiMgQWxsZXJnaWVzCmxhdGV4IGFsbGVyZ3ksIGFsbGVyZ3kgdG8gc295YSwgYWxsZXJneSB0byBwZWFudXRzLCBzaGVsbGZpc2ggYWxsZXJneSwgYWxsZXJneSB0byBncmFzcyBwb2xsZW4sIGhvdXNlIGR1c3QgbWl0ZSBhbGxlcmd5LCBhbGxlcmd5IHRvIHRyZWUgcG9sbGVuLCBhbGxlcmd5IHRvIGZpc2gsIGFsbGVyZ3kgdG8gbW91bGQsIGRhbmRlciAoYW5pbWFsKSBhbGxlcmd5CgojIE1lZGljYXRpb25zCmFjZXRhbWlub3BoZW4gMzI1IG1nIG9yYWwgdGFibGV0OyBwcmVkbmlzb25lIDUgbWcgb3JhbCB0YWJsZXQ7IGFzcGlyaW4gODEgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KClRoZSBmb2xsb3dpbmcgcHJvY2VkdXJlcyB3ZXJlIGNvbmR1Y3RlZDoKLSBtZWRpY2F0aW9uIHJlY29uY2lsaWF0aW9uIChwcm9jZWR1cmUpCg=="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  },
+  {
+    "id": "0b97f9d6-831b-47d7-8b1a-75f82ca97a92",
+    "meta": {
+      "profile": ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-note"],
+      "versionId": "77a634f2-ad31-4463-ad4f-82bc27c42cf3",
+      "lastUpdated": "2024-12-10T10:16:15.852Z",
+      "author": {
+        "reference": "Practitioner/7145eaa6-3083-4e9f-bab2-7fbb091999d1",
+        "display": "Medplum Admin"
+      },
+      "project": "276b5241-d8a4-441e-aabf-faaf150c6028",
+      "compartment": [
+        {
+          "reference": "Project/276b5241-d8a4-441e-aabf-faaf150c6028"
+        },
+        {
+          "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+        }
+      ]
+    },
+    "status": "final",
+    "category": [
+      {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "LP29708-2",
+            "display": "Cardiology"
+          }
+        ],
+        "text": "Cardiology"
+      }
+    ],
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "11488-4",
+          "display": "Consultation note"
+        }
+      ],
+      "text": "Consultation note"
+    },
+    "subject": {
+      "reference": "Patient/9379804b-b866-49a7-90da-b9465be8e2eb"
+    },
+    "encounter": {
+      "reference": "Encounter/8d4a9582-ac45-493b-8827-29adbb2c7213"
+    },
+    "effectivePeriod": {
+      "start": "1940-09-05T19:33:18-04:00",
+      "end": "1940-09-05T20:33:18-04:00"
+    },
+    "issued": "1940-09-05T19:33:18.715-04:00",
+    "performer": [
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46",
+        "display": "Dr. Blossom971 Christiansen251"
+      },
+      {
+        "reference": "Practitioner/d2e758c3-04c4-4c58-a3bd-7fd197367d46"
+      },
+      {
+        "reference": "Organization/1c906da2-4949-4e51-99ae-ee9149694c5b"
+      }
+    ],
+    "presentedForm": [
+      {
+        "contentType": "text/plain",
+        "data": "CjE5NDAtMDktMDUKCiMgQ2hpZWYgQ29tcGxhaW50Ci0gRGVjcmVhc2VkIGluIEp1ZGdlbWVudAotIENvbmZ1c2lvbgotIE5hc2FsIENvbmdlc3Rpb24KLSBTbmVlemluZyBGaXRzCi0gTmFzYWwgRGlzY2hhcmdlCi0gQ291Z2gKCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCkR1c3RpbjMxIGlzIGEgbmV3Ym9ybiBub24taGlzcGFuaWMgd2hpdGUgbWFsZS4KCiMgU29jaWFsIEhpc3RvcnkKIFBhdGllbnQgaGFzIG5ldmVyIHNtb2tlZCBhbmQgaXMgYW4gYWxjb2hvbGljLgoKUGF0aWVudCBjb21lcyBmcm9tIGEgbWlkZGxlIHNvY2lvZWNvbm9taWMgYmFja2dyb3VuZC4gUGF0aWVudCBjdXJyZW50bHkgaGFzIEFldG5hLgoKIyBBbGxlcmdpZXMKTm8gS25vd24gQWxsZXJnaWVzLgoKIyBNZWRpY2F0aW9ucwpObyBBY3RpdmUgTWVkaWNhdGlvbnMuCgojIEFzc2Vzc21lbnQgYW5kIFBsYW4KCgojIyBQbGFuCgo="
+      }
+    ],
+    "resourceType": "DiagnosticReport"
+  }
+]

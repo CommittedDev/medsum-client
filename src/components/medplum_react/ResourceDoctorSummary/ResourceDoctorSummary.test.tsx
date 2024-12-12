@@ -36,7 +36,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Renders reference', async () => {
     await setup({
-      id: 'reference-test',
+      patientId: 'reference-test',
       value: createReference(HomerEncounter),
       loadDoctorSummaryResources,
     });
@@ -49,7 +49,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Renders resource', async () => {
     await setup({
-      id: 'resource-test',
+      patientId: 'resource-test',
       value: HomerEncounter,
       loadDoctorSummaryResources,
     });
@@ -62,7 +62,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Create comment', async () => {
     await setup({
-      id: 'create-comment-test',
+      patientId: 'create-comment-test',
       value: HomerEncounter,
       loadDoctorSummaryResources,
       createCommunication: (resource: Encounter, sender: ProfileResource, text: string) => ({
@@ -101,7 +101,7 @@ describe('ResourceDoctorSummary', () => {
 
   test('Upload media', async () => {
     await setup({
-      id: 'upload-media-test',
+      patientId: 'upload-media-test',
       value: HomerEncounter,
       loadDoctorSummaryResources,
       createCommunication: jest.fn(),

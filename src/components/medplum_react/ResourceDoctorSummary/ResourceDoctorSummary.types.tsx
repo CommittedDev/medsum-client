@@ -11,7 +11,7 @@ export interface ResourceDoctorSummaryMenuItemContext {
 
 export interface ResourceDoctorSummaryProps<T extends Resource> {
   readonly value: T | Reference<T>;
-  readonly id: string;
+  readonly patientId: string;
   readonly loadDoctorSummaryResources: (
     medplum: MedplumClient,
     resourceType: ResourceType,
