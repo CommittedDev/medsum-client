@@ -2,6 +2,7 @@ import { Box, Flex, Group, Paper, RingProgress, Text, Title } from '@mantine/cor
 import { formatCodeableConcept } from '@medplum/core';
 import { Measure, MeasureReportGroup } from '@medplum/fhirtypes';
 import { QuantityDisplay } from '../../QuantityDisplay/QuantityDisplay';
+import { i18n } from 'src/i18n';
 
 interface MeasureReportGroupDisplayProps {
   readonly group: MeasureReportGroup;
@@ -50,7 +51,7 @@ function MeasureReportPopulation(props: MeasureReportGroupDisplayProps): JSX.Ele
     return (
       <Box>
         <Title order={3}>Not Applicable</Title>
-        <Text>{`Denominator: ${denominatorCount}`}</Text>
+        <Text>{`${i18n('Denominator')}: ${denominatorCount}`}</Text>
       </Box>
     );
   }
@@ -58,7 +59,7 @@ function MeasureReportPopulation(props: MeasureReportGroupDisplayProps): JSX.Ele
   if (numeratorCount === undefined || denominatorCount === undefined) {
     return (
       <Box>
-        <Title order={3}>Insufficient Data</Title>
+        <Title order={3}>{i18n('Insufficient Data')}</Title>
         <Text>{`Numerator: ${numeratorCount}`}</Text>
         <Text>{`Denominator: ${denominatorCount}`}</Text>
       </Box>

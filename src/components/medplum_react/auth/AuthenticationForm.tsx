@@ -14,6 +14,7 @@ import { GoogleButton } from '../GoogleButton/GoogleButton';
 import { getGoogleClientId } from '../GoogleButton/GoogleButton.utils';
 import { OperationOutcomeAlert } from '../OperationOutcomeAlert/OperationOutcomeAlert';
 import { getErrorsForInput, getIssuesForExpression } from '../utils/outcomes';
+import { i18n } from 'src/i18n';
 
 export interface AuthenticationFormProps extends BaseLoginRequest {
   readonly disableEmailAuth?: boolean;
@@ -115,14 +116,14 @@ export function EmailForm(props: EmailFormProps): JSX.Element {
           <Group justify="center" p="xl" style={{ height: 70 }}>
             <GoogleButton googleClientId={googleClientId} handleGoogleCredential={handleGoogleCredential} />
           </Group>
-          {!disableEmailAuth && <Divider label="or" labelPosition="center" my="lg" />}
+          {!disableEmailAuth && <Divider label={i18n('or')} labelPosition="center" my="lg" />}
         </>
       )}
       {!disableEmailAuth && (
         <TextInput
           name="email"
           type="email"
-          label="Email"
+          label={i18n('Email')}
           placeholder="name@domain.com"
           required={true}
           autoFocus={true}

@@ -16,6 +16,7 @@ import { Logo } from '../Logo/Logo';
 import { NotificationIcon } from '../NotificationIcon/NotificationIcon';
 import { AppShell } from './AppShell';
 import classes from './AppShell.stories.module.css';
+import { i18n } from 'src/i18n';
 
 export default {
   title: 'Medplum/AppShell',
@@ -156,7 +157,7 @@ export function NotificationIcons(): JSX.Element {
         notifications={
           <>
             <NotificationIcon
-              label="Mail"
+              label={i18n('Mail')}
               resourceType="Communication"
               countCriteria={`recipient=${getReferenceString(profile as ProfileResource)}&status:not=completed&_summary=count`}
               subscriptionCriteria={`Communication?recipient=${getReferenceString(profile as ProfileResource)}`}
@@ -164,7 +165,7 @@ export function NotificationIcons(): JSX.Element {
               onClick={() => console.log('foo')}
             />
             <NotificationIcon
-              label="Tasks"
+              label={i18n('Tasks')}
               resourceType="Task"
               countCriteria={`owner=${getReferenceString(profile as ProfileResource)}&status:not=completed&_summary=count`}
               subscriptionCriteria={`Task?owner=${getReferenceString(profile as ProfileResource)}`}

@@ -7,6 +7,7 @@ import { forwardRef, useCallback } from 'react';
 import { AsyncAutocomplete, AsyncAutocompleteOption } from '../AsyncAutocomplete/AsyncAutocomplete';
 import { ResourceAvatar } from '../ResourceAvatar/ResourceAvatar';
 import classes from './HeaderSearchInput.module.css';
+import { i18n } from 'src/i18n';
 
 export type HeaderSearchTypes = Patient | ServiceRequest;
 
@@ -21,7 +22,7 @@ interface SearchGraphQLResponse {
 function toOption(resource: HeaderSearchTypes): AsyncAutocompleteOption<HeaderSearchTypes> {
   return {
     value: resource.id as string,
-    label: getDisplayString(resource),
+    label: i18n(getDisplayString(resource)),
     resource,
   };
 }
@@ -87,7 +88,7 @@ const ItemComponent = forwardRef<HTMLDivElement, AsyncAutocompleteOption<HeaderS
         <Group wrap="nowrap">
           <ResourceAvatar value={resource} />
           <div>
-            <Text>{getDisplayString(resource)}</Text>
+            <Text>{i18n(getDisplayString(resource))}</Text>
             <Text size="xs" c="dimmed">
               {helpText}
             </Text>

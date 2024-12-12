@@ -20,6 +20,7 @@ import { ReferenceDisplay } from '../ReferenceDisplay/ReferenceDisplay';
 import { ResourceBadge } from '../ResourceBadge/ResourceBadge';
 import { StatusBadge } from '../StatusBadge/StatusBadge';
 import classes from './DiagnosticReportDisplay.module.css';
+import { i18n } from 'src/i18n';
 
 export interface DiagnosticReportDisplayProps {
   readonly value?: DiagnosticReport | Reference<DiagnosticReport>;
@@ -65,7 +66,7 @@ export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JS
 
   return (
     <Stack>
-      <Title>Diagnostic Report</Title>
+      <Title>{i18n('Diagnostic Report')}</Title>
       <DiagnosticReportHeader value={diagnosticReport} />
       {specimens && !props.hideSpecimenInfo && SpecimenInfo(specimens)}
       {diagnosticReport.result && (
@@ -86,7 +87,7 @@ function DiagnosticReportHeader({ value }: DiagnosticReportHeaderProps): JSX.Ele
       {value.subject && (
         <div>
           <Text size="xs" tt="uppercase" c="dimmed">
-            Subject
+            {i18n('Subject')}
           </Text>
           <ResourceBadge value={value.subject} link={true} />
         </div>
@@ -94,7 +95,7 @@ function DiagnosticReportHeader({ value }: DiagnosticReportHeaderProps): JSX.Ele
       {value.resultsInterpreter?.map((interpreter) => (
         <div key={interpreter.reference}>
           <Text size="xs" tt="uppercase" c="dimmed">
-            Interpreter
+            {i18n('Interpreter')}
           </Text>
           <ResourceBadge value={interpreter} link={true} />
         </div>
@@ -102,7 +103,7 @@ function DiagnosticReportHeader({ value }: DiagnosticReportHeaderProps): JSX.Ele
       {value.performer?.map((performer) => (
         <div key={performer.reference}>
           <Text size="xs" tt="uppercase" c="dimmed">
-            Performer
+            {i18n('Performer')}
           </Text>
           <ResourceBadge value={performer} link={true} />
         </div>
@@ -110,7 +111,7 @@ function DiagnosticReportHeader({ value }: DiagnosticReportHeaderProps): JSX.Ele
       {value.issued && (
         <div>
           <Text size="xs" tt="uppercase" c="dimmed">
-            Issued
+            {i18n('Issued')}
           </Text>
           <Text>{formatDateTime(value.issued)}</Text>
         </div>
@@ -118,7 +119,7 @@ function DiagnosticReportHeader({ value }: DiagnosticReportHeaderProps): JSX.Ele
       {value.status && (
         <div>
           <Text size="xs" tt="uppercase" c="dimmed">
-            Status
+            {i18n('Status')}
           </Text>
           <Text>{capitalize(value.status)}</Text>
         </div>
@@ -131,7 +132,7 @@ function SpecimenInfo(specimens: Specimen[] | undefined): JSX.Element {
   return (
     <Stack gap="xs">
       <Title order={2} size="h6">
-        Specimens
+        {i18n('Specimens')}
       </Title>
 
       <List type="ordered">
@@ -139,10 +140,10 @@ function SpecimenInfo(specimens: Specimen[] | undefined): JSX.Element {
           <List.Item ml="sm" key={`specimen-${specimen.id}`}>
             <Group gap={20}>
               <Group gap={5}>
-                <Text fw={500}>Collected:</Text> {formatDateTime(specimen.collection?.collectedDateTime)}
+                <Text fw={500}>{i18n('Collected:')}</Text> {formatDateTime(specimen.collection?.collectedDateTime)}
               </Group>
               <Group gap={5}>
-                <Text fw={500}>Received:</Text> {formatDateTime(specimen.receivedTime)}
+                <Text fw={500}>{i18n('Received:')}</Text> {formatDateTime(specimen.receivedTime)}
               </Group>
             </Group>
           </List.Item>
@@ -163,13 +164,13 @@ export function ObservationTable(props: ObservationTableProps): JSX.Element {
     <table className={classes.table}>
       <thead>
         <tr>
-          <th>Test</th>
-          <th>Value</th>
-          <th>Reference Range</th>
-          <th>Interpretation</th>
-          <th>Category</th>
-          <th>Performer</th>
-          <th>Status</th>
+          <th>{i18n('Test')}</th>
+          <th>{i18n('Value')}</th>
+          <th>{i18n('Reference Range')}</th>
+          <th>{i18n('Interpretation')}</th>
+          <th>{i18n('Category')}</th>
+          <th>{i18n('Performer')}</th>
+          <th>{i18n('Status')}</th>
         </tr>
       </thead>
       <tbody>
@@ -282,7 +283,7 @@ interface ObservationValueDisplayProps {
 
 function ObservationValueDisplay(props: ObservationValueDisplayProps): JSX.Element | null {
   const obs = props.value;
-  return <>{formatObservationValue(obs)}</>;
+  return <>{i18n(formatObservationValue(obs))}</>;
 }
 
 interface ReferenceRangeProps {

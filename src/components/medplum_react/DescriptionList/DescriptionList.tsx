@@ -1,6 +1,7 @@
 import cx from 'clsx';
 import { ReactNode } from 'react';
 import classes from './DescriptionList.module.css';
+import { i18n } from 'src/i18n';
 
 export interface DescriptionListProps {
   readonly children: ReactNode;
@@ -20,8 +21,8 @@ export interface DescriptionListEntryProps {
 export function DescriptionListEntry(props: DescriptionListEntryProps): JSX.Element {
   return (
     <>
-      <dt>{props.term}</dt>
-      <dd>{props.children}</dd>
+      <dt>{i18n(props.term)}</dt>
+      <dd>{i18n(props.children)}</dd>
     </>
   );
 }

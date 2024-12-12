@@ -6,6 +6,7 @@ import { prepareSlices, assignValuesIntoSlices } from '../ResourceArrayInput/Res
 import { useMedplum } from '@medplum/react-hooks';
 import { SliceDisplay } from '../SliceDisplay/SliceDisplay';
 import { DescriptionListEntry } from '../DescriptionList/DescriptionList';
+import { i18n } from 'src/i18n';
 
 export interface ResourceArrayDisplayProps {
   /** The path identifies the element and is expressed as a "."-separated list of ancestor elements, beginning with the name of the resource or extension. */
@@ -72,7 +73,9 @@ export function ResourceArrayDisplay(props: ResourceArrayDisplayProps): JSX.Elem
         throw new Error('props.path is required when includeDescriptionListEntry is true');
       }
       const key = props.path.split('.').pop() as string;
-      nonSliceContent = <DescriptionListEntry term={getPathDisplayName(key)}>{nonSliceElements}</DescriptionListEntry>;
+      nonSliceContent = (
+        <DescriptionListEntry term={i18n(getPathDisplayName(key))}>{nonSliceElements}</DescriptionListEntry>
+      );
     } else {
       nonSliceContent = <>{nonSliceElements}</>;
     }
@@ -98,7 +101,7 @@ export function ResourceArrayDisplay(props: ResourceArrayDisplayProps): JSX.Elem
 
         if (props.includeDescriptionListEntry) {
           sliceDisplay = (
-            <DescriptionListEntry key={slice.name} term={getPathDisplayName(slice.name)}>
+            <DescriptionListEntry key={slice.name} term={i18n(getPathDisplayName(slice.name))}>
               {sliceDisplay}
             </DescriptionListEntry>
           );

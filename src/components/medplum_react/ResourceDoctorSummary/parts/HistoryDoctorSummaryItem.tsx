@@ -3,6 +3,7 @@ import { ResourceTable } from '../../ResourceTable/ResourceTable';
 import { DoctorSummaryItem } from '../../DoctorSummary/DoctorSummary';
 import { HistoryDoctorSummaryItemProps } from '../ResourceDoctorSummary.types';
 import { ResourceDoctorSummaryHelper } from '../ResourceDoctorSummary.helpers';
+import { i18n } from 'src/i18n';
 
 export const HistoryDoctorSummaryItem = (props: HistoryDoctorSummaryItemProps): JSX.Element => {
   const { history, resource, ...rest } = props;
@@ -16,7 +17,7 @@ export const HistoryDoctorSummaryItem = (props: HistoryDoctorSummaryItemProps): 
   } else {
     return (
       <DoctorSummaryItem resource={resource} padding={true} {...rest}>
-        <h3>Created</h3>
+        <h3>{i18n('Created')}</h3>
         <ResourceTable value={resource} ignoreMissingValues forceUseInput />
       </DoctorSummaryItem>
     );

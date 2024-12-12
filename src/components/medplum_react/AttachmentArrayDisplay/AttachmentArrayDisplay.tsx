@@ -2,6 +2,7 @@ import { Attachment } from '@medplum/fhirtypes';
 import { AttachmentDisplay } from '../AttachmentDisplay/AttachmentDisplay';
 import { DescriptionListEntry } from '../DescriptionList/DescriptionList';
 import { InternalSchemaElement, getPathDisplayName, isPopulated } from '@medplum/core';
+import { i18n } from 'src/i18n';
 
 export interface AttachmentArrayDisplayProps {
   readonly path?: string;
@@ -30,7 +31,7 @@ export function AttachmentArrayDisplay(props: AttachmentArrayDisplayProps): JSX.
 
     // Since arrays are responsible for rendering their own DescriptionListEntry, we must find the key
     const key = props.path.split('.').pop() as string;
-    content = <DescriptionListEntry term={getPathDisplayName(key)}>{attachmentElements}</DescriptionListEntry>;
+    content = <DescriptionListEntry term={i18n(getPathDisplayName(key))}>{attachmentElements}</DescriptionListEntry>;
   } else {
     content = <>{attachmentElements}</>;
   }

@@ -26,6 +26,7 @@ import { ReferenceDisplay } from '../ReferenceDisplay/ReferenceDisplay';
 import { ResourceArrayDisplay } from '../ResourceArrayDisplay/ResourceArrayDisplay';
 import { ExtensionDisplay } from '../ExtensionDisplay/ExtensionDisplay';
 import { ElementDefinitionType } from '@medplum/fhirtypes';
+import { i18n } from 'src/i18n';
 
 export interface ResourcePropertyDisplayProps {
   readonly property?: InternalSchemaElement;
@@ -95,13 +96,12 @@ export function ResourcePropertyDisplay(props: ResourcePropertyDisplayProps): JS
       />
     );
   }
-
   switch (propertyType) {
     case PropertyType.boolean:
       return <>{value === undefined ? '' : Boolean(value).toString()}</>;
     case PropertyType.SystemString:
     case PropertyType.string:
-      return <div style={{ whiteSpace: 'pre-wrap' }}>{value}</div>;
+      return <div style={{ whiteSpace: 'pre-wrap' }}>{i18n(value)}</div>;
     case PropertyType.code:
     case PropertyType.date:
     case PropertyType.decimal:
@@ -111,7 +111,7 @@ export function ResourcePropertyDisplay(props: ResourcePropertyDisplayProps): JS
     case PropertyType.unsignedInt:
     case PropertyType.uri:
     case PropertyType.url:
-      return <>{value}</>;
+      return <>{i18n(value)}</>;
     case PropertyType.canonical:
       return <ReferenceDisplay value={{ reference: value }} link={props.link} />;
     case PropertyType.dateTime:

@@ -96,6 +96,12 @@ export const DoctorSummaryTemplates = ({
 
   return (
     <Select
+      variant="unstyled"
+      styles={{
+        input: {
+          color: '#21AEFF',
+        },
+      }}
       placeholder="בחר תבנית"
       data={templates.map((template) => ({
         value: template.id,

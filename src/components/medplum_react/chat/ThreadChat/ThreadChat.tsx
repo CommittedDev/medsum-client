@@ -3,6 +3,7 @@ import { Communication } from '@medplum/fhirtypes';
 import { useMedplum, useMedplumProfile, usePrevious } from '@medplum/react-hooks';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { BaseChat } from '../BaseChat/BaseChat';
+import { i18n } from 'src/i18n';
 
 export interface ThreadChatProps {
   readonly thread: Communication;
@@ -83,7 +84,7 @@ export function ThreadChat(props: ThreadChatProps): JSX.Element | null {
 
   return (
     <BaseChat
-      title={title ?? (thread?.topic ? formatCodeableConcept(thread.topic) : '[No thread title]')}
+      title={title ?? (thread?.topic ? i18n(formatCodeableConcept(thread.topic)) : '[No thread title]')}
       communications={communications}
       setCommunications={setCommunications}
       query={`part-of=Communication/${thread.id as string}`}

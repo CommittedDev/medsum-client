@@ -11,6 +11,7 @@ import { killEvent } from '../utils/dom';
 import classes from './ResourceArrayInput.module.css';
 import { assignValuesIntoSlices, prepareSlices } from './ResourceArrayInput.utils';
 import { BaseInputProps, getValuePath } from '../ResourcePropertyInput/ResourcePropertyInput.utils';
+import { i18n } from 'src/i18n';
 
 export interface ResourceArrayInputProps extends BaseInputProps {
   readonly property: ExtendedInternalSchemaElement;
@@ -70,7 +71,7 @@ export function ResourceArrayInput(props: ResourceArrayInputProps): JSX.Element 
 
   // Hide non-sliced values when handling sliced extensions
   const showNonSliceValues = !(props.hideNonSliceValues ?? (propertyTypeCode === 'Extension' && slices.length > 0));
-  const propertyDisplayName = getPathDisplayName(property.path);
+  const propertyDisplayName = i18n(getPathDisplayName(property.path));
   const showEmptyMessage = props.property.readonly && slices.length === 0 && defaultValue.length === 0;
 
   return (

@@ -8,6 +8,7 @@ import { getValueAndTypeFromElement } from '../ResourcePropertyDisplay/ResourceP
 import { ResourcePropertyInput } from '../ResourcePropertyInput/ResourcePropertyInput';
 import { EXTENSION_KEYS, ElementsContext, getElementsToRender } from './ElementsInput.utils';
 import { BaseInputProps } from '../ResourcePropertyInput/ResourcePropertyInput.utils';
+import { i18n } from 'src/i18n';
 
 export interface ElementsInputProps extends BaseInputProps {
   readonly type: string;
@@ -63,7 +64,7 @@ export function ElementsInput(props: ElementsInputProps): JSX.Element {
           return (
             <CheckboxFormSection
               key={key}
-              title={getPathDisplayName(key)}
+              title={i18n(getPathDisplayName(key))}
               description={element.description}
               htmlFor={key}
               fhirPath={element.path}
@@ -78,7 +79,7 @@ export function ElementsInput(props: ElementsInputProps): JSX.Element {
         return (
           <FormSection
             key={key}
-            title={getPathDisplayName(key)}
+            title={i18n(getPathDisplayName(key))}
             description={element.description}
             withAsterisk={required}
             htmlFor={key}

@@ -14,6 +14,7 @@ import { useContext, useMemo } from 'react';
 import { ElementsContext } from '../ElementsInput/ElementsInput.utils';
 import { maybeWrapWithContext } from '../utils/maybeWrapWithContext';
 import { AccessPolicyResource } from '@medplum/fhirtypes';
+import { i18n } from 'src/i18n';
 
 const EXTENSION_KEYS = ['extension', 'modifierExtension'];
 const IGNORED_PROPERTIES = DEFAULT_IGNORED_PROPERTIES.filter((prop) => !EXTENSION_KEYS.includes(prop));
@@ -126,7 +127,7 @@ export function BackboneElementDisplay(props: BackboneElementDisplayProps): JSX.
         }
 
         return (
-          <DescriptionListEntry key={key} term={getPathDisplayName(key)}>
+          <DescriptionListEntry key={key} term={i18n(getPathDisplayName(key))}>
             {resourcePropertyDisplay}
           </DescriptionListEntry>
         );
