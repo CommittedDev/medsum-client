@@ -19,11 +19,13 @@ interface ListContainerProps {
 
 const ListContainer = styled.div<ListContainerProps>`
   background-color: ${(props) => (props.isDraggingOver ? '#d3d3d3' : 'white')};
+  padding: 10px;
   height: ${(props) => props.height};
+  border-radius: 8px;
+  box-sizing: border-box;
   transition: background-color 0.2s ease;
   flex: 1;
   overflow-y: auto;
-  position: relative;
 `;
 
 interface ItemProps {
@@ -32,7 +34,7 @@ interface ItemProps {
 
 const Item = styled.div<ItemProps>`
   user-select: none;
-  box-shadow: ${(props) => (props.isDragging ? '0 0 10px rgba(0,0,0,0.3)' : '0 1px 3px rgba(0, 0, 0, 0.2)')};
+
   opacity: ${(props) => (props.isDragging ? 0.8 : 1)};
   transition:
     box-shadow 0.2s ease,

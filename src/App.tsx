@@ -30,11 +30,11 @@ export function App(): JSX.Element | null {
           <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
           <Route path="/signin" element={<SignInPage />} />
           <Route path="/Patient/:id" element={<PatientPage />}>
-            <Route index element={<PatientOverview />} />
             <Route path="overview" element={<PatientOverview />} />
             <Route path="timeline" element={<Timeline />} />
             <Route path="history" element={<PatientHistory />} />
             <Route path="summary" element={<DoctorSummary />} />
+            <Route index element={<DoctorSummary />} />
           </Route>
           <Route path="/:resourceType/:id" element={<ResourcePage />} />
           <Route path="/:resourceType/:id/_history/:versionId" element={<ResourcePage />} />

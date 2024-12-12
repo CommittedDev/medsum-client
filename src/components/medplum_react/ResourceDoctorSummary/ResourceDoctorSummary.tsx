@@ -373,10 +373,10 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
           setDropList={setSelectedItemsItems}
           renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
             return (
-              <div>
-                {resource?.resourceType}
+              <>
+                {`DEBUG: ${resource?.resourceType}`}
                 {renderItem(resource, list)}
-              </div>
+              </>
             );
           }}
         >

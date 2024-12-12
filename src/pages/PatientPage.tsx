@@ -58,7 +58,7 @@ export function PatientPage(): JSX.Element {
               </div>
             </div>
             {renderTab({ active: false, value: 'overview', Icon: IconHome, disabled: true })}
-            {renderTab({ active: true, value: 'summary', Icon: IconBolt, disabled: false })}
+            {renderTab({ active: true, value: 'summary', Icon: IconBolt, disabled: true })}
           </Tabs.List>
         </Tabs>
         <div className="p-4 flex flex-col gap-4 w-full bg-[#f7f9fa]">
