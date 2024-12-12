@@ -379,7 +379,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
             return (
               <div className="overflow-hidden border border-[#EDEDED] rounded-md p-2 flex">
                 <div className="flex flex-row gap-2 ps-4 relative flex-1">
-                  <div className={`w-[1px] ${getResourceClassNames(resource)} absolute top-0 bottom-0 start-0`} />
+                  <div className={`w-[2px] ${getResourceClassNames(resource)} absolute top-0 bottom-0 start-0`} />
                   <div className="flex-1">{renderItem(resource, list)}</div>
                   {list == 'resources' && (
                     <ActionIcon
@@ -550,5 +550,5 @@ const getResourceClassNames = (resource: Resource) => {
   } else if (orangeGradientResources.includes(resource.resourceType)) {
     return 'orange-gradient';
   }
-  return 'gray-gradient';
+  return 'green-gradient';
 };

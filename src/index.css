@@ -9,8 +9,8 @@ body {
 .blue-gradient {
   background: linear-gradient(180deg, #6ed7f8 0%, #6ef8e7 100%);
 }
-.gray-gradient {
-  background: linear-gradient(180deg, #e5e5e5 0%, #f0f0f0 100%);
+.green-gradient {
+  background: linear-gradient(180deg, #00f5a0 0%, #00d9f5 100%);
 }
 .yellow-gradient {
   background: linear-gradient(180deg, #fff740 0%, #ff92ac 163.12%);
