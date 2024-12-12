@@ -1,7 +1,7 @@
 import { Menu, Select } from '@mantine/core';
 import { Resource, ResourceType } from '@medplum/fhirtypes';
 import { useEffect, useState } from 'react';
-import { usePersistStateGetInitialValue, usePersistStateOnValueChange } from '../../utils/use_persist';
+import { readPersistStateGetInitialValue, usePersistStateOnValueChange } from '../../utils/use_persist';
 
 export interface IResourceTemplateItem {
   type: 'resource';
@@ -76,7 +76,7 @@ export const DoctorSummaryTemplates = ({
   onTemplateChange: (template: ITemplate) => void;
 }) => {
   const persistKey = `doctor-summary-template-id-${patientId}`;
-  const initialValue = usePersistStateGetInitialValue({ key: persistKey, currentValue: templates[0].id });
+  const initialValue = readPersistStateGetInitialValue({ key: persistKey, currentValue: templates[0].id });
   const [selectedTemplateId, setSelectedTemplateId] = useState<string | null>(initialValue);
   usePersistStateOnValueChange({ key: persistKey, updateValue: selectedTemplateId });
 

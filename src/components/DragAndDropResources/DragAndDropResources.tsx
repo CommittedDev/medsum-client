@@ -11,6 +11,7 @@ import {
   DraggableProvided,
 } from '@hello-pangea/dnd';
 import { Resource } from '@medplum/fhirtypes';
+import { randomId } from '@mantine/hooks';
 
 interface ListContainerProps {
   isDraggingOver?: boolean;
@@ -30,14 +31,15 @@ const ListContainer = styled.div<ListContainerProps>`
 
 interface ItemProps {
   isDragging: boolean;
+  width: string;
 }
 
 const Item = styled.div<ItemProps>`
   user-select: none;
-
+  width: ${(props) => props.width};
   opacity: ${(props) => (props.isDragging ? 0.8 : 1)};
   transition:
-    box-shadow 0.2s ease,
+    // box-shadow 0.2s ease,
     opacity 0.2s ease;
   cursor: grab;
 
@@ -52,6 +54,7 @@ export const DragAndDropResources = ({
   resources,
   resourceListHeight,
   dropList,
+  itemWidth,
   dropListHeight,
   setDropList,
   renderResource,
@@ -60,6 +63,7 @@ export const DragAndDropResources = ({
   resources: Resource[];
   resourceListHeight: string;
   dropList: Resource[];
+  itemWidth: string;
   dropListHeight: string;
   setDropList: React.Dispatch<React.SetStateAction<Resource[]>>;
   renderResource: (resource: Resource, list: 'resources' | 'dropList') => JSX.Element | null;
@@ -93,7 +97,7 @@ export const DragAndDropResources = ({
         // Create a new item for List B with a unique id
         const newItem: Resource = {
           ...draggedItem,
-          id: `${draggedItem.id}-${Date.now()}`, // Ensuring unique id
+          id: `${draggedItem.id}-${randomId()}`, // Ensuring unique id
         };
         // Insert the new item into List B at the destination index
         const newListB = Array.from(dropList);
@@ -128,6 +132,7 @@ export const DragAndDropResources = ({
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
                   isDragging={snapshot.isDragging}
+                  width={itemWidth}
                 >
                   {renderResource(item, 'resources')}
                 </Item>
@@ -157,6 +162,7 @@ export const DragAndDropResources = ({
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
                   isDragging={snapshot.isDragging}
+                  width={itemWidth}
                 >
                   {renderResource(item, 'dropList')}
                 </Item>

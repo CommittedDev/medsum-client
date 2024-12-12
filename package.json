@@ -23,7 +23,7 @@
     "@emotion/babel-plugin": "^11.13.5",
     "@mantine/core": "7.14.3",
     "@mantine/hooks": "7.14.3",
-    "@mantine/notifications": "7.14.3",
+    "@mantine/notifications": "^7.14.3",
     "@medplum/core": "3.2.24",
     "@medplum/eslint-config": "3.2.24",
     "@medplum/fhirtypes": "3.2.24",

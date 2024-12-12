@@ -7,7 +7,7 @@ interface IObject {
 
 const perfix = 'medplum-';
 
-export const usePersistStateGetInitialValue = <T>(args: { key: string; currentValue?: T }) => {
+export const readPersistStateGetInitialValue = <T>(args: { key: string; currentValue?: T }) => {
   const value = readLocalStorageValue({
     key: `${perfix}${args.key}`,
   });

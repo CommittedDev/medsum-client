@@ -1,13 +1,16 @@
 import { ActionIcon, Button, Center, Group, Loader, LoadingOverlay, Menu, Modal, TextInput } from '@mantine/core';
-import { showNotification, updateNotification } from '@mantine/notifications';
+import { notifications, Notifications, showNotification, updateNotification } from '@mantine/notifications';
 import { ProfileResource, createReference, getReferenceString, normalizeErrorString } from '@medplum/core';
 import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
 import {
+  IconArrowLeft,
   IconCheck,
+  IconClearAll,
   IconCloudUpload,
   IconEdit,
   IconFileAlert,
+  IconFileNeutral,
   IconMessage,
   IconPrinter,
   IconX,
@@ -21,7 +24,7 @@ import { ResourceTable } from '../ResourceTable/ResourceTable';
 import { DoctorSummaryItem } from '../DoctorSummary/DoctorSummary';
 import { sortByDateAndPriority } from '../utils/date';
 import { DragAndDropResources } from 'src/components/DragAndDropResources/DragAndDropResources';
-import { usePersistStateGetInitialValue, usePersistStateOnValueChange } from '../utils/use_persist';
+import { readPersistStateGetInitialValue, usePersistStateOnValueChange } from '../utils/use_persist';
 import { ResourceDoctorSummaryProps } from './ResourceDoctorSummary.types';
 import { ResourceDoctorSummaryHelper } from './ResourceDoctorSummary.helpers';
 import { AuditEventDoctorSummaryItem } from './parts/AuditEventDoctorSummaryItem';
@@ -34,7 +37,10 @@ import { EditPage } from './parts/EditPage';
 import { useReactToPrint } from 'react-to-print';
 import { DateUtils } from './date.utils';
 import { DoctorSummaryTemplates, IResourceTemplateItem, ITemplate } from './parts/DoctorSummaryTemplates';
+import { randomId, readLocalStorageValue } from '@mantine/hooks';
+import { set } from 'date-fns';
 
+const getPersistKey = (patientId: string, templateId: string) => `doctor-summary-${patientId}-${templateId}`;
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
   const [isReady, setIsReady] = useState(false);
@@ -45,13 +51,13 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
   const sender = medplum.getProfile() as ProfileResource;
   const inputRef = useRef<HTMLInputElement>(null);
   const resource = useResource(props.value);
-  const persistKey = `doctor-summary-${props.patientId}`;
+  const persistKey = getPersistKey(props.patientId, selectedTemplate?.id || '');
   const [editingResource, setEditingResource] = useState<{
     resourceType: ResourceType;
     id: string;
     item: Resource;
   } | null>(null);
-  const initialValue = usePersistStateGetInitialValue<Resource[]>({ key: persistKey, currentValue: [] });
+  const initialValue = readPersistStateGetInitialValue<Resource[]>({ key: persistKey, currentValue: [] });
   const [history, setHistory] = useState<Bundle>();
   const [selectedItems, setSelectedItems] = useState<Resource[]>(initialValue);
   usePersistStateOnValueChange({
@@ -297,61 +303,11 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     }
   };
 
-  const renderResourcesHeader = () => {
-    return (
-      <>
-        {props.createCommunication && (
-          <div className="py-4">
-            <Form
-              testid="doctorSummary-form"
-              onSubmit={(formData: Record<string, string>) => {
-                createComment(formData.text);
-
-                const input = inputRef.current;
-                if (input) {
-                  input.value = '';
-                  input.focus();
-                }
-              }}
-            >
-              <Group gap="xs" wrap="nowrap" style={{ width: '100%' }}>
-                <ResourceAvatar value={sender} />
-                <TextInput
-                  name="text"
-                  ref={inputRef}
-                  placeholder="Add comment"
-                  style={{ width: '100%', maxWidth: 300 }}
-                />
-                <ActionIcon type="submit" radius="xl" color="blue" variant="filled">
-                  <IconMessage size={16} />
-                </ActionIcon>
-                <AttachmentButton
-                  securityContext={createReference(resource)}
-                  onUpload={createMedia}
-                  onUploadStart={onUploadStart}
-                  onUploadProgress={onUploadProgress}
-                  onUploadError={onUploadError}
-                >
-                  {(props) => (
-                    <ActionIcon {...props} radius="xl" color="blue" variant="filled">
-                      <IconCloudUpload size={16} />
-                    </ActionIcon>
-                  )}
-                </AttachmentButton>
-              </Group>
-            </Form>
-          </div>
-        )}
-      </>
-    );
-  };
-
   const onPrint = () => {
     setPrintPdf(true);
   };
 
-  const onTemplateChange = (template: ITemplate) => {
-    setEditingResource(null);
+  const getTemplateInitialValue = (template: ITemplate) => {
     const counterPerItemsType: { [resourceType: string]: number } = {};
     const initialSelectedItems: Resource[] = [];
     template.template.items.forEach((item) => {
@@ -367,8 +323,31 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
         }
       }
     });
+    return initialSelectedItems;
+  };
+
+  const resetChanges = (template: ITemplate) => {
+    setEditingResource(null);
+    const initialSelectedItems = getTemplateInitialValue(template);
     setSelectedItems(initialSelectedItems);
     setSelectedTemplate(template);
+    notifications.show({
+      message: 'שינויים התאפסו',
+    });
+  };
+
+  const onTemplateChange = (template: ITemplate) => {
+    setEditingResource(null);
+    const persistKey = getPersistKey(props.patientId, template.id);
+    const persistValue = readPersistStateGetInitialValue({ key: persistKey, currentValue: [] });
+    if (persistValue && persistValue.length > 0) {
+      setSelectedItems(persistValue);
+      setSelectedTemplate(template);
+    } else {
+      const initialSelectedItems = getTemplateInitialValue(template);
+      setSelectedItems(initialSelectedItems);
+      setSelectedTemplate(template);
+    }
   };
 
   useLayoutEffect(() => {
@@ -396,29 +375,50 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
       <div className="flex flex-col w-full hiddenTheChild">
         <DragAndDropResources
           resources={items}
-          resourceListHeight={'calc(100vh - 155px)'}
+          resourceListHeight={'calc(100vh - 155px)'} // DORON
           dropListHeight={'auto'}
           dropList={selectedItems}
+          itemWidth={'calc(50vw - 120px)'}
           setDropList={setSelectedItems}
           renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
             return (
-              <>
-                {`DEBUG: ${resource?.resourceType}`}
-                {renderItem(resource, list)}
-              </>
+              <div className="overflow-hidden border border-[#EDEDED] rounded-md p-2 flex">
+                <div className="flex flex-row gap-2 ps-4 relative flex-1">
+                  <div className={`w-[1px] ${getResourceClassNames(resource)} absolute top-0 bottom-0 start-0`} />
+                  <div className="flex-1">{renderItem(resource, list)}</div>
+                  {list == 'resources' && (
+                    <ActionIcon
+                      radius={'xl'}
+                      onClick={() => {
+                        setSelectedItems((prev) => [
+                          {
+                            ...resource,
+                            id: `${resource.id}-${randomId()}`, // Ensuring unique id
+                          },
+                          ...prev,
+                        ]);
+                      }}
+                    >
+                      <IconArrowLeft />
+                    </ActionIcon>
+                  )}
+                </div>
+              </div>
             );
           }}
         >
           {(resources, dropList) => {
             return (
-              <div className="flex flex-row gap-4 overflow-auto">
+              <div className="w-[calc(100vw-100px)] flex flex-row gap-4">
                 {/*
                   ---------------------------------------------------------------
                   | >מידע רפואי
                   --------------------------------------------------------------
                 */}
-                <div className="w-[40%] flex flex-col gap-2 rounded-md  pt-2">
-                  <p>מידע רפואי</p>
+                <div className="w-[50%] flex flex-col gap-2 rounded-md ">
+                  <div className="flex flex-row justify-between items-center h-8">
+                    <p>מידע רפואי</p>
+                  </div>
                   <div className="w-full bg-white p-2 rounded-md">{resources}</div>
                 </div>
                 {/*
@@ -426,14 +426,18 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                   | >מכתב שחרור
                   --------------------------------------------------------------
                 */}
-                <div className=" w-[60%] flex flex-col gap-2 rounded-md">
-                  <div className="flex flex-row justify-between items-center">
+                <div className="flex-1 flex flex-col gap-2 rounded-md">
+                  <div className="flex flex-row justify-between items-center h-8">
                     <div className="flex flex-row gap-2 items-center">
                       <p>מכתב שחרור</p>
                       <DoctorSummaryTemplates patientId={props.patientId} onTemplateChange={onTemplateChange} />
-                      {/* <DoctorSummaryTemplate /> */}
                     </div>
                     <div className="flex flex-row gap-2">
+                      {selectedTemplate && (
+                        <ActionIcon variant="transparent" onClick={() => resetChanges(selectedTemplate)}>
+                          <IconFileNeutral />
+                        </ActionIcon>
+                      )}
                       <ActionIcon variant="transparent" onClick={onPrint}>
                         <IconPrinter />
                       </ActionIcon>
@@ -481,3 +485,68 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     </>
   );
 }
+
+const getResourceClassNames = (resource: Resource) => {
+  const blueGradientResources: ResourceType[] = [
+    'Observation',
+    'MedicationRequest',
+    'MedicationStatement',
+    'Condition',
+    'AllergyIntolerance',
+    'Immunization',
+    'Procedure',
+    'DiagnosticReport',
+  ];
+  const yellowGradientResources: ResourceType[] = [
+    'Patient',
+    'Practitioner',
+    'Organization',
+    'Location',
+    'PractitionerRole',
+    'CareTeam',
+    'RelatedPerson',
+    'Device',
+    'Specimen',
+  ];
+  const orangeGradientResources: ResourceType[] = [
+    'ImagingStudy',
+    'DocumentReference',
+    'QuestionnaireResponse',
+    'Questionnaire',
+    'CarePlan',
+    'CareTeam',
+    'Medication',
+    'MedicationAdministration',
+    'MedicationDispense',
+    'MedicationStatement',
+    'Immunization',
+    'Procedure',
+    'DiagnosticReport',
+    'Observation',
+    'Condition',
+    'AllergyIntolerance',
+    'DocumentReference',
+    'QuestionnaireResponse',
+    'Questionnaire',
+    'CarePlan',
+    'CareTeam',
+    'Medication',
+    'MedicationAdministration',
+    'MedicationDispense',
+    'MedicationStatement',
+    'Immunization',
+    'Procedure',
+    'DiagnosticReport',
+    'Observation',
+    'Condition',
+    'AllergyIntolerance',
+  ];
+  if (blueGradientResources.includes(resource.resourceType)) {
+    return 'blue-gradient';
+  } else if (yellowGradientResources.includes(resource.resourceType)) {
+    return 'yellow-gradient';
+  } else if (orangeGradientResources.includes(resource.resourceType)) {
+    return 'orange-gradient';
+  }
+  return 'gray-gradient';
+};
