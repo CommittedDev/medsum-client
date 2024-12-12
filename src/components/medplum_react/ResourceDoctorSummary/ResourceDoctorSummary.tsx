@@ -1,4 +1,16 @@
-import { ActionIcon, Button, Center, Group, Loader, LoadingOverlay, Menu, Modal, TextInput } from '@mantine/core';
+import {
+  ActionIcon,
+  Button,
+  Center,
+  Group,
+  Loader,
+  LoadingOverlay,
+  Menu,
+  Modal,
+  Text,
+  Textarea,
+  TextInput,
+} from '@mantine/core';
 import { notifications, Notifications, showNotification, updateNotification } from '@mantine/notifications';
 import { ProfileResource, createReference, getReferenceString, normalizeErrorString } from '@medplum/core';
 import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
@@ -38,10 +50,129 @@ import { EditPage } from './parts/EditPage';
 import { useReactToPrint } from 'react-to-print';
 import { DateUtils } from './date.utils';
 import { DoctorSummaryTemplates, IResourceTemplateItem, ITemplate } from './parts/DoctorSummaryTemplates';
-import { randomId, readLocalStorageValue } from '@mantine/hooks';
+import { randomId, readLocalStorageValue, useClickOutside } from '@mantine/hooks';
 import { set } from 'date-fns';
 
 const getPersistKey = (patientId: string, templateId: string) => `doctor-summary-${patientId}-${templateId}`;
+
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+interface IResourceAiSummary {
+  value: string;
+}
+
+const ResourceAiSummary = ({
+  patientId,
+  template,
+  resource,
+  allowEdit,
+}: {
+  patientId: string;
+  template?: ITemplate;
+  resource: Resource;
+  allowEdit: boolean;
+}) => {
+  const [editing, setEditing] = useState(false);
+  const ref = useClickOutside(() => setEditing(false));
+  const persistKey = `${getPersistKey(patientId, template?.id || '')}-summary-${resource.id}`;
+  const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
+    key: persistKey,
+    currentValue: undefined,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | undefined>(undefined);
+  const [summary, setSummary] = useState<IResourceAiSummary | undefined>(initialValue);
+
+  usePersistStateOnValueChange({
+    key: persistKey,
+    updateValue: summary,
+  });
+
+  const fetchData = () => {
+    async function query() {
+      const response = await fetch(
+        'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ resource }),
+        }
+      );
+      const result = await response.json();
+      return result;
+    }
+
+    setLoading(true);
+
+    query()
+      .then((response) => {
+        const isValid = response.success == true;
+        console.log('Fetch ResourceWithAiSummary', response);
+        if (isValid) {
+          setSummary({
+            value: 'הגיע תשובה מהשרת ai',
+          });
+        } else {
+          setSummary({
+            value: 'הגיע שגיאה מהשרת ai',
+          });
+        }
+      })
+      .catch((e) => {
+        console.log('Fetch ResourceWithAiSummary', e);
+        setSummary({
+          value: 'הגיע שגיאה מהשרת ai',
+        });
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const renderValue = () => {
+    if (!summary || !summary.value) {
+      return null;
+    }
+    if (editing) {
+      return (
+        <Textarea ref={ref} value={summary.value} onChange={(e) => setSummary({ value: e.currentTarget.value })} />
+      );
+    }
+    if (!allowEdit) {
+      return <Text>{summary.value}</Text>;
+    }
+    return (
+      <Button
+        onDoubleClick={() => {
+          setEditing(true);
+        }}
+        variant="transparent"
+        className="p-0 flex"
+        fullWidth
+      >
+        <div className="text-start flex justify-start items-start w-full flex-1">
+          <Text className="text-start flex justify-start items-start">{summary.value}</Text>
+        </div>
+      </Button>
+    );
+  };
+
+  useEffect(() => {
+    if (!initialValue) {
+      fetchData();
+    }
+  }, []);
+
+  return (
+    <div>
+      {loading && <Loader />}
+      {summary?.value && renderValue()}
+    </div>
+  );
+};
+
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
   const [isReady, setIsReady] = useState(false);
@@ -90,7 +221,10 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     (newItems: Resource[]): void => {
       sortByDateAndPriority(newItems, resource);
       newItems.reverse();
-      setItems(newItems);
+      const uniqueItems = newItems.filter((item, index, self) => {
+        return self.findIndex((t) => t.id === item.id) === index;
+      });
+      setItems(uniqueItems);
       console.log({ newItems });
       setIsReady(true);
     },
@@ -361,7 +495,17 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
               <div className="overflow-hidden border border-[#EDEDED] rounded-md p-2 flex mb-4">
                 <div className="flex flex-row gap-2 ps-4 relative flex-1">
                   <div className={`w-[2px] ${getResourceClassNames(resource)} absolute top-0 bottom-0 start-0`} />
-                  <div className="flex-1">{renderItem(resource, list)}</div>
+                  <div className="flex-1 flex-col gap-2">
+                    {renderItem(resource, list)}
+                    {list == 'dropList' && (
+                      <ResourceAiSummary
+                        patientId={props.patientId}
+                        resource={resource}
+                        template={selectedTemplate}
+                        allowEdit={true}
+                      />
+                    )}
+                  </div>
                   {list == 'resources' && (
                     <ActionIcon
                       radius={'xl'}

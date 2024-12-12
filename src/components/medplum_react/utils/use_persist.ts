@@ -11,7 +11,7 @@ export const readPersistStateGetInitialValue = <T>(args: { key: string; currentV
   const value = readLocalStorageValue({
     key: `${perfix}${args.key}`,
   });
-  return value && typeof value == 'string' ? JSON.parse(value) : (args.currentValue as T);
+  return value && typeof value == 'string' ? safeParse(value) : (args.currentValue as T);
 };
 
 export const usePersistStateOnValueChange = <T>(args: { key: string; updateValue?: T }) => {
@@ -27,4 +27,12 @@ export const usePersistStateOnValueChange = <T>(args: { key: string; updateValue
   useEffect(() => {
     setUpdateValue(args.updateValue);
   }, [args.updateValue]);
+};
+
+const safeParse = (value: string) => {
+  try {
+    return JSON.parse(value);
+  } catch (e) {
+    return undefined;
+  }
 };
