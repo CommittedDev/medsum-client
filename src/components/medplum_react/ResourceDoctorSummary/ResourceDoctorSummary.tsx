@@ -367,18 +367,13 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
 
   return (
     <>
-      {printPdf && (
-        <div ref={printTargetRef as any} className="h-full w-full p-4">
-          {selectedItems.map((item) => renderItem(item, 'viewMode'))}
-        </div>
-      )}
       <div className="flex flex-col w-full hiddenTheChild">
         <DragAndDropResources
           resources={items}
           resourceListHeight={'calc(100vh - 155px)'} // DORON
           dropListHeight={'auto'}
           dropList={selectedItems}
-          itemWidth={'calc(50vw - 120px)'}
+          itemWidth={printPdf ? '200mm' : 'calc(50vw - 120px)'}
           setDropList={setSelectedItems}
           renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
             return (
@@ -443,7 +438,14 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                       </ActionIcon>
                     </div>
                   </div>
-                  <div className="flex-1 w-full bg-white p-6 rounded-md overflow-y-auto max-h-[calc(100vh-138px)]">
+                  <div
+                    ref={printTargetRef as any}
+                    className={
+                      printPdf
+                        ? 'flex-1 w-full bg-white p-6 rounded-md'
+                        : 'flex-1 w-full bg-white p-6 rounded-md overflow-y-auto max-h-[calc(100vh-138px)]'
+                    }
+                  >
                     {selectedTemplate ? (
                       <div className="flex flex-col gap-2">
                         <div className="flex flex-row justify-between items-center">
