@@ -13,13 +13,14 @@ export function PatientHeader(props: PatientHeaderProps): JSX.Element | null {
     return null;
   }
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 items-center justify-between">
       <div className="flex flex-col">
         <p className="text-[#A7A7A7] text-[16px]">מטופל</p>
         <p className="font-bold text-[24px]">
           {patient.name ? <HumanNameDisplay value={patient.name?.[0]} options={{ use: false }} /> : '[blank]'}
         </p>
       </div>
+      <img src="https://apollo.idgmc.org/assets/logo.png" alt="user-male-circle" width={100} />
     </div>
   );
   // return (

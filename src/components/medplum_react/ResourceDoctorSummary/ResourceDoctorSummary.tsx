@@ -13,6 +13,7 @@ import {
   IconFileNeutral,
   IconMessage,
   IconPrinter,
+  IconTrash,
   IconX,
 } from '@tabler/icons-react';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
@@ -251,33 +252,13 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
       return null;
     }
     const key = `${item.resourceType}/${item.id}/${item.meta?.versionId}`;
-    const menu = props.getMenu ? (
-      props.getMenu({
-        primaryResource: resource,
-        currentResource: item,
-        reloadDoctorSummary: loadDoctorSummary,
-      })
-    ) : list == 'dropList' && item.id ? (
-      <Menu.Dropdown>
-        <Menu.Item
-          leftSection={<IconEdit size={14} />}
-          onClick={() => setEditingResource({ resourceType: item.resourceType, id: item.id!, item: item })}
-          aria-label={`Edit ${getReferenceString(item)}`}
-        >
-          Edit
-        </Menu.Item>
-        <Menu.Item
-          leftSection={<IconX size={14} />}
-          onClick={() => {
-            setSelectedItems((prev) => prev.filter((e) => e.id !== item.id));
-            setEditingResource(null);
-          }}
-          aria-label={`Delete ${getReferenceString(item)}`}
-        >
-          Delete
-        </Menu.Item>
-      </Menu.Dropdown>
-    ) : undefined;
+    const menu = props.getMenu
+      ? props.getMenu({
+          primaryResource: resource,
+          currentResource: item,
+          reloadDoctorSummary: loadDoctorSummary,
+        })
+      : undefined;
     if (item.resourceType === resource.resourceType && item.id === resource.id) {
       return <HistoryDoctorSummaryItem key={key} history={history as Bundle} resource={item} popupMenuItems={menu} />;
     }
@@ -377,7 +358,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
           setDropList={setSelectedItems}
           renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
             return (
-              <div className="overflow-hidden border border-[#EDEDED] rounded-md p-2 flex">
+              <div className="overflow-hidden border border-[#EDEDED] rounded-md p-2 flex mb-4">
                 <div className="flex flex-row gap-2 ps-4 relative flex-1">
                   <div className={`w-[2px] ${getResourceClassNames(resource)} absolute top-0 bottom-0 start-0`} />
                   <div className="flex-1">{renderItem(resource, list)}</div>
@@ -396,6 +377,22 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                     >
                       <IconArrowLeft />
                     </ActionIcon>
+                  )}
+                  {list == 'dropList' && !printPdf && (
+                    <div className="absolute end-2 top-2">
+                      <ActionIcon
+                        color="#EEEEEE"
+                        radius={'xl'}
+                        className="p-1"
+                        onClick={() => {
+                          setSelectedItems((prev) => prev.filter((e) => e.id !== resource.id));
+                          setEditingResource(null);
+                        }}
+                        aria-label={`Delete ${getReferenceString(resource)}`}
+                      >
+                        <IconTrash color="#AEAEAE" />
+                      </ActionIcon>
+                    </div>
                   )}
                 </div>
               </div>
