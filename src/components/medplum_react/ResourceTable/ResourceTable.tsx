@@ -3,8 +3,10 @@ import { Reference, Resource } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
 import { useEffect, useMemo, useState } from 'react';
 import { BackboneElementDisplay } from '../BackboneElementDisplay/BackboneElementDisplay';
+import { ResourceAiSummary } from '../ResourceDoctorSummary/parts/ResourceAiSummary';
 
 export interface ResourceTableProps {
+  patientId?: string;
   /**
    * The input value either as a resource or a reference.
    */
@@ -73,15 +75,18 @@ export function ResourceTable(props: ResourceTableProps): JSX.Element | null {
   }
 
   return (
-    <BackboneElementDisplay
-      path={value.resourceType}
-      value={{
-        type: value.resourceType,
-        value: props.forceUseInput ? props.value : value,
-      }}
-      profileUrl={profileUrl}
-      ignoreMissingValues={props.ignoreMissingValues}
-      accessPolicyResource={accessPolicyResource}
-    />
+    <>
+      <BackboneElementDisplay
+        path={value.resourceType}
+        value={{
+          type: value.resourceType,
+          value: props.forceUseInput ? props.value : value,
+        }}
+        profileUrl={profileUrl}
+        ignoreMissingValues={props.ignoreMissingValues}
+        accessPolicyResource={accessPolicyResource}
+      />
+      {props.patientId && <ResourceAiSummary resource={value} patientId={props.patientId!} />}
+    </>
   );
 }

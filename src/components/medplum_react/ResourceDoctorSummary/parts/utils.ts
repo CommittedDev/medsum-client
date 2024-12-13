@@ -23,3 +23,6 @@ export function cleanResource(resource: Resource): Resource {
     meta,
   };
 }
+
+export const getDoctorSummaryPersistKey = (patientId: string, templateId: string) =>
+  `doctor-summary-${patientId}-${templateId}`;

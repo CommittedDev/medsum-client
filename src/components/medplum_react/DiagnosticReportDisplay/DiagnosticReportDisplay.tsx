@@ -7,6 +7,7 @@ import {
   ObservationComponent,
   ObservationReferenceRange,
   Reference,
+  Resource,
   Specimen,
 } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
@@ -21,11 +22,13 @@ import { ResourceBadge } from '../ResourceBadge/ResourceBadge';
 import { StatusBadge } from '../StatusBadge/StatusBadge';
 import classes from './DiagnosticReportDisplay.module.css';
 import { i18n } from 'src/i18n';
+import { ResourceAiSummary } from '../ResourceDoctorSummary/parts/ResourceAiSummary';
 
 export interface DiagnosticReportDisplayProps {
   readonly value?: DiagnosticReport | Reference<DiagnosticReport>;
   readonly hideObservationNotes?: boolean;
   readonly hideSpecimenInfo?: boolean;
+  readonly patientId?: string;
 }
 
 DiagnosticReportDisplay.defaultProps = {
@@ -52,6 +55,7 @@ export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JS
   }, [medplum, diagnosticReport]);
 
   if (!diagnosticReport) {
+    // return <p>'Missing diagnostic report'</p>;
     return null;
   }
 
@@ -63,17 +67,30 @@ export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JS
       specimenNotes.push({ text: window.atob(pf.data) });
     }
   }
-
   return (
-    <Stack>
-      <Title>{i18n('Diagnostic Report')}</Title>
-      <DiagnosticReportHeader value={diagnosticReport} />
-      {specimens && !props.hideSpecimenInfo && SpecimenInfo(specimens)}
-      {diagnosticReport.result && (
-        <ObservationTable hideObservationNotes={props.hideObservationNotes} value={diagnosticReport.result} />
-      )}
-      {specimenNotes.length > 0 && <NoteDisplay value={specimenNotes} />}
-    </Stack>
+    <>
+      <Stack>
+        <Title>{i18n('Diagnostic Report')}</Title>
+        <DiagnosticReportHeader value={diagnosticReport} />
+        {specimens && !props.hideSpecimenInfo && SpecimenInfo(specimens)}
+        {diagnosticReport.result && (
+          <>
+            <ObservationTable hideObservationNotes={props.hideObservationNotes} value={diagnosticReport.result} />
+          </>
+        )}
+        {specimenNotes.length > 0 && <NoteDisplay value={specimenNotes} />}
+      </Stack>
+      {props.patientId &&
+        (diagnosticReport.result ? (
+          <ResourceAiSummary
+            resource={diagnosticReport.result}
+            patientId={props.patientId!}
+            persistKeySuffix="diagnostic-report"
+          />
+        ) : (
+          <ResourceAiSummary resource={diagnosticReport} patientId={props.patientId!} />
+        ))}
+    </>
   );
 }
 

@@ -16,6 +16,7 @@ export interface DoctorSummaryItemProps<T extends Resource = Resource> extends P
   readonly resource: T;
   readonly profile?: Reference;
   readonly dateTime?: string;
+  readonly patientId?: string;
   readonly padding?: boolean;
   readonly popupMenuItems?: ReactNode;
 }

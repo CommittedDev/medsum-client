@@ -18,3 +18,14 @@ body {
 .orange-gradient {
   background: linear-gradient(180deg, #f86e6e 0%, #f8c96e 100%);
 }
+
+.ResourceDoctorSummary-resources .ResourceAiSummary {
+  /* display: none; */
+}
+.ResourceDoctorSummary-resources .resourceAiSummaryEditButton {
+  pointer-events: none;
+}
+
+.ResourceDoctorSummary-dropList .ResourceAiSummary {
+  background-color: rgb(218, 217, 217);
+}

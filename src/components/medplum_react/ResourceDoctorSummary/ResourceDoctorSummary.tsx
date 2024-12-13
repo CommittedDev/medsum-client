@@ -25,6 +25,7 @@ import {
   IconFileNeutral,
   IconMessage,
   IconPrinter,
+  IconQuestionMark,
   IconTrash,
   IconX,
 } from '@tabler/icons-react';
@@ -52,126 +53,8 @@ import { DateUtils } from './date.utils';
 import { DoctorSummaryTemplates, IResourceTemplateItem, ITemplate } from './parts/DoctorSummaryTemplates';
 import { randomId, readLocalStorageValue, useClickOutside } from '@mantine/hooks';
 import { set } from 'date-fns';
-
-const getPersistKey = (patientId: string, templateId: string) => `doctor-summary-${patientId}-${templateId}`;
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-interface IResourceAiSummary {
-  value: string;
-}
-
-const ResourceAiSummary = ({
-  patientId,
-  template,
-  resource,
-  allowEdit,
-}: {
-  patientId: string;
-  template?: ITemplate;
-  resource: Resource;
-  allowEdit: boolean;
-}) => {
-  const [editing, setEditing] = useState(false);
-  const ref = useClickOutside(() => setEditing(false));
-  const persistKey = `${getPersistKey(patientId, template?.id || '')}-summary-${resource.id}`;
-  const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
-    key: persistKey,
-    currentValue: undefined,
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [summary, setSummary] = useState<IResourceAiSummary | undefined>(initialValue);
-
-  usePersistStateOnValueChange({
-    key: persistKey,
-    updateValue: summary,
-  });
-
-  const fetchData = () => {
-    async function query() {
-      const response = await fetch(
-        'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ resource }),
-        }
-      );
-      const result = await response.json();
-      return result;
-    }
-
-    setLoading(true);
-
-    query()
-      .then((response) => {
-        const isValid = response.success == true;
-        console.log('Fetch ResourceWithAiSummary', response);
-        if (isValid) {
-          setSummary({
-            value: 'הגיע תשובה מהשרת ai',
-          });
-        } else {
-          setSummary({
-            value: 'הגיע שגיאה מהשרת ai',
-          });
-        }
-      })
-      .catch((e) => {
-        console.log('Fetch ResourceWithAiSummary', e);
-        setSummary({
-          value: 'הגיע שגיאה מהשרת ai',
-        });
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const renderValue = () => {
-    if (!summary || !summary.value) {
-      return null;
-    }
-    if (editing) {
-      return (
-        <Textarea ref={ref} value={summary.value} onChange={(e) => setSummary({ value: e.currentTarget.value })} />
-      );
-    }
-    if (!allowEdit) {
-      return <Text>{summary.value}</Text>;
-    }
-    return (
-      <Button
-        onDoubleClick={() => {
-          setEditing(true);
-        }}
-        variant="transparent"
-        className="p-0 flex"
-        fullWidth
-      >
-        <div className="text-start flex justify-start items-start w-full flex-1">
-          <Text className="text-start flex justify-start items-start">{summary.value}</Text>
-        </div>
-      </Button>
-    );
-  };
-
-  useEffect(() => {
-    if (!initialValue) {
-      fetchData();
-    }
-  }, []);
-
-  return (
-    <div>
-      {loading && <Loader />}
-      {summary?.value && renderValue()}
-    </div>
-  );
-};
+import { getDoctorSummaryPersistKey } from './parts/utils';
+import { AskAi } from './aiPRovider';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
@@ -183,7 +66,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
   const sender = medplum.getProfile() as ProfileResource;
   const inputRef = useRef<HTMLInputElement>(null);
   const resource = useResource(props.value);
-  const persistKey = getPersistKey(props.patientId, selectedTemplate?.id || '');
+  const persistKey = getDoctorSummaryPersistKey(props.patientId, selectedTemplate?.id || '');
   const [editingResource, setEditingResource] = useState<{
     resourceType: ResourceType;
     id: string;
@@ -396,23 +279,34 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     if (item.resourceType === resource.resourceType && item.id === resource.id) {
       return <HistoryDoctorSummaryItem key={key} history={history as Bundle} resource={item} popupMenuItems={menu} />;
     }
+    // return item.resourceType;
     switch (item.resourceType) {
       case 'AuditEvent':
-        return <AuditEventDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+        return (
+          <AuditEventDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} patientId={props.patientId} />
+        );
       case 'Communication':
-        return <CommunicationDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+        return (
+          <CommunicationDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} patientId={props.patientId} />
+        );
       case 'DiagnosticReport':
-        return <DiagnosticReportDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+        return (
+          <>
+            {/* {props.patientId ? 'props.patientId' + props.patientId : 'MISSINGT props.patientId '} */}
+            <DiagnosticReportDoctorSummaryItem
+              key={key}
+              resource={item}
+              popupMenuItems={menu}
+              patientId={props.patientId}
+            />
+          </>
+        );
       case 'Media':
-        return <MediaDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} />;
+        return <MediaDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} patientId={props.patientId} />;
       default:
         return (
-          <DoctorSummaryItem key={key} resource={item} padding={true} popupMenuItems={menu}>
-            {list == 'dropList' ? (
-              <ResourceTableInlineEditing value={item} ignoreMissingValues={true} />
-            ) : (
-              <ResourceTable value={item} ignoreMissingValues={true} />
-            )}
+          <DoctorSummaryItem key={key} resource={item} padding={true} popupMenuItems={menu} patientId={props.patientId}>
+            <ResourceTable value={item} ignoreMissingValues={true} patientId={props.patientId} />
           </DoctorSummaryItem>
         );
     }
@@ -453,7 +347,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
 
   const onTemplateChange = (template: ITemplate) => {
     setEditingResource(null);
-    const persistKey = getPersistKey(props.patientId, template.id);
+    const persistKey = getDoctorSummaryPersistKey(props.patientId, template.id);
     const persistValue = readPersistStateGetInitialValue({ key: persistKey, currentValue: [] });
     if (persistValue && persistValue.length > 0) {
       setSelectedItems(persistValue);
@@ -492,35 +386,30 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
           setDropList={setSelectedItems}
           renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
             return (
-              <div className="overflow-hidden border border-[#EDEDED] rounded-md p-2 flex mb-4">
+              <div
+                className={`overflow-hidden border border-[#EDEDED] rounded-md p-2 flex mb-4 ResourceDoctorSummary-${list} `}
+              >
                 <div className="flex flex-row gap-2 ps-4 relative flex-1">
                   <div className={`w-[2px] ${getResourceClassNames(resource)} absolute top-0 bottom-0 start-0`} />
-                  <div className="flex-1 flex-col gap-2">
-                    {renderItem(resource, list)}
-                    {list == 'dropList' && (
-                      <ResourceAiSummary
-                        patientId={props.patientId}
-                        resource={resource}
-                        template={selectedTemplate}
-                        allowEdit={true}
-                      />
-                    )}
-                  </div>
+                  {/* <p>DEBUG: {resource.resourceType}</p> */}
+                  <div className="flex-1 flex-col gap-2">{renderItem(resource, list)}</div>
                   {list == 'resources' && (
-                    <ActionIcon
-                      radius={'xl'}
-                      onClick={() => {
-                        setSelectedItems((prev) => [
-                          {
-                            ...resource,
-                            id: `${resource.id}-${randomId()}`, // Ensuring unique id
-                          },
-                          ...prev,
-                        ]);
-                      }}
-                    >
-                      <IconArrowLeft />
-                    </ActionIcon>
+                    <div className="absolute end-6 top-2">
+                      <ActionIcon
+                        radius={'xl'}
+                        onClick={() => {
+                          setSelectedItems((prev) => [
+                            {
+                              ...resource,
+                              id: `${resource.id}-${randomId()}`, // Ensuring unique id
+                            },
+                            ...prev,
+                          ]);
+                        }}
+                      >
+                        <IconArrowLeft />
+                      </ActionIcon>
+                    </div>
                   )}
                   {list == 'dropList' && !printPdf && (
                     <div className="absolute end-2 top-2">
@@ -576,6 +465,9 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                       )}
                       <ActionIcon variant="transparent" onClick={onPrint}>
                         <IconPrinter />
+                      </ActionIcon>
+                      <ActionIcon variant="transparent" onClick={() => AskAi.askGpt('How are you?')}>
+                        <IconQuestionMark />
                       </ActionIcon>
                     </div>
                   </div>
