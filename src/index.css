@@ -20,12 +20,12 @@ body {
 }
 
 .ResourceDoctorSummary-resources .ResourceAiSummary {
-  /* display: none; */
+  display: none;
 }
 .ResourceDoctorSummary-resources .resourceAiSummaryEditButton {
   pointer-events: none;
 }
 
 .ResourceDoctorSummary-dropList .ResourceAiSummary {
-  background-color: rgb(218, 217, 217);
+  padding: 0px;
 }
