@@ -29,3 +29,10 @@ body {
 .ResourceDoctorSummary-dropList .ResourceAiSummary {
   padding: 0px;
 }
+.ResourceDoctorSummary-dropList .blockquote {
+  padding: 0px;
+}
+
+.ResourceDoctorSummary-dropList .media-onlySummary {
+  display: none;
+}

@@ -13,6 +13,8 @@ export const CommunicationDoctorSummaryItem = (props: DoctorSummaryItemProps<Com
       padding={true}
       className={className}
       popupMenuItems={props.popupMenuItems}
+      showType={props.showType}
+      setShowType={props.setShowType}
     >
       <p>{props.resource.payload?.[0]?.contentString}</p>
     </DoctorSummaryItem>

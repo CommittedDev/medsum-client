@@ -11,6 +11,7 @@ import { Panel, PanelProps } from '../Panel/Panel';
 import { ResourceAvatar } from '../ResourceAvatar/ResourceAvatar';
 import { ResourceName } from '../ResourceName/ResourceName';
 import classes from './DoctorSummary.module.css';
+import { ShowType } from '../ResourceDoctorSummary/parts/ResourceAiSummary';
 
 export interface DoctorSummaryItemProps<T extends Resource = Resource> extends PanelProps {
   readonly resource: T;
@@ -19,6 +20,8 @@ export interface DoctorSummaryItemProps<T extends Resource = Resource> extends P
   readonly patientId?: string;
   readonly padding?: boolean;
   readonly popupMenuItems?: ReactNode;
+  showType: ShowType;
+  readonly setShowType: (showType: ShowType) => void;
 }
 
 export function DoctorSummaryItem(props: DoctorSummaryItemProps): JSX.Element {
@@ -26,6 +29,13 @@ export function DoctorSummaryItem(props: DoctorSummaryItemProps): JSX.Element {
   const author = profile ?? resource.meta?.author;
   const dateTime = props.dateTime ?? resource.meta?.lastUpdated;
 
+  if (props.showType == 'onlySummary') {
+    return (
+      <ErrorBoundary>
+        <div className={cx(classes.item, { [classes.itemPadding]: padding })}>{props.children}</div>
+      </ErrorBoundary>
+    );
+  }
   return (
     <Panel data-testid="doctorSummary-item" fill={true} shadow={undefined} withBorder={false} {...others}>
       <Group justify="space-between" gap={8} mx="xs" my="sm">

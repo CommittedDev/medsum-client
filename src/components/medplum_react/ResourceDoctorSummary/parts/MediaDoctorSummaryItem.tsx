@@ -11,13 +11,23 @@ export const MediaDoctorSummaryItem = (props: DoctorSummaryItemProps<Media>): JS
     !contentType.startsWith('video/') &&
     contentType !== 'application/pdf';
   return (
-    <DoctorSummaryItem resource={props.resource} padding={!!padding} popupMenuItems={props.popupMenuItems}>
-      <AttachmentDisplay value={props.resource.content} />
+    <DoctorSummaryItem
+      resource={props.resource}
+      padding={!!padding}
+      popupMenuItems={props.popupMenuItems}
+      showType={props.showType}
+      setShowType={props.setShowType}
+    >
+      <div className={`media-${props.showType}`}>
+        <AttachmentDisplay value={props.resource.content} />
+      </div>
       {props.resource.content.url && props.resource.content.contentType?.startsWith('image/') && props.patientId && (
         <ResourceAiMediaSummary
           patientId={props.patientId!}
           imageUrl={props.resource.content.url!}
           resource={props.resource}
+          showType={props.showType}
+          setShowType={props.setShowType}
         />
       )}
     </DoctorSummaryItem>

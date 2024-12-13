@@ -13,14 +13,20 @@ interface IResourceAiSummary {
   value: string;
 }
 
+export type ShowType = 'onlySummary' | 'full';
+
 export const ResourceAiSummary = ({
   patientId,
   resource,
   persistKeySuffix,
+  showType,
+  setShowType,
 }: {
   patientId: string;
   resource: { [key: string]: any };
   persistKeySuffix?: string;
+  showType: ShowType;
+  setShowType: (type: ShowType) => void;
 }) => {
   const [editing, setEditing] = useState(false);
 
@@ -79,6 +85,7 @@ export const ResourceAiSummary = ({
       })
       .finally(() => {
         setLoading(false);
+        setShowType('onlySummary');
       });
   };
 
@@ -126,10 +133,14 @@ export const ResourceAiMediaSummary = ({
   patientId,
   resource,
   imageUrl,
+  showType,
+  setShowType,
 }: {
   patientId: string;
   resource: { [key: string]: any };
   imageUrl: string;
+  showType: ShowType;
+  setShowType: (type: ShowType) => void;
 }) => {
   const [editing, setEditing] = useState(false);
   const ref = useClickOutside(() => setEditing(false));
@@ -187,6 +198,7 @@ export const ResourceAiMediaSummary = ({
       })
       .finally(() => {
         setLoading(false);
+        setShowType('onlySummary');
       });
   };
 

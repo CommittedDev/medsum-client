@@ -2,6 +2,7 @@ import { MedplumClient, ProfileResource } from '@medplum/core';
 import { Attachment, Bundle, Communication, Media, Reference, Resource, ResourceType } from '@medplum/fhirtypes';
 import { ReactNode } from 'react';
 import { DoctorSummaryItemProps } from '../DoctorSummary/DoctorSummary';
+import { ShowType } from './parts/ResourceAiSummary';
 
 export interface ResourceDoctorSummaryMenuItemContext {
   readonly primaryResource: Resource;
@@ -24,4 +25,6 @@ export interface ResourceDoctorSummaryProps<T extends Resource> {
 
 export interface HistoryDoctorSummaryItemProps extends DoctorSummaryItemProps {
   readonly history: Bundle;
+  showType: ShowType;
+  readonly setShowType: (showType: ShowType) => void;
 }

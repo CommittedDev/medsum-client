@@ -55,6 +55,7 @@ import { randomId, readLocalStorageValue, useClickOutside } from '@mantine/hooks
 import { set } from 'date-fns';
 import { getDoctorSummaryPersistKey } from './parts/utils';
 import { AskAi } from './aiPRovider';
+import { ShowType } from './parts/ResourceAiSummary';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
@@ -264,52 +265,17 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
   }
 
   const renderItem = (item: Resource, list: 'resources' | 'dropList' | 'viewMode') => {
-    if (!item) {
-      // TODO: Handle null history items for deleted versions.
-      return null;
-    }
-    const key = `${item.resourceType}/${item.id}/${item.meta?.versionId}`;
-    const menu = props.getMenu
-      ? props.getMenu({
-          primaryResource: resource,
-          currentResource: item,
-          reloadDoctorSummary: loadDoctorSummary,
-        })
-      : undefined;
-    if (item.resourceType === resource.resourceType && item.id === resource.id) {
-      return <HistoryDoctorSummaryItem key={key} history={history as Bundle} resource={item} popupMenuItems={menu} />;
-    }
-    // return item.resourceType;
-    switch (item.resourceType) {
-      case 'AuditEvent':
-        return (
-          <AuditEventDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} patientId={props.patientId} />
-        );
-      case 'Communication':
-        return (
-          <CommunicationDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} patientId={props.patientId} />
-        );
-      case 'DiagnosticReport':
-        return (
-          <>
-            {/* {props.patientId ? 'props.patientId' + props.patientId : 'MISSINGT props.patientId '} */}
-            <DiagnosticReportDoctorSummaryItem
-              key={key}
-              resource={item}
-              popupMenuItems={menu}
-              patientId={props.patientId}
-            />
-          </>
-        );
-      case 'Media':
-        return <MediaDoctorSummaryItem key={key} resource={item} popupMenuItems={menu} patientId={props.patientId} />;
-      default:
-        return (
-          <DoctorSummaryItem key={key} resource={item} padding={true} popupMenuItems={menu} patientId={props.patientId}>
-            <ResourceTable value={item} ignoreMissingValues={true} patientId={props.patientId} />
-          </DoctorSummaryItem>
-        );
-    }
+    return (
+      <Item
+        {...props}
+        key={item.id}
+        resource={resource}
+        item={item}
+        list={list}
+        history={history as any}
+        patientId={props.patientId}
+      />
+    );
   };
 
   const onPrint = () => {
@@ -584,4 +550,113 @@ const getResourceClassNames = (resource: Resource) => {
     return 'orange-gradient';
   }
   return 'green-gradient';
+};
+
+interface IItemProps {
+  resource: Resource;
+  item: Resource;
+  list: 'resources' | 'dropList' | 'viewMode';
+  history: Bundle | undefined;
+  patientId: string;
+}
+const Item = (props: IItemProps) => {
+  const [_showType, _setShowType] = useState<ShowType>(props.list == 'dropList' ? 'onlySummary' : 'onlySummary');
+
+  const showType = props.list == 'dropList' ? _showType : 'full';
+  const setShowType = (showType: ShowType) => {
+    if (props.list == 'dropList') {
+      _setShowType(showType);
+    }
+  };
+
+  const { item, list, resource, history } = props;
+  if (!item) {
+    // TODO: Handle null history items for deleted versions.
+    return null;
+  }
+  const key = `${item.resourceType}/${item.id}/${item.meta?.versionId}`;
+  const menu = undefined;
+  if (item.resourceType === resource.resourceType && item.id === resource.id) {
+    return (
+      <HistoryDoctorSummaryItem
+        key={key}
+        history={history as Bundle}
+        resource={item}
+        popupMenuItems={menu}
+        patientId={props.patientId}
+        showType={showType}
+        setShowType={setShowType}
+      />
+    );
+  }
+  // return <p>{`${item.resourceType}`}</p>;
+  switch (item.resourceType) {
+    case 'AuditEvent':
+      return (
+        <AuditEventDoctorSummaryItem
+          key={key}
+          resource={item}
+          popupMenuItems={menu}
+          patientId={props.patientId}
+          showType={showType}
+          setShowType={setShowType}
+        />
+      );
+    case 'Communication':
+      return (
+        <CommunicationDoctorSummaryItem
+          key={key}
+          resource={item}
+          popupMenuItems={menu}
+          patientId={props.patientId}
+          showType={showType}
+          setShowType={setShowType}
+        />
+      );
+    case 'DiagnosticReport':
+      return (
+        <>
+          {/* {props.patientId ? 'props.patientId' + props.patientId : 'MISSINGT props.patientId '} */}
+          <DiagnosticReportDoctorSummaryItem
+            key={key}
+            resource={item}
+            popupMenuItems={menu}
+            patientId={props.patientId}
+            showType={showType}
+            setShowType={setShowType}
+          />
+        </>
+      );
+    case 'Media':
+      return (
+        <MediaDoctorSummaryItem
+          key={key}
+          resource={item}
+          popupMenuItems={menu}
+          patientId={props.patientId}
+          showType={showType}
+          setShowType={setShowType}
+        />
+      );
+    default:
+      return (
+        <DoctorSummaryItem
+          key={key}
+          resource={item}
+          padding={true}
+          popupMenuItems={menu}
+          patientId={props.patientId}
+          showType={showType}
+          setShowType={setShowType}
+        >
+          <ResourceTable
+            value={item}
+            ignoreMissingValues={true}
+            patientId={props.patientId}
+            showType={showType}
+            setShowType={setShowType}
+          />
+        </DoctorSummaryItem>
+      );
+  }
 };

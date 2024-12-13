@@ -22,13 +22,15 @@ import { ResourceBadge } from '../ResourceBadge/ResourceBadge';
 import { StatusBadge } from '../StatusBadge/StatusBadge';
 import classes from './DiagnosticReportDisplay.module.css';
 import { i18n } from 'src/i18n';
-import { ResourceAiSummary } from '../ResourceDoctorSummary/parts/ResourceAiSummary';
+import { ResourceAiSummary, ShowType } from '../ResourceDoctorSummary/parts/ResourceAiSummary';
 
 export interface DiagnosticReportDisplayProps {
   readonly value?: DiagnosticReport | Reference<DiagnosticReport>;
   readonly hideObservationNotes?: boolean;
   readonly hideSpecimenInfo?: boolean;
   readonly patientId?: string;
+  showType: ShowType;
+  readonly setShowType: (showType: ShowType) => void;
 }
 
 DiagnosticReportDisplay.defaultProps = {
@@ -37,6 +39,7 @@ DiagnosticReportDisplay.defaultProps = {
 } as DiagnosticReportDisplayProps;
 
 export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JSX.Element | null {
+  const { showType, setShowType } = props;
   const medplum = useMedplum();
   const diagnosticReport = useResource(props.value);
   const [specimens, setSpecimens] = useState<Specimen[]>();
@@ -67,6 +70,20 @@ export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JS
       specimenNotes.push({ text: window.atob(pf.data) });
     }
   }
+
+  const aiView = props.patientId ? (
+    <ResourceAiSummary
+      resource={diagnosticReport.result || diagnosticReport}
+      patientId={props.patientId!}
+      setShowType={setShowType}
+      showType={showType}
+      persistKeySuffix={diagnosticReport.result ? 'diagnostic-report' : ''}
+    />
+  ) : null;
+
+  if (showType === 'onlySummary') {
+    return aiView;
+  }
   return (
     <>
       <Stack>
@@ -80,16 +97,7 @@ export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JS
         )}
         {specimenNotes.length > 0 && <NoteDisplay value={specimenNotes} />}
       </Stack>
-      {props.patientId &&
-        (diagnosticReport.result ? (
-          <ResourceAiSummary
-            resource={diagnosticReport.result}
-            patientId={props.patientId!}
-            persistKeySuffix="diagnostic-report"
-          />
-        ) : (
-          <ResourceAiSummary resource={diagnosticReport} patientId={props.patientId!} />
-        ))}
+      {aiView}
     </>
   );
 }

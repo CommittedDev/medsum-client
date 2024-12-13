@@ -3,10 +3,12 @@ import { Reference, Resource } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
 import { useEffect, useMemo, useState } from 'react';
 import { BackboneElementDisplay } from '../BackboneElementDisplay/BackboneElementDisplay';
-import { ResourceAiSummary } from '../ResourceDoctorSummary/parts/ResourceAiSummary';
+import { ResourceAiSummary, ShowType } from '../ResourceDoctorSummary/parts/ResourceAiSummary';
 
 export interface ResourceTableProps {
   patientId?: string;
+  showType: ShowType;
+  readonly setShowType: (showType: ShowType) => void;
   /**
    * The input value either as a resource or a reference.
    */
@@ -31,6 +33,7 @@ export interface ResourceTableProps {
 
 export function ResourceTable(props: ResourceTableProps): JSX.Element | null {
   const { profileUrl } = props;
+
   const medplum = useMedplum();
   const accessPolicy = medplum.getAccessPolicy();
   const value = useResource(props.value);
@@ -74,6 +77,17 @@ export function ResourceTable(props: ResourceTableProps): JSX.Element | null {
     return null;
   }
 
+  if (props.showType === 'onlySummary') {
+    return (
+      <ResourceAiSummary
+        resource={props.value}
+        patientId={props.patientId!}
+        setShowType={props.setShowType}
+        showType={props.showType}
+      />
+    );
+  }
+
   return (
     <>
       <BackboneElementDisplay
@@ -86,7 +100,14 @@ export function ResourceTable(props: ResourceTableProps): JSX.Element | null {
         ignoreMissingValues={props.ignoreMissingValues}
         accessPolicyResource={accessPolicyResource}
       />
-      {props.patientId && <ResourceAiSummary resource={value} patientId={props.patientId!} />}
+      {props.patientId && (
+        <ResourceAiSummary
+          resource={value}
+          patientId={props.patientId!}
+          setShowType={props.setShowType}
+          showType={props.showType}
+        />
+      )}
     </>
   );
 }
