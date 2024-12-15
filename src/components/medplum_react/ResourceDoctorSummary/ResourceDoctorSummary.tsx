@@ -1,39 +1,19 @@
-import {
-  ActionIcon,
-  Button,
-  Center,
-  Group,
-  Loader,
-  LoadingOverlay,
-  Menu,
-  Modal,
-  Text,
-  Textarea,
-  TextInput,
-} from '@mantine/core';
-import { notifications, Notifications, showNotification, updateNotification } from '@mantine/notifications';
-import { ProfileResource, createReference, getReferenceString, normalizeErrorString } from '@medplum/core';
+import { ActionIcon, Center, Loader, LoadingOverlay, Modal } from '@mantine/core';
+import { notifications, showNotification, updateNotification } from '@mantine/notifications';
+import { ProfileResource, getReferenceString, normalizeErrorString } from '@medplum/core';
 import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
 import {
   IconArrowLeft,
   IconCheck,
-  IconClearAll,
-  IconCloudUpload,
-  IconEdit,
+  IconEye,
   IconFileAlert,
-  IconFileNeutral,
-  IconMessage,
+  IconPencil,
   IconPrinter,
-  IconQuestionMark,
+  IconRefresh,
   IconTrash,
-  IconX,
 } from '@tabler/icons-react';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { AttachmentButton } from '../AttachmentButton/AttachmentButton';
-import { Form } from '../Form/Form';
-import { Panel } from '../Panel/Panel';
-import { ResourceAvatar } from '../ResourceAvatar/ResourceAvatar';
 import { ResourceTable } from '../ResourceTable/ResourceTable';
 import { DoctorSummaryItem } from '../DoctorSummary/DoctorSummary';
 import { sortByDateAndPriority } from '../utils/date';
@@ -46,18 +26,18 @@ import { CommunicationDoctorSummaryItem } from './parts/CommunicationDoctorSumma
 import { DiagnosticReportDoctorSummaryItem } from './parts/DiagnosticReportDoctorSummaryItem';
 import { MediaDoctorSummaryItem } from './parts/MediaDoctorSummaryItem';
 import { HistoryDoctorSummaryItem } from './parts/HistoryDoctorSummaryItem';
-import { ResourceTableInlineEditing } from '../ResourceTableInlineEditing/ResourceTableInlineEditing';
 import { EditPage } from './parts/EditPage';
 import { useReactToPrint } from 'react-to-print';
 import { DateUtils } from './date.utils';
 import { DoctorSummaryTemplates, IResourceTemplateItem, ITemplate } from './parts/DoctorSummaryTemplates';
-import { randomId, readLocalStorageValue, useClickOutside } from '@mantine/hooks';
-import { set } from 'date-fns';
+import { randomId } from '@mantine/hooks';
 import { getDoctorSummaryPersistKey } from './parts/utils';
-import { AskAi } from './aiPRovider';
-import { ResourceAiMediaSummary, ResourceAiSummary, ShowType } from './parts/ResourceAiSummary';
+import { ShowType } from './parts/ResourceAiSummary';
+import { ResourcesAiSummary } from './parts/ResourcesAiSummary';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
+  const [resetCounter, setResetCounter] = useState(0)
+  const [editMode, setEditMode] = useState(false);
   const medplum = useMedplum();
   const [isReady, setIsReady] = useState(false);
   const printTargetRef = useRef<HTMLDivElement>();
@@ -265,34 +245,34 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
   }
 
   const renderItem = (item: Resource, list: 'resources' | 'dropList' | 'viewMode') => {
-    if (list == 'dropList') {
-      if(item.resourceType == 'Media'){
-        return item.content.url ? (
-          <ResourceAiMediaSummary
-          resource={item}
-          patientId={props.patientId!}
-          setShowType={() => {}}
-          showType={'onlySummary'}
-          url={item.content.url}
-        />
-        ) : null
-      }
-      return (
-        <ResourceAiSummary
-          resource={item}
-          patientId={props.patientId!}
-          setShowType={() => {}}
-          showType={'onlySummary'}
-        />
-      );
-    }
+    // if (list == 'dropList') {
+    //   if (item.resourceType == 'Media') {
+    //     return item.content.url ? (
+    //       <ResourceAiMediaSummary
+    //         resource={item}
+    //         patientId={props.patientId!}
+    //         setShowType={() => {}}
+    //         showType={'onlySummary'}
+    //         url={item.content.url}
+    //       />
+    //     ) : null;
+    //   }
+    //   return (
+    //     <ResourceAiSummary
+    //       resource={item}
+    //       patientId={props.patientId!}
+    //       setShowType={() => {}}
+    //       showType={'onlySummary'}
+    //     />
+    //   );
+    // }
     return (
       <Item
         {...props}
         key={item.id}
         resource={resource}
         item={item}
-        list={list}
+        list={"resources"}
         history={history as any}
         patientId={props.patientId}
       />
@@ -327,9 +307,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     const initialSelectedItems = getTemplateInitialValue(template);
     setSelectedItems(initialSelectedItems);
     setSelectedTemplate(template);
-    notifications.show({
-      message: 'שינויים התאפסו',
-    });
+    setResetCounter((prev) => prev + 1)
   };
 
   const onTemplateChange = (template: ITemplate) => {
@@ -454,16 +432,22 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                       <DoctorSummaryTemplates patientId={props.patientId} onTemplateChange={onTemplateChange} />
                     </div>
                     <div className="flex flex-row gap-2">
-                      {selectedTemplate && (
+                      {selectedTemplate && !editMode && (
                         <ActionIcon variant="transparent" onClick={() => resetChanges(selectedTemplate)}>
-                          <IconFileNeutral />
+                          <IconRefresh />
                         </ActionIcon>
                       )}
-                      <ActionIcon variant="transparent" onClick={onPrint}>
-                        <IconPrinter />
-                      </ActionIcon>
-                      <ActionIcon variant="transparent" onClick={() => AskAi.askGpt('How are you?')}>
-                        <IconQuestionMark />
+                      {!editMode && (
+                        <ActionIcon variant="transparent" onClick={onPrint}>
+                          <IconPrinter />
+                        </ActionIcon>
+                      )}
+                      <ActionIcon
+                        onClick={() => {
+                          setEditMode(!editMode);
+                        }}
+                      >
+                        {editMode ? <IconEye /> : <IconPencil />}
                       </ActionIcon>
                     </div>
                   </div>
@@ -482,7 +466,16 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                           <p className="text-[21px]">{selectedTemplate.template.title}</p>
                           <p className="text-[14px] text-[#888888]">{DateUtils.formatDate(new Date())}</p>
                         </div>
-                        {dropList}
+                        {editMode ? (
+                          dropList
+                        ) : (
+                          <ResourcesAiSummary
+                            key={selectedItems.map((item, index) => item.id || index).join('ss') + selectedItems.length}
+                            patientId={props.patientId!}
+                            resources={selectedItems}
+                            persistKeySuffix={resetCounter.toString()}
+                          />
+                        )}
                       </div>
                     ) : (
                       <p>בחר תבנית</p>

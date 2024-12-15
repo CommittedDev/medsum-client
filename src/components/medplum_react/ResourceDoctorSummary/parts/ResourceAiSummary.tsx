@@ -1,16 +1,15 @@
 import { Button, Loader, Text, Textarea } from '@mantine/core';
-import { Resource } from '@medplum/fhirtypes';
+import {Editor, EditorState} from 'draft-js';
+
 import { useEffect, useState } from 'react';
 import { readPersistStateGetInitialValue, usePersistStateOnValueChange } from '../../utils/use_persist';
-import { ITemplate } from '../parts/DoctorSummaryTemplates';
 import { useClickOutside } from '@mantine/hooks';
 import { getDoctorSummaryPersistKey } from '../parts/utils';
-import { AskAi } from '../aiPRovider';
+
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-import { set } from 'date-fns';
-import { Tiptap } from './TipTap';
 import { isReference, MedplumClient } from '@medplum/core';
 import { useMedplum } from '@medplum/react-hooks';
+import { MyEditor } from '../RichText';
 interface IResourceAiSummary {
   value: string;
 }
@@ -18,6 +17,10 @@ interface IResourceAiSummary {
 export type ShowType = 'onlySummary' | 'full';
 
 const persistData = false;
+
+
+
+
 export const ResourceAiSummary = ({
   patientId,
   resource,
@@ -31,281 +34,261 @@ export const ResourceAiSummary = ({
   showType: ShowType;
   setShowType: (type: ShowType) => void;
 }) => {
-  const [allData, setAllData] = useState<any>(null);
-  const [editing, setEditing] = useState(false);
-
-  const ref = useClickOutside(() => setEditing(false));
-  const medplum = useMedplum();
-  const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-summary-${resource.id}-${persistKeySuffix || ''}`;
-  const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
-    key: persistKey,
-    currentValue: undefined,
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [summary, setSummary] = useState<IResourceAiSummary | undefined>(initialValue);
-
-  // usePersistStateOnValueChange({
-  //   key: persistKey,
-  //   updateValue: summary,
-  // });
-
-  const fetchData = () => {
-    async function query() {
-      const cloneResource = JSON.parse(JSON.stringify(resource));
-
-      const allKeys = Object.keys(cloneResource);
-      for (const key of allKeys) {
-        cloneResource[key] = await readReferences(medplum, cloneResource[key]);
-      }
-      (window as any).requests = (window as any).requests || {};
-      (window as any).requests[cloneResource.id] = cloneResource;
-      // const response = await fetch(
-      //   'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
-      //   {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify({ resource }),
-      //   }
-      // );
-      // const result = await response.json();
-      // return result;
-      setAllData(cloneResource);
-      return {
-        success: false,
-      };
-    }
-
-    setLoading(true);
-
-    query()
-      .then((response) => {
-        const isValid = response.success == true;
-        console.log('Fetch ResourceWithAiSummary', response);
-        if (isValid) {
-          setSummary({
-            value: 'הגיע תשובה מהשרת ai',
-          });
-        } else {
-          setSummary({
-            value: 'הגיע שגיאה מהשרת ai',
-          });
-        }
-      })
-      .catch((e) => {
-        console.log('Fetch ResourceWithAiSummary', e);
-        setSummary({
-          value: 'הגיע שגיאה מהשרת ai',
-        });
-      })
-      .finally(() => {
-        setLoading(false);
-        setShowType('onlySummary');
-      });
-  };
-
-  const renderValue = () => {
-    if (!summary || !summary.value) {
-      return null;
-    }
-    if (editing) {
-      return (
-        <Textarea ref={ref} value={summary.value} onChange={(e) => setSummary({ value: e.currentTarget.value })} />
-      );
-    }
-    return (
-      <div
-        dir="rtl"
-        onDoubleClick={() => {
-          setEditing(true);
-        }}
-        className="text-start flex justify-start items-start w-full flex-1 p-2"
-      >
-        <Text className="text-start flex justify-start items-start">{summary.value}</Text>
-      </div>
-    );
-  };
-
-  useEffect(() => {
-    if (!initialValue) {
-      fetchData();
-    }
-  }, []);
-
-  return (
-    <div className="ResourceAiSummary">
-      {loading && <Loader />}
-      {summary?.value && renderValue()}
-      {/* {JSON.stringify(allData)} */}
-      {/* <GptAi patientId={patientId} resource={resource} persistKeySuffix={persistKeySuffix} /> */}
-    </div>
-  );
-};
-
+  return null;
+}
 export const ResourceAiMediaSummary = ({
   patientId,
   resource,
-  url,
+  persistKeySuffix,
   showType,
   setShowType,
 }: {
   patientId: string;
   resource: { [key: string]: any };
-  url: string;
+  persistKeySuffix?: string;
   showType: ShowType;
   setShowType: (type: ShowType) => void;
 }) => {
-  const [editing, setEditing] = useState(false);
-  const ref = useClickOutside(() => setEditing(false));
-  const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-summary-media-${resource.id}`;
-  const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
-    key: persistKey,
-    currentValue: undefined,
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [summary, setSummary] = useState<IResourceAiSummary | undefined>(initialValue);
+  return null;
+}
 
-  usePersistStateOnValueChange({
-    key: persistKey,
-    updateValue: summary,
-  });
+// export const ResourceAiSummary = ({
+//   patientId,
+//   resource,
+//   persistKeySuffix,
+//   showType,
+//   setShowType,
+// }: {
+//   patientId: string;
+//   resource: { [key: string]: any };
+//   persistKeySuffix?: string;
+//   showType: ShowType;
+//   setShowType: (type: ShowType) => void;
+// }) => {
+//   const [allData, setAllData] = useState<any>(null);
+//   const [editing, setEditing] = useState(false);
 
-  const fetchData = () => {
-    async function query() {
-      const response = await fetch(
-        'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ resource }),
-        }
-      );
-      const result = await response.json();
-      return result;
-    }
+//   const ref = useClickOutside(() => setEditing(false));
+//   const medplum = useMedplum();
+//   const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-summary-${resource.id}-${persistKeySuffix || ''}`;
+//   const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
+//     key: persistKey,
+//     currentValue: undefined,
+//   });
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState<string | undefined>(undefined);
+//   const [summary, setSummary] = useState<IResourceAiSummary | undefined>(initialValue);
 
-    setLoading(true);
+//   // usePersistStateOnValueChange({
+//   //   key: persistKey,
+//   //   updateValue: summary,
+//   // });
 
-    query()
-      .then((response) => {
-        const isValid = response.success == true;
-        console.log('Fetch ResourceWithAiSummary', response);
-        if (isValid) {
-          setSummary({
-            value: 'הגיע תשובה מהשרת ai imageUrl',
-          });
-        } else {
-          setSummary({
-            value: 'הגיע שגיאה מהשרת ai imageUrl',
-          });
-        }
-      })
-      .catch((e) => {
-        console.log('Fetch ResourceWithAiSummary', e);
-        setSummary({
-          value: 'הגיע שגיאה מהשרת ai imageUrl',
-        });
-      })
-      .finally(() => {
-        setLoading(false);
-        setShowType('onlySummary');
-      });
-  };
+//   const fetchData = () => {
+//     async function query() {
+//       const cloneResource = JSON.parse(JSON.stringify(resource));
 
-  const renderValue = () => {
-    if (!summary || !summary.value) {
-      return null;
-    }
-    if (editing) {
-      return (
-        <Textarea ref={ref} value={summary.value} onChange={(e) => setSummary({ value: e.currentTarget.value })} />
-      );
-    }
-    return (
-      <Button
-        onDoubleClick={() => {
-          setEditing(true);
-        }}
-        variant="transparent"
-        className="p-0 flex resourceAiSummaryEditButton"
-        fullWidth
-      >
-        <div className="text-start flex justify-start items-start w-full flex-1">
-          <Text className="text-start flex justify-start items-start">{summary.value}</Text>
-        </div>
-      </Button>
-    );
-  };
+//       const allKeys = Object.keys(cloneResource);
+//       for (const key of allKeys) {
+//         cloneResource[key] = await readReferences(medplum, cloneResource[key]);
+//       }
+//       (window as any).requests = (window as any).requests || {};
+//       (window as any).requests[cloneResource.id] = cloneResource;
+//       // const response = await fetch(
+//       //   'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
+//       //   {
+//       //     method: 'POST',
+//       //     headers: {
+//       //       'Content-Type': 'application/json',
+//       //     },
+//       //     body: JSON.stringify({ resource }),
+//       //   }
+//       // );
+//       // const result = await response.json();
+//       // return result;
+//       setAllData(cloneResource);
+//       return {
+//         success: false,
+//       };
+//     }
 
-  useEffect(() => {
-    if (!initialValue) {
-      fetchData();
-    }
-  }, []);
+//     setLoading(true);
 
-  return (
-    <div className="ResourceAiSummary">
-      {loading && <Loader />}
-      {summary?.value && renderValue()}
-    </div>
-  );
-};
+//     query()
+//       .then((response) => {
+//         const isValid = response.success == true;
+//         console.log('Fetch ResourceWithAiSummary', response);
+//         if (isValid) {
+//           setSummary({
+//             value: 'הגיע תשובה מהשרת ai',
+//           });
+//         } else {
+//           setSummary({
+//             value: 'הגיע שגיאה מהשרת ai',
+//           });
+//         }
+//       })
+//       .catch((e) => {
+//         console.log('Fetch ResourceWithAiSummary', e);
+//         setSummary({
+//           value: 'הגיע שגיאה מהשרת ai',
+//         });
+//       })
+//       .finally(() => {
+//         setLoading(false);
+//         setShowType('onlySummary');
+//       });
+//   };
 
-export const GptAi = ({
-  patientId,
-  resource,
-  persistKeySuffix,
-}: {
-  patientId: string;
-  resource: { [key: string]: any };
-  persistKeySuffix?: string;
-}) => {
-  const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-summary-g-${resource.id}-${persistKeySuffix || ''}`;
-  const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
-    key: persistKey,
-    currentValue: undefined,
-  });
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [summary, setSummary] = useState<any>(initialValue);
+//   const renderValue = () => {
+//     if (!summary || !summary.value) {
+//       return null;
+//     }
+//     if (editing) {
+//       return (
+//         <Textarea ref={ref} value={summary.value} onChange={(e) => setSummary({ value: e.currentTarget.value })} />
+//       );
+//     }
+//     return (
+//       <div
+//         dir="rtl"
+//         onDoubleClick={() => {
+//           setEditing(true);
+//         }}
+//         className="text-start flex justify-start items-start w-full flex-1 p-2"
+//       >
+//         <Text className="text-start flex justify-start items-start">{summary.value}</Text>
+//       </div>
+//     );
+//   };
 
-  usePersistStateOnValueChange({
-    key: persistKey,
-    updateValue: summary,
-  });
+//   useEffect(() => {
+//     if (!initialValue) {
+//       fetchData();
+//     }
+//   }, []);
 
-  const fetchData = async () => {
-    setLoading(true);
-    const response = await AskAi.summaryResource(resource);
-    debugger;
-    console.log('Fetch ResourceWithAiSummary', response);
-    setSummary(response);
-    setLoading(false);
-  };
+//   return (
+//     <div className="ResourceAiSummary">
+//       {loading && <Loader />}
+//       {summary?.value && renderValue()}
+//       {/* {JSON.stringify(allData)} */}
+//       {/* <GptAi patientId={patientId} resource={resource} persistKeySuffix={persistKeySuffix} /> */}
+//     </div>
+//   );
+// };
 
-  // useEffect(() => {
-  //   if (!initialValue) {
-  //     fetchData();
-  //   }
-  // }, []);
+// export const ResourceAiMediaSummary = ({
+//   patientId,
+//   resource,
+//   url,
+//   showType,
+//   setShowType,
+// }: {
+//   patientId: string;
+//   resource: { [key: string]: any };
+//   url: string;
+//   showType: ShowType;
+//   setShowType: (type: ShowType) => void;
+// }) => {
+//   const [editing, setEditing] = useState(false);
+//   const ref = useClickOutside(() => setEditing(false));
+//   const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-summary-media-${resource.id}`;
+//   const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
+//     key: persistKey,
+//     currentValue: undefined,
+//   });
+//   const [loading, setLoading] = useState(false);
+//   const [error, setError] = useState<string | undefined>(undefined);
+//   const [summary, setSummary] = useState<IResourceAiSummary | undefined>(initialValue);
 
-  return (
-    <div className="ResourceAiSummaryGpt">
-      {summary ? (
-        <Tiptap content={summary} />
-      ) : (
-        <Button loading={loading} onClick={fetchData}>
-          summary with chatGpt
-        </Button>
-      )}
-    </div>
-  );
-};
+//   usePersistStateOnValueChange({
+//     key: persistKey,
+//     updateValue: summary,
+//   });
+
+//   const fetchData = () => {
+//     async function query() {
+//       const response = await fetch(
+//         'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
+//         {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify({ resource }),
+//         }
+//       );
+//       const result = await response.json();
+//       return result;
+//     }
+
+//     setLoading(true);
+
+//     query()
+//       .then((response) => {
+//         const isValid = response.success == true;
+//         console.log('Fetch ResourceWithAiSummary', response);
+//         if (isValid) {
+//           setSummary({
+//             value: 'הגיע תשובה מהשרת ai imageUrl',
+//           });
+//         } else {
+//           setSummary({
+//             value: 'הגיע שגיאה מהשרת ai imageUrl',
+//           });
+//         }
+//       })
+//       .catch((e) => {
+//         console.log('Fetch ResourceWithAiSummary', e);
+//         setSummary({
+//           value: 'הגיע שגיאה מהשרת ai imageUrl',
+//         });
+//       })
+//       .finally(() => {
+//         setLoading(false);
+//         setShowType('onlySummary');
+//       });
+//   };
+
+//   const renderValue = () => {
+//     if (!summary || !summary.value) {
+//       return null;
+//     }
+//     if (editing) {
+//       return (
+//         <Textarea ref={ref} value={summary.value} onChange={(e) => setSummary({ value: e.currentTarget.value })} />
+//       );
+//     }
+//     return (
+//       <Button
+//         onDoubleClick={() => {
+//           setEditing(true);
+//         }}
+//         variant="transparent"
+//         className="p-0 flex resourceAiSummaryEditButton"
+//         fullWidth
+//       >
+//         <div className="text-start flex justify-start items-start w-full flex-1">
+//           <Text className="text-start flex justify-start items-start">{summary.value}</Text>
+//         </div>
+//       </Button>
+//     );
+//   };
+
+//   useEffect(() => {
+//     if (!initialValue) {
+//       fetchData();
+//     }
+//   }, []);
+
+//   return (
+//     <div className="ResourceAiSummary">
+//       {loading && <Loader />}
+//       {summary?.value && renderValue()}
+//     </div>
+//   );
+// };
 
 const readReferences = async (medplum: MedplumClient, value: any) => {
   try {

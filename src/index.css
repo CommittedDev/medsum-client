@@ -36,3 +36,15 @@ body {
 .ResourceDoctorSummary-dropList .media-onlySummary {
   display: none;
 }
+
+.MyEditorEditModeOff {
+  border-color: transparent !important;
+  pointer-events: none;
+  direction: rtl;
+}
+.MyEditorEditModeOff .ProseMirror{
+  padding: 0px !important;
+}
+.MyEditorEditMode {
+  border-color: transparent !important;
+}

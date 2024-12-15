@@ -25,4 +25,4 @@ export function cleanResource(resource: Resource): Resource {
 }
 
 export const getDoctorSummaryPersistKey = (patientId: string, templateId: string) =>
-  `doctor-summary-${patientId}-${templateId}`;
+  `d-s-${patientId}-${templateId}`;
