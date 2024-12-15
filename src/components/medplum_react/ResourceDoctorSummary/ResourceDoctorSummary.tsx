@@ -1,13 +1,15 @@
-import { ActionIcon, Center, Loader, LoadingOverlay, Modal } from '@mantine/core';
+import { ActionIcon, Center, Group, Loader, LoadingOverlay, Modal, TextInput } from '@mantine/core';
 import { notifications, showNotification, updateNotification } from '@mantine/notifications';
-import { ProfileResource, getReferenceString, normalizeErrorString } from '@medplum/core';
+import { ProfileResource, createReference, getReferenceString, normalizeErrorString } from '@medplum/core';
 import { Attachment, Bundle, OperationOutcome, Resource, ResourceType } from '@medplum/fhirtypes';
 import { useMedplum, useResource } from '@medplum/react-hooks';
 import {
   IconArrowLeft,
   IconCheck,
+  IconCloudUpload,
   IconEye,
   IconFileAlert,
+  IconMessage,
   IconPencil,
   IconPrinter,
   IconRefresh,
@@ -34,9 +36,13 @@ import { randomId } from '@mantine/hooks';
 import { getDoctorSummaryPersistKey } from './parts/utils';
 import { ShowType } from './parts/ResourceAiSummary';
 import { ResourcesAiSummary } from './parts/ResourcesAiSummary';
+import { Form } from '../Form/Form';
+import { Panel } from '../Panel/Panel';
+import { AttachmentButton } from '../AttachmentButton/AttachmentButton';
+import { ResourceAvatar } from '../ResourceAvatar/ResourceAvatar';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
-  const [resetCounter, setResetCounter] = useState(0)
+  const [resetCounter, setResetCounter] = useState(0);
   const [editMode, setEditMode] = useState(false);
   const medplum = useMedplum();
   const [isReady, setIsReady] = useState(false);
@@ -272,7 +278,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
         key={item.id}
         resource={resource}
         item={item}
-        list={"resources"}
+        list={'resources'}
         history={history as any}
         patientId={props.patientId}
       />
@@ -307,7 +313,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     const initialSelectedItems = getTemplateInitialValue(template);
     setSelectedItems(initialSelectedItems);
     setSelectedTemplate(template);
-    setResetCounter((prev) => prev + 1)
+    setResetCounter((prev) => prev + 1);
   };
 
   const onTemplateChange = (template: ITemplate) => {
@@ -418,7 +424,50 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                   <div className="flex flex-row justify-between items-center h-8">
                     <p>מידע רפואי</p>
                   </div>
-                  <div className="w-full bg-white p-2 rounded-md">{resources}</div>
+                  <div className="w-full bg-white p-2 rounded-md">
+                    {props.createCommunication && (
+                      <div className='ps-2 pe-10'>
+                        <Form
+                        testid="timeline-form"
+                        onSubmit={(formData: Record<string, string>) => {
+                          createComment(formData.text);
+
+                          const input = inputRef.current;
+                          if (input) {
+                            input.value = '';
+                            input.focus();
+                          }
+                        }}
+                      >
+                        <Group gap="xs" wrap="nowrap" style={{ width: '100%' }}>
+                          <TextInput
+                            name="text"
+                            ref={inputRef}
+                            placeholder="Add comment"
+                            style={{ width: '100%', maxWidth: 300 }}
+                          />
+                          <ActionIcon type="submit" radius="xl" color="blue" variant="filled">
+                            <IconMessage size={16} />
+                          </ActionIcon>
+                          <AttachmentButton
+                            securityContext={createReference(resource)}
+                            onUpload={createMedia}
+                            onUploadStart={onUploadStart}
+                            onUploadProgress={onUploadProgress}
+                            onUploadError={onUploadError}
+                          >
+                            {(props) => (
+                              <ActionIcon {...props} radius="xl" color="blue" variant="filled">
+                                <IconCloudUpload size={16} />
+                              </ActionIcon>
+                            )}
+                          </AttachmentButton>
+                        </Group>
+                      </Form>
+                    </div>
+                    )}
+                    {resources}
+                  </div>
                 </div>
                 {/*
                   ---------------------------------------------------------------

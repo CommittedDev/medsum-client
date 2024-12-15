@@ -1,6 +1,5 @@
 import { Button, Loader, Text, Textarea } from '@mantine/core';
 import { Editor, EditorState } from 'draft-js';
-
 import { useEffect, useRef, useState } from 'react';
 import { readPersistStateGetInitialValue, usePersistStateOnValueChange } from '../../utils/use_persist';
 import { useClickOutside } from '@mantine/hooks';
@@ -43,7 +42,9 @@ export const ResourcesAiSummary = ({
       return resource.id || index.toString();
     })
     .join('');
-  const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-s-${resourcesIds}-${persistKeySuffix || ''}`;
+  const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-s-${resourcesIds}-${
+    persistKeySuffix || ''
+  }`;
   const lastPersistKey = useRef(persistKey);
   const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
     key: persistKey,
@@ -61,36 +62,49 @@ export const ResourcesAiSummary = ({
 
   const fetchData = () => {
     async function query() {
-      const fullData: any = [];
-      for (const resource of resources) {
-        let cloneResource = JSON.parse(JSON.stringify(resource));
-        if ((cloneResource as Resource).resourceType == 'Media') {
-          const isValidFile =
-            ((cloneResource as Media).content &&
-              (cloneResource as Media).content.url &&
-              (cloneResource as Media).content?.contentType?.startsWith('image/')) ||
-            (cloneResource as Media).content?.contentType == 'application/pdf';
+      const fullData = await Promise.all(
+        resources.map(async (resource) => {
+          let cloneResource = JSON.parse(JSON.stringify(resource));
+          if ((cloneResource as Resource).resourceType == 'Media') {
+            const isValidFile =
+              ((cloneResource as Media).content &&
+                (cloneResource as Media).content.url &&
+                (cloneResource as Media).content?.contentType?.startsWith('image/')) ||
+              (cloneResource as Media).content?.contentType == 'application/pdf';
 
-          if(isValidFile){
-            const value = await getOCR((cloneResource as Media).content.url!, (cloneResource as Media).content?.contentType!)
-            if(value && value.Image_2_Text){
-              const subjectFromImage = await getSubjectFromImage2Text(value.Image_2_Text)
-              const summaryFromImage = await getSummaryFromImage2Text(value.Image_2_Text)
-              cloneResource = {
-                info: `This data is based of ${(cloneResource as Media).content?.contentType}`,
-                imageToText: value.Image_2_Text,
-                imageSubject: subjectFromImage?.text,
-                imageSummary: summaryFromImage?.text,
+            if (isValidFile) {
+              const value = await getOCR(
+                (cloneResource as Media).content.url!,
+                (cloneResource as Media).content?.contentType!
+              );
+              if (value && value.Image_2_Text) {
+                // Execute both requests in parallel
+                const [subjectFromImage, summaryFromImage] = await Promise.all([
+                  getSubjectFromImage2Text(value.Image_2_Text),
+                  getSummaryFromImage2Text(value.Image_2_Text),
+                ]);
+                cloneResource = {
+                  info: `This data is based on ${(cloneResource as Media).content?.contentType}`,
+                  imageToText: value.Image_2_Text,
+                  imageSubject: subjectFromImage?.text,
+                  imageSummary: summaryFromImage?.text,
+                };
               }
             }
           }
-        }
-        const allKeys = Object.keys(cloneResource);
-        for (const key of allKeys) {
-          cloneResource[key] = await readReferences(medplum, cloneResource[key]);
-        }
-        fullData.push(cloneResource);
-      }
+          const allKeys = Object.keys(cloneResource);
+          const updatedEntries = await Promise.all(
+            allKeys.map(async (key) => {
+              const updatedValue = await readReferences(medplum, cloneResource[key]);
+              return [key, updatedValue];
+            })
+          );
+          // Reconstruct cloneResource with updated keys
+          cloneResource = Object.fromEntries(updatedEntries);
+          return cloneResource;
+        })
+      );
+
       if (fullData.length == 0) {
         return { text: 'נא לגרור פרטי מטופל' };
       }
@@ -185,7 +199,7 @@ const readReferences = async (medplum: MedplumClient, value: any) => {
   try {
     if (!value) return value;
     if (Array.isArray(value)) {
-      const valuesFromServer = await Promise.allSettled(
+      const valuesFromServer = await Promise.all(
         value.map(async (v) => {
           if (isReference(v)) {
             const response = await medplum.readReference(v);
@@ -197,10 +211,16 @@ const readReferences = async (medplum: MedplumClient, value: any) => {
           return v;
         })
       );
-      return valuesFromServer
-        .filter((outcome) => outcome.status === 'fulfilled')
-        .map((outcome) => (outcome as PromiseFulfilledResult<any>).value);
-    } else if (typeof value == 'object' && (value as any).reference && isReference(value)) {
+      return valuesFromServer;
+    } else if (typeof value === 'object' && value !== null) {
+      const entries: any = await Promise.all(
+        Object.entries(value).map(async ([key, val]) => {
+          const updatedVal = await readReferences(medplum, val);
+          return [key, updatedVal];
+        })
+      );
+      return Object.fromEntries(entries);
+    } else if (isReference(value)) {
       const response = await medplum.readReference(value);
       return {
         ...value,
@@ -214,14 +234,13 @@ const readReferences = async (medplum: MedplumClient, value: any) => {
   }
 };
 
-
 const getOCR = async (fileUrl: string, contentType: string) => {
   try {
     // Step 1: Fetch the file
     const response = await fetch(fileUrl, {
       method: 'GET',
       headers: {
-        'Content-Type': contentType
+        'Content-Type': contentType,
       },
     });
 
@@ -246,13 +265,12 @@ const getOCR = async (fileUrl: string, contentType: string) => {
     const data = await res.json(); // Parse response as JSON
     console.log('File uploaded successfully:', data);
     return data;
-
   } catch (error) {
     console.error('Error:', error);
   }
 };
 
-const getSubjectFromImage2Text = async(text: string) => {
+const getSubjectFromImage2Text = async (text: string) => {
   try {
     const response = await fetch(
       // AI_URL
@@ -272,10 +290,10 @@ const getSubjectFromImage2Text = async(text: string) => {
   } catch (error) {
     return null;
   }
-}
-const getSummaryFromImage2Text = async(text: string) => {
+};
+
+const getSummaryFromImage2Text = async (text: string) => {
   try {
-    debugger
     const response = await fetch(
       // AI_URL
       FILE_2_TEXT_RESPONSE_TO_SUMMARY_SERVER_URL,
@@ -294,4 +312,4 @@ const getSummaryFromImage2Text = async(text: string) => {
   } catch (error) {
     return null;
   }
-}
+};
