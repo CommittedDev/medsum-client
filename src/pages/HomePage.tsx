@@ -18,10 +18,11 @@ export function HomePage(): JSX.Element {
   const navigate = useMedplumNavigate();
 
   return (
-    <Document>
-      <Title>
-        Welcome <ResourceName value={profile} link />
-      </Title>
+    <Document withBorder={false} shadow='none'>
+      <div className='flex flex-col items-center mb-4'>
+        <img src="public/committedLogo.png" style={{width: "150px"}} />
+      </div>
+      <h3 className='text-sm'>רשימת מטופלים</h3>
       <SearchControl
         search={{ resourceType: 'Patient', fields: ['name', 'birthdate', 'gender'] }}
         onClick={(e) => navigate(`/${getReferenceString(e.resource)}`)}

@@ -77,6 +77,7 @@ const he: any = {
   'Implantable defibrillator, device (physical object)': 'דפיברילטור מושתל, מכשיר (עצם פיזי)',
   'Social service procedure (procedure)': 'הליך שירות חברתי (הליך)',
   'user-friendly-name': 'שם ידידותי למשתמש',
+  Birthdate: "תאריך לידה"
 };
 
 let missingI18n: any = {};

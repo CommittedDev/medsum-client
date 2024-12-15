@@ -44,6 +44,7 @@ import { isCheckboxCell, killEvent } from '../utils/dom';
 import classes from './SearchControl.module.css';
 import { getFieldDefinitions } from './SearchControlField';
 import { addFilter, buildFieldNameString, getOpString, renderValue, setPage } from './SearchUtils';
+import { i18n } from 'src/i18n';
 
 export class SearchChangeEvent extends Event {
   readonly definition: SearchRequest;
@@ -280,7 +281,7 @@ export function SearchControl(props: SearchControlProps): JSX.Element {
   const isMobile = window.innerWidth < 768;
 
   return (
-    <div className={classes.root} data-testid="search-control">
+    <div className={classes.root} data-testid="search-control" dir='rtl'>
       {!props.hideToolbar && (
         <Group justify="space-between" mb="xl">
           <Group gap={2}>
@@ -385,7 +386,7 @@ export function SearchControl(props: SearchControlProps): JSX.Element {
                   <Menu.Target>
                     <UnstyledButton className={classes.control} p={2}>
                       <Group justify="space-between" wrap="nowrap">
-                        <Text fw={500}>{buildFieldNameString(field.name)}</Text>
+                        <Text fw={500}>{i18n(buildFieldNameString(field.name))}</Text>
                         <Center className={classes.icon}>
                           <IconAdjustmentsHorizontal size={14} stroke={1.5} />
                         </Center>
@@ -414,7 +415,7 @@ export function SearchControl(props: SearchControlProps): JSX.Element {
           {!props.hideFilters && (
             <Table.Tr>
               {checkboxColumn && <Table.Th />}
-              {fields.map((field) => (
+              {/* {fields.map((field) => (
                 <Table.Th key={field.name}>
                   {field.searchParams && (
                     <FilterDescription
@@ -424,7 +425,7 @@ export function SearchControl(props: SearchControlProps): JSX.Element {
                     />
                   )}
                 </Table.Th>
-              ))}
+              ))} */}
             </Table.Tr>
           )}
         </Table.Thead>
@@ -463,7 +464,7 @@ export function SearchControl(props: SearchControlProps): JSX.Element {
         <Container>
           <Center style={{ height: 150 }}>
             <Text size="xl" c="dimmed">
-              No results
+             לא נמצאו מטופלים
             </Text>
           </Center>
         </Container>
