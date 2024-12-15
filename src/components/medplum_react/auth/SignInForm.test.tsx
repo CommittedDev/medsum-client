@@ -184,7 +184,7 @@ async function setup(args?: SignInFormProps): Promise<void> {
       <MemoryRouter>
         <MedplumProvider medplum={medplum}>
           <SignInForm {...props}>
-            <Title>Sign in to Medplum</Title>
+            <Title>Sign in</Title>
           </SignInForm>
         </MedplumProvider>
       </MemoryRouter>
@@ -205,8 +205,8 @@ describe('SignInForm', () => {
 
   test('Renders', async () => {
     await setup();
-    const input = screen.getByText('Sign in to Medplum') as HTMLButtonElement;
-    expect(input.innerHTML).toBe('Sign in to Medplum');
+    const input = screen.getByText('Sign in') as HTMLButtonElement;
+    expect(input.innerHTML).toBe('Sign in');
   });
 
   test('Submit success', async () => {

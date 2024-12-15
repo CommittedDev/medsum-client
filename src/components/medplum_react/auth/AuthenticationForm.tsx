@@ -107,18 +107,18 @@ export function EmailForm(props: EmailFormProps): JSX.Element {
           }
         }}
       >
-        DEV
+        כניסה מהירה - הדגמה
       </Button>
       <Center style={{ flexDirection: 'column' }}>{children}</Center>
       <OperationOutcomeAlert issues={issues} />
-      {googleClientId && (
+      {/* {googleClientId && (
         <>
           <Group justify="center" p="xl" style={{ height: 70 }}>
             <GoogleButton googleClientId={googleClientId} handleGoogleCredential={handleGoogleCredential} />
           </Group>
           {!disableEmailAuth && <Divider label={i18n('or')} labelPosition="center" my="lg" />}
         </>
-      )}
+      )} */}
       {!disableEmailAuth && (
         <TextInput
           name="email"
@@ -186,7 +186,7 @@ export function PasswordForm(props: PasswordFormProps): JSX.Element {
             .catch((err) => setOutcome(normalizeOperationOutcome(err)));
         }}
       >
-        DEV
+        כניסה מהירה - הדגמה
       </Button>
       <Center style={{ flexDirection: 'column' }}>{children}</Center>
       <OperationOutcomeAlert issues={issues} />

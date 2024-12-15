@@ -23,7 +23,7 @@ export interface SignInFormProps extends BaseLoginRequest {
 }
 
 /**
- * The SignInForm component allows users to sign in to Medplum.
+ * The SignInForm component allows users to Sign in.
  *
  * "Signing in" is a multi-step process:
  * 1) Authentication - identify the user

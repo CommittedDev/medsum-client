@@ -336,8 +336,8 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
         reactToPrintFn();
         setTimeout(() => {
           setPrintPdf(false);
-        }, 2000);
-      }, 2000);
+        }, 500);
+      }, 500);
     }
   }, [printPdf]);
 
@@ -474,9 +474,9 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                   | >מכתב שחרור
                   --------------------------------------------------------------
                 */}
-                <div className="flex-1 flex flex-col gap-2 rounded-md">
+                <div className="flex-1 flex flex-col gap-2 rounded-md" dir='rtl'>
                   <div className="flex flex-row justify-between items-center h-8">
-                    <div className="flex flex-row gap-2 items-center">
+                    <div className="flex flex-row gap-2 items-center"  dir='rtl'>
                       <p>מכתב שחרור</p>
                       <DoctorSummaryTemplates patientId={props.patientId} onTemplateChange={onTemplateChange} />
                     </div>
@@ -509,7 +509,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                     }
                   >
                     {selectedTemplate ? (
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2 pt-4"  dir='rtl'>
                         <div className="flex flex-row justify-between items-center">
                           <img src={selectedTemplate.template.image} alt="logo" className="h-10" />
                           <p className="text-[21px]">{selectedTemplate.template.title}</p>

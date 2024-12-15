@@ -12,7 +12,7 @@ export function Basic(): JSX.Element {
   return (
     <SignInForm onSuccess={() => alert('Signed in!')}>
       <Logo size={32} />
-      <Title>Sign in to Medplum</Title>
+      <Title>Sign in</Title>
     </SignInForm>
   );
 }
@@ -25,7 +25,7 @@ export function WithLinks(): JSX.Element {
       onRegister={() => alert('Register')}
     >
       <Logo size={32} />
-      <Title>Sign in to Medplum</Title>
+      <Title>Sign in</Title>
     </SignInForm>
   );
 }
@@ -39,7 +39,7 @@ export function WithFooter(): JSX.Element {
         onRegister={() => alert('Register')}
       >
         <Logo size={32} />
-        <Title>Sign in to Medplum</Title>
+        <Title>Sign in</Title>
       </SignInForm>
     </>
   );
@@ -55,7 +55,7 @@ export function WithGoogle(): JSX.Element {
         googleClientId="xyz"
       >
         <Logo size={32} />
-        <Title>Sign in to Medplum</Title>
+        <Title>Sign in</Title>
       </SignInForm>
     </>
   );
@@ -71,7 +71,7 @@ export function GoogleOnly(): JSX.Element {
         disableEmailAuth
       >
         <Logo size={32} />
-        <Title>Sign in to Medplum</Title>
+        <Title>Sign in</Title>
       </SignInForm>
     </>
   );

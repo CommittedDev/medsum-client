@@ -1,4 +1,4 @@
-import { Button, Loader, Text, Textarea } from '@mantine/core';
+import { Button, Loader, Text, Textarea, Tooltip } from '@mantine/core';
 import { Editor, EditorState } from 'draft-js';
 import { useEffect, useRef, useState } from 'react';
 import { readPersistStateGetInitialValue, usePersistStateOnValueChange } from '../../utils/use_persist';
@@ -12,8 +12,10 @@ import { MyEditor } from '../RichText';
 import { Media, Resource } from '@medplum/fhirtypes';
 
 const FILE_SERVER_URL = 'http://192.168.1.28:5000/upload';
-const FILE_2_TEXT_RESPONSE_TO_SUBJECT_SERVER_URL = 'http://192.168.1.28:3000/api/v1/prediction/24c53c52-49e9-4e4b-93ba-4a2367392643';
-const FILE_2_TEXT_RESPONSE_TO_SUMMARY_SERVER_URL = 'http://192.168.1.28:3000/api/v1/prediction/516bd946-a74a-4df1-93cf-b0e41bda2122';
+const FILE_2_TEXT_RESPONSE_TO_SUBJECT_SERVER_URL =
+  'http://192.168.1.28:3000/api/v1/prediction/24c53c52-49e9-4e4b-93ba-4a2367392643';
+const FILE_2_TEXT_RESPONSE_TO_SUMMARY_SERVER_URL =
+  'http://192.168.1.28:3000/api/v1/prediction/516bd946-a74a-4df1-93cf-b0e41bda2122';
 const AI_SERVER_URL = 'http://192.168.1.28:3000/api/v1/prediction/1a4536da-f42f-4ecf-9939-65d53a5e5cd0';
 interface IResourceAiSummary {
   value: string;
@@ -42,9 +44,7 @@ export const ResourcesAiSummary = ({
       return resource.id || index.toString();
     })
     .join('');
-  const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-s-${resourcesIds}-${
-    persistKeySuffix || ''
-  }`;
+  const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-s-${resourcesIds}-${persistKeySuffix || ''}`;
   const lastPersistKey = useRef(persistKey);
   const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
     key: persistKey,
@@ -106,7 +106,7 @@ export const ResourcesAiSummary = ({
       );
 
       if (fullData.length == 0) {
-        return { text: 'נא לגרור פרטי מטופל' };
+        return { text: 'נא להוסיף פרטי מטופל' };
       }
       const response = await fetch(
         // AI_URL
@@ -153,27 +153,29 @@ export const ResourcesAiSummary = ({
       return null;
     }
     return (
-      <div
-        ref={ref}
-        dir="rtl"
-        onDoubleClick={
-          editing
-            ? undefined
-            : () => {
-                setEditing(true);
-              }
-        }
-        className="text-start flex justify-start items-start w-full flex-1 p-2"
-      >
-        <MyEditor
-          key={dataCounter.toString()}
-          initialValue={summary}
-          onChanged={(val) => {
-            setSummary(val);
-          }}
-          editMode={editing}
-        />
-      </div>
+      <Tooltip label="לחץ כפול לעריכת המסמך" opened={(editing || resources.length == 0) ? false : undefined}>
+        <div
+          ref={ref}
+          dir="rtl"
+          onDoubleClick={
+            editing
+              ? undefined
+              : () => {
+                  setEditing(true);
+                }
+          }
+          className="text-start flex justify-start items-start w-full flex-1 p-2"
+        >
+          <MyEditor
+            key={dataCounter.toString()}
+            initialValue={summary}
+            onChanged={(val) => {
+              setSummary(val);
+            }}
+            editMode={editing}
+          />
+        </div>
+      </Tooltip>
     );
   };
 
@@ -185,8 +187,13 @@ export const ResourcesAiSummary = ({
   }, [persistKey]);
 
   return (
-    <div className="ResourceAiSummary">
-      {loading && <Loader />}
+    <div className="ResourceAiSummary min-h-[400px] mt-6" dir="rtl">
+      {loading && (
+        <div className="flex flex-1 flex-col gap-4 items-center pt-12 justify-center">
+          <p className="text-xl">מסכם מידע רפואי</p>
+          <Loader />
+        </div>
+      )}
       {summary && renderValue()}
       {/* <Editor editorState={editorState} onChange={setEditorState} /> */}
       {/* {JSON.stringify(allData)} */}

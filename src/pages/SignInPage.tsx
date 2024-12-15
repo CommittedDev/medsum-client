@@ -12,7 +12,7 @@ export function SignInPage(): JSX.Element {
       onSuccess={() => navigate('/')}
     >
       <Logo size={32} />
-      <Title>Sign in to Medplum</Title>
+      <Title>Sign in</Title>
     </SignInForm>
   );
 }
