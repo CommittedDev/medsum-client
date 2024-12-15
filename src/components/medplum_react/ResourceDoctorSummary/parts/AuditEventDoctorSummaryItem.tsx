@@ -19,7 +19,14 @@ export const AuditEventDoctorSummaryItem = (props: DoctorSummaryItemProps<AuditE
     );
   }
   return (
-    <DoctorSummaryItem resource={props.resource} padding={true} popupMenuItems={props.popupMenuItems}>
+    <DoctorSummaryItem
+      resource={props.resource}
+      padding={true}
+      popupMenuItems={props.popupMenuItems}
+      patientId={props.patientId}
+      setShowType={setShowType}
+      showType={showType}
+    >
       <ScrollArea>
         <pre>{props.resource.outcomeDesc}</pre>
         {props.resource && props.patientId && (

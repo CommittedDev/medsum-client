@@ -3,22 +3,20 @@ import { DiagnosticReportDisplay } from '../../DiagnosticReportDisplay/Diagnosti
 import { DoctorSummaryItem, DoctorSummaryItemProps } from '../../DoctorSummary/DoctorSummary';
 import { ResourceAiSummary } from './ResourceAiSummary';
 
-export const DiagnosticReportDoctorSummaryItem = (props: DoctorSummaryItemProps<DiagnosticReport>): JSX.Element => {
-  return (
-    <DoctorSummaryItem
-      resource={props.resource}
-      padding={true}
-      popupMenuItems={props.popupMenuItems}
-      setShowType={props.setShowType}
+export const DiagnosticReportDoctorSummaryItem = (props: DoctorSummaryItemProps<DiagnosticReport>): JSX.Element => (
+  <DoctorSummaryItem
+    resource={props.resource}
+    padding={true}
+    popupMenuItems={props.popupMenuItems}
+    setShowType={props.setShowType}
+    showType={props.showType}
+  >
+    <DiagnosticReportDisplay
+      value={props.resource}
+      patientId={props.patientId}
       showType={props.showType}
-    >
-      <DiagnosticReportDisplay
-        value={props.resource}
-        patientId={props.patientId}
-        showType={props.showType}
-        setShowType={props.setShowType}
-      />
-      {/* <ResourceAiSummary is inside the DiagnosticReportDisplay component */}
-    </DoctorSummaryItem>
-  );
-};
+      setShowType={props.setShowType}
+    />
+    {/* <ResourceAiSummary is inside the DiagnosticReportDisplay component */}
+  </DoctorSummaryItem>
+);

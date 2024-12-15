@@ -55,7 +55,7 @@ import { randomId, readLocalStorageValue, useClickOutside } from '@mantine/hooks
 import { set } from 'date-fns';
 import { getDoctorSummaryPersistKey } from './parts/utils';
 import { AskAi } from './aiPRovider';
-import { ShowType } from './parts/ResourceAiSummary';
+import { ResourceAiMediaSummary, ResourceAiSummary, ShowType } from './parts/ResourceAiSummary';
 
 export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorSummaryProps<T>): JSX.Element {
   const medplum = useMedplum();
@@ -265,6 +265,27 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
   }
 
   const renderItem = (item: Resource, list: 'resources' | 'dropList' | 'viewMode') => {
+    if (list == 'dropList') {
+      if(item.resourceType == 'Media'){
+        return item.content.url ? (
+          <ResourceAiMediaSummary
+          resource={item}
+          patientId={props.patientId!}
+          setShowType={() => {}}
+          showType={'onlySummary'}
+          url={item.content.url}
+        />
+        ) : null
+      }
+      return (
+        <ResourceAiSummary
+          resource={item}
+          patientId={props.patientId!}
+          setShowType={() => {}}
+          showType={'onlySummary'}
+        />
+      );
+    }
     return (
       <Item
         {...props}
@@ -340,6 +361,7 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
     return <LoadingOverlay visible={true} />;
   }
 
+  const itemWidth = printPdf ? '200mm' : 'calc(50vw - 120px)';
   return (
     <>
       <div className="flex flex-col w-full hiddenTheChild">
@@ -350,16 +372,24 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
           dropList={selectedItems}
           itemWidth={printPdf ? '200mm' : 'calc(50vw - 120px)'}
           setDropList={setSelectedItems}
-          renderResource={(resource: Resource, list: 'resources' | 'dropList') => {
+          renderResource={(resource: Resource, list: 'resources' | 'dropList', isDragging) => {
             return (
               <div
-                className={`overflow-hidden border border-[#EDEDED] rounded-md p-2 flex mb-4 ResourceDoctorSummary-${list} `}
+                className={`overflow-hidden flex-1 border border-[#EDEDED] rounded-md p-2 flex mb-4 ResourceDoctorSummary-${list} `}
               >
-                <div className="flex flex-row gap-2 ps-4 relative flex-1">
+                <div className="flex flex-row gap-2 ps-4 relative flex-1  ">
                   <div className={`w-[2px] ${getResourceClassNames(resource)} absolute top-0 bottom-0 start-0`} />
                   {/* <p>DEBUG: {resource.resourceType}</p> */}
-                  <div className="flex-1 flex-col gap-2">{renderItem(resource, list)}</div>
-                  {list == 'resources' && (
+                  <div
+                    style={{
+                      maxWidth: printPdf ? '200mm' : 'calc(50vw - 140px)',
+                      width: printPdf ? '200mm' : 'calc(50vw - 140px)',
+                    }}
+                    className={`flex-1 flex-col gap-2 overflow-hidden`}
+                  >
+                    {renderItem(resource, list)}
+                  </div>
+                  {list == 'resources' && !isDragging && (
                     <div className="absolute end-6 top-2">
                       <ActionIcon
                         radius={'xl'}
@@ -377,8 +407,8 @@ export function ResourceDoctorSummary<T extends Resource>(props: ResourceDoctorS
                       </ActionIcon>
                     </div>
                   )}
-                  {list == 'dropList' && !printPdf && (
-                    <div className="absolute end-2 top-2">
+                  {list == 'dropList' && !printPdf && !isDragging && (
+                    <div className="absolute end-6 top-2">
                       <ActionIcon
                         color="#EEEEEE"
                         radius={'xl'}

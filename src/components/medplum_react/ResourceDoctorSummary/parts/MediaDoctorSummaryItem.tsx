@@ -21,7 +21,7 @@ export const MediaDoctorSummaryItem = (props: DoctorSummaryItemProps<Media>): JS
       <div className={`media-${props.showType}`}>
         <AttachmentDisplay value={props.resource.content} />
       </div>
-      {props.resource.content.url && props.resource.content.contentType?.startsWith('image/') && props.patientId && (
+      {/* {props.resource.content.url && props.resource.content.contentType?.startsWith('image/') && props.patientId && (
         <ResourceAiMediaSummary
           patientId={props.patientId!}
           imageUrl={props.resource.content.url!}
@@ -29,7 +29,7 @@ export const MediaDoctorSummaryItem = (props: DoctorSummaryItemProps<Media>): JS
           showType={props.showType}
           setShowType={props.setShowType}
         />
-      )}
+      )} */}
     </DoctorSummaryItem>
   );
 };

@@ -9,12 +9,15 @@ import { AskAi } from '../aiPRovider';
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 import { set } from 'date-fns';
 import { Tiptap } from './TipTap';
+import { isReference, MedplumClient } from '@medplum/core';
+import { useMedplum } from '@medplum/react-hooks';
 interface IResourceAiSummary {
   value: string;
 }
 
 export type ShowType = 'onlySummary' | 'full';
 
+const persistData = false;
 export const ResourceAiSummary = ({
   patientId,
   resource,
@@ -28,9 +31,11 @@ export const ResourceAiSummary = ({
   showType: ShowType;
   setShowType: (type: ShowType) => void;
 }) => {
+  const [allData, setAllData] = useState<any>(null);
   const [editing, setEditing] = useState(false);
 
   const ref = useClickOutside(() => setEditing(false));
+  const medplum = useMedplum();
   const persistKey = `${getDoctorSummaryPersistKey(patientId, '')}-summary-${resource.id}-${persistKeySuffix || ''}`;
   const initialValue = readPersistStateGetInitialValue<IResourceAiSummary>({
     key: persistKey,
@@ -40,25 +45,37 @@ export const ResourceAiSummary = ({
   const [error, setError] = useState<string | undefined>(undefined);
   const [summary, setSummary] = useState<IResourceAiSummary | undefined>(initialValue);
 
-  usePersistStateOnValueChange({
-    key: persistKey,
-    updateValue: summary,
-  });
+  // usePersistStateOnValueChange({
+  //   key: persistKey,
+  //   updateValue: summary,
+  // });
 
   const fetchData = () => {
     async function query() {
-      const response = await fetch(
-        'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ resource }),
-        }
-      );
-      const result = await response.json();
-      return result;
+      const cloneResource = JSON.parse(JSON.stringify(resource));
+
+      const allKeys = Object.keys(cloneResource);
+      for (const key of allKeys) {
+        cloneResource[key] = await readReferences(medplum, cloneResource[key]);
+      }
+      (window as any).requests = (window as any).requests || {};
+      (window as any).requests[cloneResource.id] = cloneResource;
+      // const response = await fetch(
+      //   'https://talkingapps.onrender.com/api/v1/prediction/f0e9c9d1-a62a-49c5-94e7-8382e43127f5',
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({ resource }),
+      //   }
+      // );
+      // const result = await response.json();
+      // return result;
+      setAllData(cloneResource);
+      return {
+        success: false,
+      };
     }
 
     setLoading(true);
@@ -99,18 +116,15 @@ export const ResourceAiSummary = ({
       );
     }
     return (
-      <Button
+      <div
+        dir="rtl"
         onDoubleClick={() => {
           setEditing(true);
         }}
-        variant="transparent"
-        className="p-0 flex resourceAiSummaryEditButton"
-        fullWidth
+        className="text-start flex justify-start items-start w-full flex-1 p-2"
       >
-        <div className="text-start flex justify-start items-start w-full flex-1">
-          <Text className="text-start flex justify-start items-start">{summary.value}</Text>
-        </div>
-      </Button>
+        <Text className="text-start flex justify-start items-start">{summary.value}</Text>
+      </div>
     );
   };
 
@@ -124,6 +138,7 @@ export const ResourceAiSummary = ({
     <div className="ResourceAiSummary">
       {loading && <Loader />}
       {summary?.value && renderValue()}
+      {/* {JSON.stringify(allData)} */}
       {/* <GptAi patientId={patientId} resource={resource} persistKeySuffix={persistKeySuffix} /> */}
     </div>
   );
@@ -132,13 +147,13 @@ export const ResourceAiSummary = ({
 export const ResourceAiMediaSummary = ({
   patientId,
   resource,
-  imageUrl,
+  url,
   showType,
   setShowType,
 }: {
   patientId: string;
   resource: { [key: string]: any };
-  imageUrl: string;
+  url: string;
   showType: ShowType;
   setShowType: (type: ShowType) => void;
 }) => {
@@ -290,4 +305,37 @@ export const GptAi = ({
       )}
     </div>
   );
+};
+
+const readReferences = async (medplum: MedplumClient, value: any) => {
+  try {
+    if (!value) return value;
+    if (Array.isArray(value)) {
+      const valuesFromServer = await Promise.allSettled(
+        value.map(async (v) => {
+          if (isReference(v)) {
+            const response = await medplum.readReference(v);
+            return {
+              ...v,
+              reference: response,
+            };
+          }
+          return v;
+        })
+      );
+      return valuesFromServer
+        .filter((outcome) => outcome.status === 'fulfilled')
+        .map((outcome) => (outcome as PromiseFulfilledResult<any>).value);
+    } else if (typeof value == 'object' && (value as any).reference && isReference(value)) {
+      const response = await medplum.readReference(value);
+      return {
+        ...value,
+        reference: response,
+      };
+    }
+
+    return value;
+  } catch (error) {
+    return value;
+  }
 };

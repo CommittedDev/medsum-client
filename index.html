@@ -11,5 +11,12 @@
     <div id="root"></div>
     <script src="https://accounts.google.com/gsi/client" async></script>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      import Chatbot from 'https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js';
+      Chatbot.init({
+        chatflowid: '1a4536da-f42f-4ecf-9939-65d53a5e5cd0',
+        apiHost: 'http://192.168.1.28:3000',
+      });
+    </script>
   </body>
 </html>

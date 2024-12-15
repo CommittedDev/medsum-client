@@ -66,7 +66,7 @@ export const DragAndDropResources = ({
   itemWidth: string;
   dropListHeight: string;
   setDropList: React.Dispatch<React.SetStateAction<Resource[]>>;
-  renderResource: (resource: Resource, list: 'resources' | 'dropList') => JSX.Element | null;
+  renderResource: (resource: Resource, list: 'resources' | 'dropList', isDragging: boolean) => JSX.Element | null;
   children: (resources: JSX.Element, dropList: JSX.Element) => JSX.Element;
 }) => {
   // Handler for drag end
@@ -134,7 +134,7 @@ export const DragAndDropResources = ({
                   isDragging={snapshot.isDragging}
                   width={itemWidth}
                 >
-                  {renderResource(item, 'resources')}
+                  {renderResource(item, 'resources', snapshot.isDragging)}
                 </Item>
               )}
             </Draggable>
@@ -164,7 +164,7 @@ export const DragAndDropResources = ({
                   isDragging={snapshot.isDragging}
                   width={itemWidth}
                 >
-                  {renderResource(item, 'dropList')}
+                  {renderResource(item, 'dropList', snapshot.isDragging)}
                 </Item>
               )}
             </Draggable>

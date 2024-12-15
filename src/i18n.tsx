@@ -81,6 +81,7 @@ const he: any = {
 
 let missingI18n: any = {};
 export const i18n = (value: any): any => {
+  return value;
   if (he[value]) {
     delete missingI18n[value];
     return he[value];

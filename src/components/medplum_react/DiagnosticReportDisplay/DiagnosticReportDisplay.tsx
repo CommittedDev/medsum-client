@@ -73,7 +73,7 @@ export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JS
 
   const aiView = props.patientId ? (
     <ResourceAiSummary
-      resource={diagnosticReport.result || diagnosticReport}
+      resource={{ ...(diagnosticReport.result || diagnosticReport), specimenNotes }}
       patientId={props.patientId!}
       setShowType={setShowType}
       showType={showType}
@@ -92,6 +92,7 @@ export function DiagnosticReportDisplay(props: DiagnosticReportDisplayProps): JS
         {specimens && !props.hideSpecimenInfo && SpecimenInfo(specimens)}
         {diagnosticReport.result && (
           <>
+            <p>{JSON.stringify(diagnosticReport.result)}</p>
             <ObservationTable hideObservationNotes={props.hideObservationNotes} value={diagnosticReport.result} />
           </>
         )}
